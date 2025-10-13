@@ -91,7 +91,7 @@ export default function MarketProblem() {
         radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
       `,
       }}
-      className="py-20 md:py-32 bg-black dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+      className="py-20 md:py-32  ">
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -151,7 +151,7 @@ export default function MarketProblem() {
 
           {/* Problems Section */}
           <motion.div variants={itemVariants} className="mb-20">
-            <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-4">
+            <h3 className="text-3xl md:text-4xl font-bold text-center text-amber-200 dark:text-white mb-4">
               But Behind That Growth...
             </h3>
             <p className="text-xl text-center text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
@@ -192,7 +192,7 @@ export default function MarketProblem() {
                 className="text-6xl">
                 ⬇️
               </motion.div>
-              <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 text-2xl font-bold text-gray-400 dark:text-gray-500">
+              <div className="pt-5 absolute -right-20 top-1/2 transform -translate-y-1/2 text-2xl font-bold text-gray-400 dark:text-gray-500">
                 Our Solution
               </div>
             </div>
@@ -200,7 +200,7 @@ export default function MarketProblem() {
 
           {/* Solutions Section */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 white:text-white dark:text-white mb-12">
               K-LovePet's Approach
             </h3>
 

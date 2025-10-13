@@ -9,6 +9,8 @@ import AboutProject from "@/component/AboutProject";
 import AboutProjectAnimated from "@/component/AboutProjectAnimated";
 import { AboutProjectCentered } from "@/component/AboutProjectCentered";
 import MarketProblem from "@/component/MarketProblem";
+import Ecosystem from "@/component/Ecosystem";
+import TokenomicsSection from "@/component/TokenomicsSection";
 
 export default function Home() {
   return (
@@ -23,7 +25,12 @@ export default function Home() {
       <section>
         <MarketProblem />
       </section>
-      
+      <section>
+        <Ecosystem />
+      </section>
+      <section>
+        <TokenomicsSection />
+      </section>
     </div>
   );
 }

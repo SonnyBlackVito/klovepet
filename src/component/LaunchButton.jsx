@@ -11,7 +11,7 @@ export default function LaunchButton() {
 
   return (
     <Link
-      href="https://audition.kpoproad.com"
+      href="#"
       target="_blank"
       rel="noopener noreferrer"
       className="inline-block"
