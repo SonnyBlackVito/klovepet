@@ -53,7 +53,7 @@ const TokenomicsSection = () => {
       <div className="sparkle-overlay" />
       
       {/* Header Section */}
-      <div className="flex flex-col  mb-16 relative z-10">
+      <div className="flex flex-col relative z-10">
         <h2 
           className="text-8xl font-normal leading-normal max-w-6xl "
           style={{
@@ -65,10 +65,9 @@ const TokenomicsSection = () => {
           Blockchain & Tokenomics
         </h2>
         <p 
-          className="text-2xl md:text-1xl mt-4"
+          className="text-2xl md:text-1xl mt-2"
           style={{
             color: "#333",
-            // WebkitTextStroke: "1.5px #876046",
             fontFamily: "'Luckiest Guy', cursive",
           }}
         >
@@ -77,7 +76,7 @@ const TokenomicsSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-20 min-h-[700px] relative z-10">
+      <div className="flex flex-col lg:flex-row items-center justify-center min-h-[500px] relative z-10">
         {/* Left Side - Data List */}
         <div className="flex-1 max-w-[800px]">
           <div className="flex gap-12">
@@ -135,9 +134,9 @@ const TokenomicsSection = () => {
 
         {/* Right Side - Chart Image */}
         <div className="relative animate-tokenomics-reveal hover:animate-tokenomics-glow">
-          <div className="relative max-w-[400px] w-full h-auto transition-all duration-300 hover:scale-110 hover:brightness-115 hover:drop-shadow-[0_0_30px_rgba(106,78,221,0.7)]">
+          <div className="relative max-w-[400px] w-full h-auto transition-all duration-300 hover:scale-110 hover:brightness-115 hover:drop-shadow-[0_0_30px_rgba(231, 113, 107, 0.7)]">
             <Image
-              src="/tokenomics.png"
+              src="/images/tokenomics.png"
               alt="Tokenomics Chart"
               width={400}
               height={400}
