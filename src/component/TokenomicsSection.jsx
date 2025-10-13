@@ -90,7 +90,9 @@ const TokenomicsSection = () => {
             fontFamily: "'Luckiest Guy', cursive",
           }}
         >
-          Built on Solana Chain for low fees and fast transactions. A dedicated
+          Built on Solana Chain for low fees and fast transactions.
+          <br />
+          A dedicated
           Sub-chain will follow.
         </p>
       </div>
