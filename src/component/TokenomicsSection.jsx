@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 
-
 const TokenomicsSection = () => {
   const tokenomicsData = [
     {
@@ -20,19 +19,19 @@ const TokenomicsSection = () => {
     {
       label: "Team Advisor",
       value: "50,000,000",
-      color: "#FFFFFF", 
+      color: "#FFFFFF",
       percentage: "5%",
     },
     {
       label: "Dao Community",
       value: "200,000,000",
-      color: "#FF6B6B", 
+      color: "#FF6B6B",
       percentage: "20%",
     },
     {
       label: "Marketing",
       value: "200,000,000",
-      color: "#FFB4AB", 
+      color: "#FFB4AB",
       percentage: "20%",
     },
     {
@@ -44,34 +43,49 @@ const TokenomicsSection = () => {
   ];
 
   return (
-    <div 
-      className="tokenomics-sparkle-bg py-20 px-8 md:px-12 lg:px-16 xl:px-20 relative"
+    <div
+      className="bg-[#FEFBEA] tokenomics-sparkle-bg py-20 px-8 md:px-12 lg:px-16 xl:px-20 relative"
+      //   style={{
+      //     background: "linear-gradient(150deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0.1) 50%, rgba(185, 179, 179, 0.3) 85%, rgba(52, 48, 48, 0.3) 100%)"
+      //   }}
       style={{
-        background: "linear-gradient(150deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0.1) 50%, rgba(185, 179, 179, 0.3) 85%, rgba(52, 48, 48, 0.3) 100%)"
-      }}
-    >
+        backgroundImage: `
+        linear-gradient(180deg, 
+          rgba(254,251,234,1) 0%, 
+          rgba(254,251,234,0.95) 15%,
+          rgba(229,210,163,0.6) 35%, 
+          rgba(190,162,115,0.4) 55%, 
+          rgba(176,155,123,0.3) 75%, 
+          rgba(125,116,99,0.2) 100%
+        ),
+        radial-gradient(ellipse at 25% 25%, rgba(229,210,163,0.3) 0%, transparent 60%),
+        radial-gradient(ellipse at 75% 75%, rgba(190,162,115,0.25) 0%, transparent 65%),
+        radial-gradient(circle at 50% 40%, rgba(254,251,234,0.5) 0%, transparent 50%),
+        radial-gradient(circle at 80% 60%, rgba(176,155,123,0.2) 0%, transparent 55%),
+        radial-gradient(circle at 30% 70%, rgba(229,210,163,0.2) 0%, transparent 50%)
+      `,
+      }}>
       <div className="sparkle-overlay" />
-      
+
       {/* Header Section */}
       <div className="flex flex-col relative z-10">
-        <h2 
+        <h2
           className="text-8xl font-normal leading-normal max-w-6xl "
           style={{
             color: "#F26457",
             WebkitTextStroke: "2px #876046",
             fontFamily: "'Luckiest Guy', cursive",
-          }}
-        >
+          }}>
           Blockchain & Tokenomics
         </h2>
-        <p 
+        <p
           className="text-2xl md:text-1xl mt-2"
           style={{
             color: "#333",
             fontFamily: "'Luckiest Guy', cursive",
-          }}
-        >
-          Built on Solana Chain for low fees and fast transactions. A dedicated Sub-chain will follow.
+          }}>
+          Built on Solana Chain for low fees and fast transactions. A dedicated
+          Sub-chain will follow.
         </p>
       </div>
 
@@ -85,11 +99,14 @@ const TokenomicsSection = () => {
               {tokenomicsData.slice(0, 3).map((item, index) => (
                 <div key={index}>
                   <div className="flex gap-4 items-start">
-                    <div 
+                    <div
                       className="w-[86px] h-[44px] shadow-lg"
-                      style={{ 
+                      style={{
                         backgroundColor: item.color,
-                        border: item.color === "#FFFFFF" || item.color === "#F5F5F5" ? "2px solid #E63946" : "none"
+                        border:
+                          item.color === "#FFFFFF" || item.color === "#F5F5F5"
+                            ? "2px solid #E63946"
+                            : "none",
                       }}
                     />
                     <div className="flex flex-col gap-2 flex-1">
@@ -110,11 +127,14 @@ const TokenomicsSection = () => {
               {tokenomicsData.slice(3, 6).map((item, index) => (
                 <div key={index + 3}>
                   <div className="flex gap-4 items-start">
-                    <div 
+                    <div
                       className="w-[86px] h-[44px] mt-0.5 shadow-lg"
-                      style={{ 
+                      style={{
                         backgroundColor: item.color,
-                        border: item.color === "#FFFFFF" || item.color === "#F5F5F5" ? "2px solid #E63946" : "none"
+                        border:
+                          item.color === "#FFFFFF" || item.color === "#F5F5F5"
+                            ? "2px solid #E63946"
+                            : "none",
                       }}
                     />
                     <div className="flex flex-col gap-2 flex-1">
@@ -134,7 +154,7 @@ const TokenomicsSection = () => {
 
         {/* Right Side - Chart Image */}
         <div className="relative animate-tokenomics-reveal hover:animate-tokenomics-glow">
-          <div className="relative max-w-[400px] w-full h-auto transition-all duration-300 hover:scale-110 hover:brightness-115 hover:drop-shadow-[0_0_30px_rgba(231, 113, 107, 0.7)]">
+          <div className="relative max-w-[400px] w-full h-auto transition-all duration-300 hover:scale-110 hover:brightness-105 hover:drop-shadow-[0_0_30px_rgba(41, 36, 36, 0.7)]">
             <Image
               src="/images/tokenomics.png"
               alt="Tokenomics Chart"
@@ -160,7 +180,8 @@ const TokenomicsSection = () => {
         }
 
         @keyframes tokenomicsFloat {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0);
           }
           50% {
@@ -169,16 +190,19 @@ const TokenomicsSection = () => {
         }
 
         @keyframes tokenomicsGlow {
-          0%, 100% {
+          0%,
+          100% {
             filter: brightness(1) drop-shadow(0 0 20px rgba(106, 78, 221, 0.5));
           }
           50% {
-            filter: brightness(1.2) drop-shadow(0 0 40px rgba(106, 78, 221, 0.8));
+            filter: brightness(1.2)
+              drop-shadow(0 0 40px rgba(106, 78, 221, 0.8));
           }
         }
 
         @keyframes tokenomicsPulse {
-          0%, 100% {
+          0%,
+          100% {
             transform: scale(1);
           }
           50% {
@@ -187,11 +211,13 @@ const TokenomicsSection = () => {
         }
 
         .animate-tokenomics-reveal {
-          animation: tokenomicsReveal 2s ease-out forwards, tokenomicsFloat 4s ease-in-out infinite 2s;
+          animation: tokenomicsReveal 2s ease-out forwards,
+            tokenomicsFloat 4s ease-in-out infinite 2s;
         }
 
         .animate-tokenomics-glow:hover {
-          animation: tokenomicsGlow 2s ease-in-out infinite, tokenomicsPulse 1.5s ease-in-out infinite;
+          animation: tokenomicsGlow 2s ease-in-out infinite,
+            tokenomicsPulse 1.5s ease-in-out infinite;
         }
       `}</style>
     </div>
