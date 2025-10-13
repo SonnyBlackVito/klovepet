@@ -72,7 +72,7 @@ const TokenomicsSection = () => {
             fontFamily: "'Luckiest Guy', cursive",
           }}
         >
-          Built on BNB Chain for low fees and fast transactions. A dedicated Sub-chain will follow.
+          Built on Solana Chain for low fees and fast transactions. A dedicated Sub-chain will follow.
         </p>
       </div>
 
