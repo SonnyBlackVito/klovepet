@@ -153,7 +153,7 @@ const TokenomicsSection = () => {
         <div className="relative animate-tokenomics-reveal hover:animate-tokenomics-glow">
           <div className="relative max-w-[400px] w-full h-auto transition-all duration-300 hover:scale-110 hover:brightness-105 hover:drop-shadow-[0_0_30px_rgba(41, 36, 36, 0.7)]">
             <Image
-              src="/images/tokenomics.png"
+              src="/images/pizza_token.png"
               alt="Tokenomics Chart"
               width={400}
               height={400}
