@@ -40,7 +40,11 @@ export function AboutProjectSplit() {
               </span>
             </h2>
 
-            <p className="text-lg text-gray-600 dark:text-gray-500 mb-8 leading-relaxed">
+            <p
+              style={{
+                fontFamily: "'Luckiest Guy', cursive",
+              }}
+              className="text-lg  text-gray-600 dark:text-gray-500 mb-8 leading-relaxed">
               K-LovePet is a blockchain project that connects people and their
               pets through a transparent and fair ecosystem. We believe that
               every pet owner should have the opportunity to participate, share,
@@ -228,6 +232,11 @@ export function AboutProjectCards() {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
+          style={{
+            color: "#F26457",
+            WebkitTextStroke: "2px #876046",
+            fontFamily: "'Luckiest Guy', cursive",
+          }}
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -238,7 +247,13 @@ export function AboutProjectCards() {
               for Pet Lovers
             </span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p
+            style={{
+              color: "#F26457",
+              WebkitTextStroke: "2px #876046",
+              fontFamily: "'Luckiest Guy', cursive",
+            }}
+            className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             K-LovePet is a blockchain project that connects people and their
             pets through a transparent and fair ecosystem.
           </p>

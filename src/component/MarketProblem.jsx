@@ -133,13 +133,13 @@ export default function MarketProblem() {
                 animate={isInView ? { scale: 1 } : {}}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                 className="inline-block">
-                <div className="text-7xl md:text-9xl font-black text-white mb-4 drop-shadow-2xl">
+                <div className="text-7xl md:text-9xl font-black text-amber-200  mb-4 drop-shadow-2xl">
                   $300B
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-white/90 mb-2">
+                <div  className="text-red-400 text-2xl md:text-3xl font-bold  mb-2">
                   Global Pet Industry 2024
                 </div>
-                <div className="text-lg md:text-xl text-white/80">
+                <div className="text-lg md:text-xl text-black">
                   Growing rapidly year over year
                 </div>
               </motion.div>
@@ -151,7 +151,7 @@ export default function MarketProblem() {
                 transition={{ delay: 0.8 }}
                 className="mt-8 flex justify-center items-center gap-2 text-white">
                 <span className="text-3xl">📈</span>
-                <span className="text-xl font-semibold">Continuous Growth</span>
+                <span className="text-xl text-cyan-300 font-semibold">Continuous Growth</span>
               </motion.div>
             </div>
           </motion.div>
@@ -199,9 +199,9 @@ export default function MarketProblem() {
                 className="text-6xl">
                 ⬇️
               </motion.div>
-              <div className="pt-5 absolute -right-20 top-1/2 transform -translate-y-1/2 text-2xl font-bold text-gray-400 dark:text-gray-500">
+              {/* <div className="pt-5 absolute -right-20 top-1/2 transform -translate-y-1/2 text-2xl font-bold text-gray-400 dark:text-gray-500">
                 Our Solution
-              </div>
+              </div> */}
             </div>
           </motion.div>
 
