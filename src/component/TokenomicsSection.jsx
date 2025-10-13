@@ -45,9 +45,6 @@ const TokenomicsSection = () => {
   return (
     <div
       className="bg-[#FEFBEA] tokenomics-sparkle-bg py-20 px-8 md:px-12 lg:px-16 xl:px-20 relative"
-      //   style={{
-      //     background: "linear-gradient(150deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.1) 25%, rgba(0, 0, 0, 0.1) 75%, rgba(0, 0, 0, 0.1) 50%, rgba(185, 179, 179, 0.3) 85%, rgba(52, 48, 48, 0.3) 100%)"
-      //   }}
       style={{
         backgroundImage: `
         linear-gradient(180deg, 
@@ -162,6 +159,7 @@ const TokenomicsSection = () => {
               height={400}
               className="w-full h-auto object-contain"
               priority
+              layout="lazy"
             />
           </div>
         </div>

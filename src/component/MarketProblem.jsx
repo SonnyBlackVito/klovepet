@@ -114,6 +114,13 @@ export default function MarketProblem() {
 
           {/* Market Size Card */}
           <motion.div
+            style={{
+              backgroundImage:
+                'url("/images/Market Analysis_banner_center.png")',
+              backgroundSize: "fill",
+              // backgroundPosition: "center",
+              // backgroundAttachment: "fixed",
+            }}
             variants={itemVariants}
             className="bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 rounded-[3rem] p-12 md:p-16 mb-16 shadow-2xl relative overflow-hidden">
             {/* Decorative elements */}
@@ -185,7 +192,7 @@ export default function MarketProblem() {
           <motion.div
             variants={itemVariants}
             className="flex justify-center mb-12">
-            <div className="relative">
+            <div className=" flex flex-col">
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
