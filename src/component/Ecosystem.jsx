@@ -15,7 +15,7 @@ import {
   Shield,
   TrendingUp,
   Heart,
-  ExternalLink
+  ExternalLink,
 } from "lucide-react";
 
 export default function Ecosystem() {
@@ -151,25 +151,9 @@ export default function Ecosystem() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="max-w-7xl mx-auto">
-          
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={isInView ? { scale: 1, rotate: 0 } : {}}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-              className="inline-flex items-center gap-3 px-8 py-4 mb-8
-                bg-gradient-to-r from-amber-100 to-orange-100
-                dark:from-amber-900/30 dark:to-orange-900/30
-                border-2 border-amber-300 dark:border-amber-700
-                rounded-full backdrop-blur-sm shadow-xl"
-            >
-              <Heart className="w-6 h-6 text-amber-600 dark:text-amber-400" strokeWidth={2.5} />
-              <span className="text-lg font-black text-amber-800 dark:text-amber-300 tracking-wider">
-                COMPLETE ECOSYSTEM
-              </span>
-              <Sparkles className="w-6 h-6 text-orange-600 dark:text-orange-400" strokeWidth={2.5} />
-            </motion.div>
+            <h1 className="text-8xl text-red-400"> ECOSYSTEM</h1>
 
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">
               <span className="block drop-shadow-lg">5 PLATFORMS</span>
@@ -197,9 +181,16 @@ export default function Ecosystem() {
                 className="relative group">
                 <div className="absolute inset-0 bg-amber-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-5 border-2 border-amber-200 dark:border-amber-700 shadow-lg hover:shadow-2xl transition-all">
-                  <stat.icon className="w-7 h-7 mb-2 text-amber-600 dark:text-amber-400" strokeWidth={2.5} />
-                  <div className="text-2xl font-black text-gray-900 dark:text-white mb-1">{stat.value}</div>
-                  <div className="text-xs text-gray-600 dark:text-gray-400 font-bold uppercase" style={{ fontFamily: "system-ui, sans-serif" }}>
+                  <stat.icon
+                    className="w-7 h-7 mb-2 text-amber-600 dark:text-amber-400"
+                    strokeWidth={2.5}
+                  />
+                  <div className="text-2xl font-black text-gray-900 dark:text-white mb-1">
+                    {stat.value}
+                  </div>
+                  <div
+                    className="text-xs text-gray-600 dark:text-gray-400 font-bold uppercase"
+                    style={{ fontFamily: "system-ui, sans-serif" }}>
                     {stat.label}
                   </div>
                 </div>
@@ -225,7 +216,7 @@ export default function Ecosystem() {
               autoplay={{
                 delay: 3000,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true
+                pauseOnMouseEnter: true,
               }}
               breakpoints={{
                 640: {
@@ -246,7 +237,6 @@ export default function Ecosystem() {
                 },
               }}
               className="ecosystem-swiper pb-12">
-              
               {components.map((component, index) => (
                 <SwiperSlide key={component.id}>
                   <Link href={`/ecosystem/${component.id}`}>
@@ -254,38 +244,43 @@ export default function Ecosystem() {
                       onMouseEnter={() => setHoveredCard(index)}
                       onMouseLeave={() => setHoveredCard(null)}
                       whileHover={{ y: -12, scale: 1.02 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 20,
+                      }}
                       className="relative h-[340px] rounded-3xl overflow-hidden cursor-pointer group bg-white dark:bg-gray-800 border-2 border-amber-200 dark:border-gray-700 shadow-xl hover:shadow-2xl">
-                      
                       {/* Gradient Background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" />
 
                       {/* Content */}
                       <div className="relative h-full p-6 flex flex-col items-center justify-center">
-                        
                         {/* External Link Icon */}
                         <motion.div
                           initial={{ opacity: 0, scale: 0 }}
-                          animate={{ 
+                          animate={{
                             opacity: hoveredCard === index ? 1 : 0,
-                            scale: hoveredCard === index ? 1 : 0
+                            scale: hoveredCard === index ? 1 : 0,
                           }}
                           className="absolute top-4 right-4 w-10 h-10 bg-amber-500 hover:bg-amber-600 rounded-full flex items-center justify-center shadow-lg z-10">
-                          <ExternalLink className="w-5 h-5 text-white" strokeWidth={2.5} />
+                          <ExternalLink
+                            className="w-5 h-5 text-white"
+                            strokeWidth={2.5}
+                          />
                         </motion.div>
 
                         {/* Icon - Large by default */}
                         <motion.div
                           animate={{
                             scale: hoveredCard === index ? 0.85 : 1,
-                            y: hoveredCard === index ? -20 : 0
+                            y: hoveredCard === index ? -20 : 0,
                           }}
                           transition={{ duration: 0.3 }}
                           className="mb-6">
                           <img
                             src={component.icon}
                             alt={component.title}
-                            className="w-40 h-40 object-contain drop-shadow-2xl"
+                            className="w-full h-40 object-contain drop-shadow-2xl"
                           />
                         </motion.div>
 
@@ -307,23 +302,34 @@ export default function Ecosystem() {
                               exit={{ opacity: 0, y: 20 }}
                               transition={{ duration: 0.3 }}
                               className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-white via-white/95 to-transparent dark:from-gray-800 dark:via-gray-800/95 dark:to-transparent">
-                              
                               <div className="space-y-3">
                                 {/* Subtitle */}
-                                <p className="text-sm font-bold text-amber-600 dark:text-amber-400 text-center" style={{ fontFamily: 'system-ui, sans-serif' }}>
+                                <p
+                                  className="text-sm font-bold text-amber-600 dark:text-amber-400 text-center"
+                                  style={{
+                                    fontFamily: "system-ui, sans-serif",
+                                  }}>
                                   {component.subtitle}
                                 </p>
 
                                 {/* Description */}
-                                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-center" style={{ fontFamily: 'system-ui, sans-serif' }}>
+                                <p
+                                  className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-center"
+                                  style={{
+                                    fontFamily: "system-ui, sans-serif",
+                                  }}>
                                   {component.description}
                                 </p>
 
                                 {/* Stats Badge */}
                                 <div className="flex justify-center">
                                   <div className="inline-flex items-center gap-2 py-2 px-4 bg-amber-100 dark:bg-amber-900/30 rounded-full border border-amber-300 dark:border-amber-700">
-                                    <span className="text-lg font-black text-amber-800 dark:text-amber-300">{component.stats.value}</span>
-                                    <span className="text-xs font-bold text-amber-700 dark:text-amber-400">{component.stats.label}</span>
+                                    <span className="text-lg font-black text-amber-800 dark:text-amber-300">
+                                      {component.stats.value}
+                                    </span>
+                                    <span className="text-xs font-bold text-amber-700 dark:text-amber-400">
+                                      {component.stats.label}
+                                    </span>
                                   </div>
                                 </div>
 
@@ -333,7 +339,9 @@ export default function Ecosystem() {
                                     <div
                                       key={feature}
                                       className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-300"
-                                      style={{ fontFamily: 'system-ui, sans-serif' }}>
+                                      style={{
+                                        fontFamily: "system-ui, sans-serif",
+                                      }}>
                                       {feature}
                                     </div>
                                   ))}
@@ -345,7 +353,10 @@ export default function Ecosystem() {
                                   whileTap={{ scale: 0.95 }}
                                   className="flex items-center justify-center gap-2 py-3 px-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-full font-black text-sm uppercase tracking-wider shadow-lg mx-auto">
                                   <span>Explore</span>
-                                  <ArrowRight className="w-4 h-4" strokeWidth={3} />
+                                  <ArrowRight
+                                    className="w-4 h-4"
+                                    strokeWidth={3}
+                                  />
                                 </motion.div>
                               </div>
                             </motion.div>
@@ -367,7 +378,6 @@ export default function Ecosystem() {
             </Swiper>
           </motion.div>
 
-
           {/* CTA */}
           <motion.div variants={itemVariants} className="relative">
             <div
@@ -376,10 +386,8 @@ export default function Ecosystem() {
                 backgroundImage: 'url("/images/banner_ecosystem.png")',
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                minHeight: "400px"
-              }}>
-              
-            </div>
+                minHeight: "400px",
+              }}></div>
           </motion.div>
         </motion.div>
       </div>
@@ -394,7 +402,7 @@ export default function Ecosystem() {
           color: white;
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
-        
+
         .ecosystem-swiper .swiper-button-next:after,
         .ecosystem-swiper .swiper-button-prev:after {
           font-size: 20px;
