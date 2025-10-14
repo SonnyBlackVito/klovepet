@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #ffffff;
+@theme {
+  --animate-paw-walk: paw-walk 3s ease-in-out infinite;
+  --animate-paw-walk-alt: paw-walk-alt 3s ease-in-out infinite;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Bước chân bắt đầu từ H2 (left: 0) và đi ra ngoài */
+@keyframes paw-walk {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(0);
+    opacity: 0;
+    filter: blur(2px);
+  }
+  10% {
+    transform: translateX(50px) translateY(-10px) rotate(-20deg) scale(0.8);
+    opacity: 0.6;
+    filter: blur(0px);
+  }
+  20% {
+    transform: translateX(100px) translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  35% {
+    transform: translateX(200px) translateY(-12px) rotate(15deg) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(300px) translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  65% {
+    transform: translateX(450px) translateY(-8px) rotate(-12deg) scale(1);
+    opacity: 0.95;
+  }
+  80% {
+    transform: translateX(600px) translateY(0) rotate(5deg) scale(0.85);
+    opacity: 0.6;
+  }
+  95% {
+    transform: translateX(800px) translateY(-5px) rotate(-15deg) scale(0.5);
+    opacity: 0.2;
+    filter: blur(1px);
+  }
+  100% {
+    transform: translateX(1000px) translateY(0) rotate(0deg) scale(0);
+    opacity: 0;
+    filter: blur(3px);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes paw-walk-alt {
+  0% {
+    transform: translateX(0) translateY(0) rotate(0deg) scale(0);
+    opacity: 0;
+    filter: blur(2px);
+  }
+  10% {
+    transform: translateX(50px) translateY(-8px) rotate(18deg) scale(0.8);
+    opacity: 0.6;
+    filter: blur(0px);
+  }
+  20% {
+    transform: translateX(100px) translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  35% {
+    transform: translateX(200px) translateY(-10px) rotate(-18deg) scale(1.05);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(300px) translateY(0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  65% {
+    transform: translateX(450px) translateY(-10px) rotate(15deg) scale(1);
+    opacity: 0.95;
+  }
+  80% {
+    transform: translateX(600px) translateY(0) rotate(-8deg) scale(0.9);
+    opacity: 0.6;
+  }
+  95% {
+    transform: translateX(800px) translateY(-3px) rotate(12deg) scale(0.5);
+    opacity: 0.2;
+    filter: blur(1px);
+  }
+  100% {
+    transform: translateX(1000px) translateY(0) rotate(0deg) scale(0);
+    opacity: 0;
+    filter: blur(3px);
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    transform: translateX(0) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    transform: translateX(80px) scale(1) rotate(180deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(300px) scale(1.2) rotate(360deg);
+    opacity: 0.8;
+  }
+  80% {
+    transform: translateX(600px) scale(0.8) rotate(540deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(900px) scale(0) rotate(720deg);
+    opacity: 0;
+  }
 }

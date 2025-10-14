@@ -70,29 +70,78 @@ const TokenomicsSection = () => {
       }}>
       <div className="sparkle-overlay" />
 
-      {/* Header Section */}
-      <div className="flex flex-col relative z-10 mb-16">
-        <h2
-          className="text-8xl font-normal leading-normal max-w-6xl"
-          style={{
-            color: "#F26457",
-            WebkitTextStroke: "2px #876046",
-            fontFamily: "'Luckiest Guy', cursive",
-            textShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
-          }}>
-          Blockchain & Tokenomics
-        </h2>
-        <p
-          className="text-2xl bold md:text-3xl mt-4"
-          style={{
-            color: "#333",
-            fontFamily: "'SVN-Gilroy', sans-serif",
-            textShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
-          }}>
-          Built on Solana Chain for low fees and fast transactions.
-          <br />A dedicated Sub-chain will follow.
-        </p>
+<div className="flex flex-row justify-between relative">
+  <div className="flex flex-col relative z-10 mb-16">
+    <h2
+      className="md:text-6xl lg:text-8xl sm:text-4xl font-normal leading-normal max-w-6xl"
+      style={{
+        color: "#F26457",
+        WebkitTextStroke: "2px #876046",
+        fontFamily: "'Luckiest Guy', cursive",
+        textShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
+      }}
+    >
+      Blockchain & Tokenomics
+    </h2>
+    <p
+      className="text-2xl bold md:text-3xl mt-4"
+      style={{
+        color: "#333",
+        fontFamily: "'SVN-Gilroy', sans-serif",
+        textShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
+      }}
+    >
+      Built on Solana Chain for low fees and fast transactions.
+      <br />A dedicated Sub-chain will follow.
+    </p>
+  </div>
+
+  <div className="absolute top-0 left-0 w-full h-[200px] overflow-hidden pointer-events-none">
+    {[
+      { delay: 0, top: 30, isLeft: true, color: "#F26457" },
+      { delay: 0.3, top: 65, isLeft: false, color: "#FF7F6E" },
+      { delay: 0.6, top: 30, isLeft: true, color: "#F26457" },
+      { delay: 0.9, top: 65, isLeft: false, color: "#FF7F6E" },
+      { delay: 1.2, top: 30, isLeft: true, color: "#F26457" },
+      { delay: 1.5, top: 65, isLeft: false, color: "#FF7F6E" },
+      { delay: 1.8, top: 30, isLeft: true, color: "#F26457" },
+      { delay: 2.1, top: 65, isLeft: false, color: "#FF7F6E" },
+      { delay: 2.4, top: 30, isLeft: true, color: "#F26457" },
+      { delay: 2.7, top: 65, isLeft: false, color: "#FF7F6E" },
+    ].map((paw, index) => (
+      <div
+        key={index}
+        className={`absolute text-5xl transition-all ${
+          paw.isLeft ? "animate-paw-walk" : "animate-paw-walk-alt"
+        }`}
+        style={{
+          animationDelay: `${paw.delay}s`,
+          top: `${paw.top}px`,
+          left: '0', // Bắt đầu từ trái (vị trí h2)
+          filter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
+          WebkitFilter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
+        }}
+      >
+        🐾
       </div>
+    ))}
+
+    {/* Hiệu ứng sparkle */}
+    {[0.4, 1.1, 1.8, 2.5].map((delay, index) => (
+      <div
+        key={`sparkle-${index}`}
+        className="absolute left-0 text-xl"
+        style={{
+          top: `${40 + (index % 2) * 30}px`,
+          animation: "sparkle 2s ease-out infinite",
+          animationDelay: `${delay}s`,
+        }}
+      >
+        {/* ✨ */}
+      </div>
+    ))}
+  </div>
+</div>
 
       {/* Main Content */}
       <div className="flex flex-col lg:flex-row items-center justify-center gap-12 min-h-[500px] relative z-10">
