@@ -117,7 +117,7 @@ const TokenomicsSection = () => {
         style={{
           animationDelay: `${paw.delay}s`,
           top: `${paw.top}px`,
-          left: '0', // Bắt đầu từ trái (vị trí h2)
+          left: '500', 
           filter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
           WebkitFilter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
         }}
