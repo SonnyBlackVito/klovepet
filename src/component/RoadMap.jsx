@@ -537,7 +537,6 @@ export default function RoadMap() {
             <div className="hidden md:grid lg:hidden grid-cols-2 gap-6">
               {roadmapPhases.map((phase, index) => {
                 const StatusBadge = getStatusBadge(phase.status);
-
                 return (
                   <motion.div
                     key={phase.id}
@@ -736,7 +735,7 @@ export default function RoadMap() {
           </div>
 
           {/* CTA Section */}
-          <motion.div
+          {/* <motion.div
             style={{
               backgroundImage: 'url("/images/banner_ecosystem.png")',
               backgroundSize: "fill",
@@ -819,7 +818,7 @@ export default function RoadMap() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
         </motion.div>
       </div>
     </section>
