@@ -5,6 +5,10 @@
   --animate-paw-walk-alt: paw-walk-alt 3s ease-in-out infinite;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 /* Bước chân bắt đầu từ H2 (left: 0) và đi ra ngoài */
 @keyframes paw-walk {
   0% {
