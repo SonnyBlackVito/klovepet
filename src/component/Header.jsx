@@ -176,7 +176,7 @@ NavLink.displayName = 'NavLink';
 const Logo = memo(({ onClick, isMobile = false }) => {
   return (
     <motion.img
-      src={isMobile ? "/logo.png" : "/images/logo_header.png"}
+      src={isMobile ? "/images/logo_header.png" : "/images/logo_header.png"}
       alt="KPOPPET Logo"
       className={`${isMobile ? 'h-7' : 'h-8'} cursor-pointer ${isMobile ? 'lg:hidden' : ''}`}
       onClick={onClick}

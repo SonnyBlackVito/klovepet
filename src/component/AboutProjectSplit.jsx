@@ -23,47 +23,57 @@ export function AboutProjectSplit() {
       }}
       ref={ref}
       className="py-20 md:py-32 overflow-hidden ">
+      <div className="container mx-auto text-center">
+        <h1
+          style={{
+            WebkitTextStrokeWidth: "2px",
+            WebkitTextStrokeColor: "#876046",
+            textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+            fontFamily: '"Luckiest Guy", cursive',
+            lineHeight: "normal",
+          }}
+          className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
+          About K-LovePet
+        </h1>
+        <h2 className="text-3xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+          Building a Global Ecosystem For Pet Lovers
+          {/* {" "} */}
+          {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            for Pet Lovers
+          </span> */}
+        </h2>
+      </div>
+
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left - Text Content */}
           <motion.div
             className="flex flex-col items-center"
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}>
-            <h1 className="inline-block text-4xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-6">
-              About K-LovePet
-            </h1>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-              Building a Global Ecosystem{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-                for Pet Lovers
-              </span>
-            </h2>
-
             <p
               style={{
                 fontFamily: "'Luckiest Guy', cursive",
               }}
-              className="text-lg  text-gray-600 dark:text-gray-500 mb-8 leading-relaxed">
+              className="text-[22px] text-gray-600 dark:text-gray-500 mb-8 leading-relaxed">
               K-LovePet is a blockchain project that connects people and their
-              pets through a transparent and fair ecosystem. We believe that
-              every pet owner should have the opportunity to participate, share,
-              and benefit from the value they help create.
+              pets through a transparent and fair ecosystem.
+              <br />
+              We believe that every pet owner should have the opportunity to
+              participate, share, and benefit from the value they help create.
             </p>
 
-            <div className="space-y-4">
+            <div className="space-y-4 text-[#737373] font-semibold text-[16px]">
               <ValueItem
-                icon="🔗"
                 title="Transparent Blockchain Infrastructure"
                 description="Secure and fair for everyone"
               />
               <ValueItem
-                icon="🌐"
                 title="Integrated Ecosystem"
                 description="Content, events, and commerce unified"
               />
               <ValueItem
-                icon="🤝"
                 title="Global Community"
                 description="Connected by shared values"
               />
@@ -71,26 +81,19 @@ export function AboutProjectSplit() {
           </motion.div>
 
           {/* Right - Image/Visual */}
-
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative">
-            <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-blue-500 to-purple-600 p-1">
+            className="relative flex justify-center">
+            <div className="relative rounded-4xl overflow-hidden  p-1 w-[500px] h-[500px]">
               <div className="w-full h-full bg-white dark:bg-gray-900 rounded-3xl flex items-center justify-center">
-                {/* <div className="text-9xl">🐾</div> */}
-                {/* <Image 
-                    src={"park_night.png"}
-                
-                
-                /> */}
                 <motion.div
                   key="image"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1 }}
-                  className="absolute inset-0 w-full h-full">
+                  className="relative w-full h-full">
                   <Image
                     src="/images/park_night.png"
                     alt="K-LovePet Banner"
@@ -132,10 +135,20 @@ function ValueItem({ icon, title, description }) {
       transition={{ type: "spring", stiffness: 300 }}>
       <div className="text-3xl">{icon}</div>
       <div>
-        <h4 className="font-semibold text-gray-900 dark:text-white mb-1">
+        <h4
+          style={{
+            fontFamily: '"Luckiest Guy", cursive',
+            lineHeight: "normal",
+          }}
+          className="font-semibold text-gray-900 dark:text-white mb-1">
           {title}
         </h4>
-        <p className="text-gray-600 dark:text-gray-400 text-sm">
+        <p
+          className="text-[16px] font-semibold"
+          style={{
+            fontFamily: '"SVN-Gilroy", sans-serif',
+            lineHeight: "normal",
+          }}>
           {description}
         </p>
       </div>
@@ -205,20 +218,20 @@ export function AboutProjectCards() {
 
   const cards = [
     {
-      icon: "🔗",
+      icon: "",
       title: "Transparent Blockchain",
       description:
         "Built on secure blockchain technology ensuring trust and fairness",
       gradient: "from-blue-500 to-cyan-500",
     },
     {
-      icon: "🌐",
+      icon: "",
       title: "Integrated Ecosystem",
       description: "Content, events, and commerce unified in one platform",
       gradient: "from-purple-500 to-pink-500",
     },
     {
-      icon: "🤝",
+      icon: "",
       title: "Global Community",
       description: "Thousands of pet owners connected worldwide",
       gradient: "from-orange-500 to-red-500",
@@ -242,10 +255,11 @@ export function AboutProjectCards() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">
-            Building a Global Ecosystem{" "}
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
+            Building a Global Ecosystem for Pet Lovers
+            {/* {" "} */}
+            {/* <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
               for Pet Lovers
-            </span>
+            </span> */}
           </h2>
           <p
             style={{

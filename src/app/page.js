@@ -6,6 +6,7 @@ import { AboutProjectSplit } from "@/component/AboutProjectSplit";
 import MarketProblem from "@/component/MarketProblem";
 import Ecosystem from "@/component/Ecosystem";
 import TokenomicsSection from "@/component/TokenomicsSection";
+import RoadMap from "@/component/RoadMap";
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
       <section>
         <TokenomicsSection />
       </section>
+      <RoadMap />
     </div>
   );
 }
