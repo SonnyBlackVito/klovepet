@@ -33,7 +33,7 @@ export default function Ecosystem() {
   const components = [
     {
       id: 'broadcasting',
-      icon: '📺',
+      icon: 'images/Pet_Broadcasting.png',
       title: 'Pet Broadcasting',
       description: 'Live streaming platform for pet content creators to share moments and connect with fans',
       color: 'from-cyan-400 to-sky-400',
@@ -43,7 +43,7 @@ export default function Ecosystem() {
     },
     {
       id: 'station',
-      icon: '🏪',
+      icon: 'images/Pet_Station.png',
       title: 'Pet Station',
       description: 'Marketplace for pet products, services, and exclusive merchandise',
       color: 'from-teal-400 to-emerald-400',
@@ -53,7 +53,7 @@ export default function Ecosystem() {
     },
     {
       id: 'audition',
-      icon: '🎤',
+      icon: 'images/Pet_Audition.png',
       title: 'Pet Audition',
       description: 'Talent competition platform where pets can showcase skills and win rewards',
       color: 'from-coral-400 to-pink-400',
@@ -141,7 +141,7 @@ export default function Ecosystem() {
                     className={`relative ${component.bgColor} ${component.borderColor} border-2 rounded-3xl p-8 cursor-pointer transition-all shadow-lg hover:shadow-2xl h-full`}
                   >
                     {/* Icon */}
-                    <motion.div
+                    {/* <motion.div
                       animate={{
                         scale: hoveredCard === index ? [1, 1.2, 1.1] : 1,
                         rotate: hoveredCard === index ? [0, 10, -10, 0] : 0
@@ -150,7 +150,19 @@ export default function Ecosystem() {
                       className="text-7xl mb-4"
                     >
                       {component.icon}
-                    </motion.div>
+                    </motion.div> */}
+
+                    <motion.img 
+                    animate={{
+                        scale: hoveredCard === index ? [1, 1.2, 1.1] : 1,
+                        rotate: hoveredCard === index ? [0, 10, -10, 0] : 0
+                      }}
+                    transition={{ duration: 0.5 }}
+                      className="h-50 w-50 mb-4 items-center justify-center flex flex-col text-center"
+                      src={component.icon}
+                      alt={component.title}
+                      whileHover={{ scale: 1.2, rotate: 10 }}
+                    />
 
                     {/* Title */}
                     <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">

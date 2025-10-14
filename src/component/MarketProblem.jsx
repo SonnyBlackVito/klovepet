@@ -57,21 +57,21 @@ export default function MarketProblem() {
 
   const solutions = [
     {
-      icon: "🔗",
+      icon: "/images/FULL_TRANSPARENCY.png",
       title: "Full Transparency",
       subtitle: "Through Blockchain",
       description: "Every transaction visible and verifiable on-chain",
       gradient: "from-cyan-400 to-sky-400",
     },
     {
-      icon: "💎",
+      icon: "/images/NFT_ASSETIZATION.png",
       title: "NFT Assetization",
       subtitle: "Digital Ownership",
       description: "True ownership of digital assets and content",
       gradient: "from-teal-400 to-emerald-400",
     },
     {
-      icon: "🤝",
+      icon: "/images/OPEN_MODEL.png",
       title: "Open Model",
       subtitle: "Inclusive Participation",
       description: "Everyone can participate and benefit equally",
@@ -239,21 +239,22 @@ export default function MarketProblem() {
                       className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${solution.gradient}`}></div>
 
                     {/* Icon */}
-                    <motion.div
+                    <motion.img
+                      src={solution.icon}
+                      alt={solution.title}
                       whileHover={{ scale: 1.3, rotate: 360 }}
                       transition={{ duration: 0.6 }}
-                      className="text-6xl mb-4">
-                      {solution.icon}
-                    </motion.div>
+                      className="w-40 h-40 mb-4 mx-auto"
+                    />
 
                     {/* Content */}
-                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 text-center">
                       {solution.title}
                     </h4>
-                    <p className="text-cyan-600 dark:text-cyan-400 font-semibold mb-3">
+                    <p className="text-cyan-600 dark:text-cyan-400 font-semibold mb-3 text-center">
                       {solution.subtitle}
                     </p>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-center">
                       {solution.description}
                     </p>
 

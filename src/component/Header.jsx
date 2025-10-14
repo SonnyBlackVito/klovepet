@@ -3,121 +3,272 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState, useCallback } from "react";
-import { Menu, X } from "lucide-react";
+import { useEffect, useState, useCallback, useMemo, memo } from "react";
+import { Menu, X, Home, Info, FileText, Newspaper } from "lucide-react";
 import HoverButton from "./HoverButton";
 
-
-const NavLink = ({ children, href, onClick, onClose, isActive = false }) => {
-  const handleClick = (e) => {
-    if (onClick) {
-      e.preventDefault();
-      onClick();
-    }
-    if (onClose) onClose();
-  };
-
-  const linkClasses = `
-    relative py-2 px-1 font-semibold text-[15px] tracking-wider
-    transition-all duration-200 cursor-pointer
-    ${isActive 
-      ? 'text-transparent bg-gradient-to-r from-amber-700 to-orange-800 bg-clip-text' 
-      : 'text-white hover:text-transparent hover:bg-gradient-to-r hover:from-amber-700 hover:to-orange-800 hover:bg-clip-text'
-    }
-    hover:-translate-y-0.5
-    after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 
-    after:h-0.5 after:bg-gradient-to-r after:from-amber-700 after:to-orange-800 after:rounded-full
-    ${isActive ? 'after:scale-x-100' : 'after:scale-x-0 hover:after:scale-x-100'}
-    after:transition-transform after:duration-300 after:origin-center
-  `;
-
-  if (href) {
-    return (
-      <Link href={href} className={linkClasses} onClick={handleClick}>
-        {children}
-      </Link>
-    );
-  }
-
-  return (
-    <span className={linkClasses} onClick={handleClick}>
-      {children}
-    </span>
-  );
-};
-
-const AppHeader = ({ onHome, onAbout }) => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+// ============ CUSTOM HOOKS ============
+const useScrollPosition = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
-  const [isVisible, setIsVisible] = useState(false);
-  const [mounted, setMounted] = useState(false);
-  const router = useRouter();
-  const pathname = usePathname();
-
-  // Check visibility only after client-side mount
+  
   useEffect(() => {
-    setMounted(true);
-    const hasVisitedBefore = sessionStorage.getItem('headerVisible');
-    if (hasVisitedBefore === 'true' || pathname !== '/') {
-      setIsVisible(true);
-    }
-  }, [pathname]);
-
-  useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     handleScroll();
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (isDrawerOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isDrawerOpen]);
+  return isScrolled;
+};
 
-  // Listen for custom event from HeroBanner
+const useHeaderVisibility = (pathname) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
   useEffect(() => {
+    // Check if video has been seen
+    const checkVisibility = () => {
+      try {
+        const hasSeenVideo = sessionStorage.getItem('hasSeenVideo');
+        const isHomePage = pathname === '/';
+        
+        // Show header immediately if:
+        // 1. Not on homepage, OR
+        // 2. Video has been seen before
+        if (!isHomePage || hasSeenVideo === 'true') {
+          setIsVisible(true);
+          setIsReady(true);
+        } else {
+          setIsReady(true);
+        }
+      } catch (error) {
+        console.warn('SessionStorage not available:', error);
+        setIsVisible(true);
+        setIsReady(true);
+      }
+    };
+
+    checkVisibility();
+  }, [pathname]);
+
+  useEffect(() => {
+    // Listen for video completion event
     const handleVideoComplete = () => {
-      setIsVisible(true);
-      sessionStorage.setItem('headerVisible', 'true');
+      // Add slight delay for smooth transition
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 300);
     };
 
     window.addEventListener('videoComplete', handleVideoComplete);
     return () => window.removeEventListener('videoComplete', handleVideoComplete);
   }, []);
 
-  const handleScrollToTop = useCallback(() => {
-    setActiveSection("home");
-    if (pathname !== "/") {
-      router.push("/");
-      return;
+  return { isVisible, isReady };
+};
+
+const useBodyScrollLock = (isLocked) => {
+  useEffect(() => {
+    if (isLocked) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    } else {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
     }
-    if (onHome) return onHome();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [pathname, router, onHome]);
 
-  const handleGoAbout = useCallback(() => {
-    setActiveSection("about");
-    if (pathname !== "/") {
-      router.push("/#about");
-      return;
+    return () => {
+      document.body.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
+  }, [isLocked]);
+};
+
+// ============ MEMOIZED COMPONENTS ============
+const NavLink = memo(({ children, href, onClick, onClose, isActive = false, icon: Icon }) => {
+  const handleClick = useCallback((e) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick();
     }
-    if (onAbout) return onAbout();
-  }, [pathname, router, onAbout]);
+    if (onClose) onClose();
+  }, [onClick, onClose]);
 
-  const handleGoNews = useCallback(() => {
-    setActiveSection("news");
-    router.push("/news");
-  }, [router]);
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      handleClick(e);
+    }
+  }, [handleClick]);
 
-  const closeDrawer = () => setIsDrawerOpen(false);
+  const linkClasses = `
+    group relative flex items-center gap-2 py-2 px-1 font-semibold text-[15px] tracking-wider
+    transition-all duration-300 cursor-pointer
+    ${isActive 
+      ? 'text-transparent bg-gradient-to-r from-amber-500 via-orange-600 to-amber-700 bg-clip-text' 
+      : 'text-white hover:text-transparent hover:bg-gradient-to-r hover:from-amber-500 hover:via-orange-600 hover:to-amber-700 hover:bg-clip-text'
+    }
+    hover:-translate-y-0.5 hover:scale-105
+    after:content-[''] after:absolute after:bottom-0 after:left-0 after:right-0 
+    after:h-[2px] after:bg-gradient-to-r after:from-amber-500 after:via-orange-600 after:to-amber-700 after:rounded-full
+    ${isActive ? 'after:scale-x-100' : 'after:scale-x-0 hover:after:scale-x-100'}
+    after:transition-all after:duration-300 after:origin-center
+    before:content-[''] before:absolute before:inset-0 before:bg-amber-500/0 before:blur-xl before:rounded-lg
+    ${isActive ? 'before:bg-amber-500/20' : 'hover:before:bg-amber-500/10'}
+    before:transition-all before:duration-300
+  `;
+
+  const content = (
+    <>
+      {Icon && (
+        <Icon 
+          size={16} 
+          className="transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110" 
+          strokeWidth={2.5}
+        />
+      )}
+      {children}
+    </>
+  );
+
+  if (href) {
+    return (
+      <Link 
+        href={href} 
+        className={linkClasses} 
+        onClick={handleClick} 
+        prefetch={true}
+        target={href.startsWith('http') ? '_blank' : undefined}
+        rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+      >
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <span 
+      className={linkClasses} 
+      onClick={handleClick} 
+      role="button" 
+      tabIndex={0} 
+      onKeyDown={handleKeyDown}
+    >
+      {content}
+    </span>
+  );
+});
+
+NavLink.displayName = 'NavLink';
+
+const Logo = memo(({ onClick, isMobile = false }) => {
+  return (
+    <motion.img
+      src={isMobile ? "/logo.png" : "/images/logo_header.png"}
+      alt="KPOPPET Logo"
+      className={`${isMobile ? 'h-7' : 'h-8'} cursor-pointer ${isMobile ? 'lg:hidden' : ''}`}
+      onClick={onClick}
+      whileHover={{ 
+        scale: 1.08,
+        filter: "drop-shadow(0 0 12px rgba(217, 119, 6, 0.6))",
+        rotate: [0, -2, 2, 0],
+      }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ duration: 0.3, type: "spring", stiffness: 300 }}
+      loading="eager"
+    />
+  );
+});
+
+Logo.displayName = 'Logo';
+
+// ============ MAIN COMPONENT ============
+const AppHeader = ({ onHome, onAbout }) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+  const router = useRouter();
+  const pathname = usePathname();
+  
+  const isScrolled = useScrollPosition();
+  const { isVisible, isReady } = useHeaderVisibility(pathname);
+  useBodyScrollLock(isDrawerOpen);
+
+  // Navigation handlers
+  const navigationHandlers = useMemo(() => ({
+    handleScrollToTop: () => {
+      setActiveSection("home");
+      if (pathname !== "/") {
+        router.push("/");
+        return;
+      }
+      if (onHome) {
+        onHome();
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    },
+    handleGoAbout: () => {
+      setActiveSection("about");
+      if (pathname !== "/") {
+        router.push("/#about");
+        return;
+      }
+      if (onAbout) {
+        onAbout();
+      }
+    },
+    handleGoNews: () => {
+      setActiveSection("news");
+      router.push("/news");
+    },
+  }), [pathname, router, onHome, onAbout]);
+
+  const closeDrawer = useCallback(() => setIsDrawerOpen(false), []);
+  const openDrawer = useCallback(() => setIsDrawerOpen(true), []);
+
+  // Navigation items config
+  const navItems = useMemo(() => [
+    { 
+      label: "HOME", 
+      onClick: navigationHandlers.handleScrollToTop, 
+      isActive: activeSection === "home", 
+      icon: Home 
+    },
+    { 
+      label: "ABOUT", 
+      onClick: navigationHandlers.handleGoAbout, 
+      isActive: activeSection === "about", 
+      icon: Info 
+    },
+    { 
+      label: "WHITEPAPER", 
+      href: "https://docs.kpoproad.com", 
+      icon: FileText 
+    },
+    { 
+      label: "NEWS", 
+      onClick: navigationHandlers.handleGoNews, 
+      isActive: activeSection === "news", 
+      icon: Newspaper 
+    },
+  ], [activeSection, navigationHandlers]);
+
+  // Don't render until ready to prevent flash
+  if (!isReady) {
+    return null;
+  }
 
   return (
     <>
@@ -127,13 +278,17 @@ const AppHeader = ({ onHome, onAbout }) => {
           y: isVisible ? 0 : -100, 
           opacity: isVisible ? 1 : 0 
         }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ 
+          duration: 0.8, 
+          ease: [0.22, 1, 0.36, 1],
+          delay: isVisible ? 0.2 : 0 
+        }}
         style={{
           fontFamily: "'Luckiest Guy', cursive",
           pointerEvents: isVisible ? 'auto' : 'none',
         }}
         className={`
-          ${isScrolled ? 'fixed' : 'relative bg-amber-100'} 
+          ${isScrolled ? 'fixed' : 'absolute bg-transparent'} 
           top-0 left-0 right-0 z-[100]
           transition-all duration-300
           ${isScrolled ? 'pt-5' : 'pt-6'}
@@ -144,76 +299,84 @@ const AppHeader = ({ onHome, onAbout }) => {
             maxWidth: isScrolled ? "min(1400px, 90vw)" : "100vw",
             borderRadius: isScrolled ? "9999px" : "0",
           }}
-          transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+          transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
           className={`
             mx-auto w-full px-4 md:px-8 lg:px-10 py-3 md:py-3.5
             flex items-center justify-between
             transition-all duration-300
             ${isScrolled 
-              ? 'bg-black/60 backdrop-blur-xl border-b border-amber-900/30 shadow-[0_4px_24px_rgba(0,0,0,0.4),0_0_80px_rgba(217,119,6,0.15)]' 
+              ? 'bg-black/70 backdrop-blur-2xl border border-amber-900/40 shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_100px_rgba(217,119,6,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]' 
               : 'bg-transparent'
             }
           `}
         >
           {/* Desktop Layout */}
           <div className="hidden lg:flex items-center flex-1 gap-0">
-            <motion.img
-              src="/logo.png"
-              alt="KPOPPET"
-              className="h-8 cursor-pointer mr-12"
-              onClick={handleScrollToTop}
-              whileHover={{ 
-                scale: 1.08,
-                filter: "drop-shadow(0 0 8px rgba(217, 119, 6, 0.5))"
-              }}
-              transition={{ duration: 0.2 }}
-            />
+            <div className="mr-12">
+              <Logo onClick={navigationHandlers.handleScrollToTop} />
+            </div>
 
             {/* Centered Navigation */}
-            <div className="flex items-center justify-center gap-8 flex-1">
-              <NavLink onClick={handleScrollToTop} isActive={activeSection === "home"}>
-                HOME
-              </NavLink>
-              <NavLink onClick={handleGoAbout} isActive={activeSection === "about"}>
-                ABOUT
-              </NavLink>
-              <NavLink href="https://docs.kpoproad.com">WHITEPAPER</NavLink>
-              <NavLink onClick={handleGoNews} isActive={activeSection === "news"}>
-                NEWS
-              </NavLink>
-            </div>
+            <nav 
+              className="flex items-center justify-center gap-10 flex-1" 
+              role="navigation" 
+              aria-label="Main navigation"
+            >
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ 
+                    delay: isVisible ? 0.3 + (index * 0.1) : 0,
+                    duration: 0.4 
+                  }}
+                >
+                  <NavLink
+                    {...(item.href ? { href: item.href } : { onClick: item.onClick })}
+                    isActive={item.isActive}
+                    icon={item.icon}
+                  >
+                    {item.label}
+                  </NavLink>
+                </motion.div>
+              ))}
+            </nav>
           </div>
 
           {/* Mobile Logo */}
-          <motion.img
-            src="/logo.png"
-            alt="KPOPPET"
-            className="h-7 cursor-pointer lg:hidden"
-            onClick={handleScrollToTop}
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.2 }}
-          />
+          <Logo onClick={navigationHandlers.handleScrollToTop} isMobile={true} />
 
           {/* Mobile Menu Button */}
           <motion.button
-            onClick={() => setIsDrawerOpen(true)}
-            className="lg:hidden text-white p-2 rounded-lg hover:bg-amber-900/20 active:bg-amber-900/30 transition-all"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: isVisible ? 0.4 : 0 }}
+            onClick={openDrawer}
+            className="lg:hidden relative text-white p-2.5 rounded-xl hover:bg-amber-900/30 active:bg-amber-900/40 transition-all group overflow-hidden"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            aria-label="Open menu"
+            aria-label="Open navigation menu"
+            aria-expanded={isDrawerOpen}
           >
-            <Menu size={22} />
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-600/0 via-amber-600/20 to-amber-600/0 group-hover:animate-pulse" />
+            <Menu size={22} className="relative z-10" strokeWidth={2.5} />
           </motion.button>
 
           {/* Desktop Action Button */}
-          <div className="hidden lg:block ml-12">
+          <motion.div 
+            className="hidden lg:block ml-12"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: isVisible ? 0.6 : 0, duration: 0.4 }}
+          >
             <HoverButton />
-          </div>
+          </motion.div>
         </motion.div>
       </motion.header>
 
       {/* Mobile Drawer */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {isDrawerOpen && (
           <>
             {/* Backdrop */}
@@ -221,9 +384,10 @@ const AppHeader = ({ onHome, onAbout }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[1000]"
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 bg-black/75 backdrop-blur-sm z-[1000]"
               onClick={closeDrawer}
+              aria-hidden="true"
             />
 
             {/* Drawer Content */}
@@ -233,69 +397,92 @@ const AppHeader = ({ onHome, onAbout }) => {
               exit={{ x: "-100%" }}
               transition={{ 
                 type: "spring", 
-                damping: 25, 
-                stiffness: 200 
+                damping: 30, 
+                stiffness: 250,
+                mass: 0.8
               }}
-              className="fixed top-0 left-0 w-[300px] h-screen bg-gradient-to-b from-black/98 to-amber-950/98 text-white z-[1001] shadow-[0_0_50px_rgba(217,119,6,0.3)]"
+              className="fixed top-0 left-0 w-[320px] max-w-[85vw] h-screen bg-gradient-to-br from-black via-amber-950/95 to-black text-white z-[1001] shadow-[0_0_60px_rgba(217,119,6,0.4)] border-r border-amber-900/50 overflow-y-auto"
+              role="dialog"
+              aria-modal="true"
+              aria-label="Mobile navigation menu"
             >
+              {/* Animated background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 via-transparent to-orange-500/5 animate-pulse pointer-events-none" />
+              
               {/* Drawer Header */}
-              <div className="flex justify-between items-center p-5 border-b border-amber-900/30">
-                <motion.img
-                  src="/logo.png"
-                  alt="KPOPPET"
-                  className="h-7 cursor-pointer"
+              <div className="sticky top-0 z-10 flex justify-between items-center p-6 border-b border-amber-900/40 backdrop-blur-sm bg-black/50">
+                <Logo 
                   onClick={() => {
-                    handleScrollToTop();
+                    navigationHandlers.handleScrollToTop();
                     closeDrawer();
-                  }}
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.2 }}
+                  }} 
+                  isMobile={true} 
                 />
+                
                 <motion.button
                   onClick={closeDrawer}
-                  className="text-white p-2 rounded-lg hover:bg-amber-900/20 hover:text-orange-400 transition-all"
-                  whileHover={{ scale: 1.05 }}
+                  className="relative text-white p-2 rounded-xl hover:bg-amber-900/30 hover:text-orange-400 transition-all group"
+                  whileHover={{ scale: 1.05, rotate: 90 }}
                   whileTap={{ scale: 0.95 }}
-                  aria-label="Close menu"
+                  aria-label="Close navigation menu"
                 >
-                  <X size={20} />
+                  <div className="absolute inset-0 bg-amber-500/0 group-hover:bg-amber-500/20 rounded-xl transition-all duration-300" />
+                  <X size={20} className="relative z-10" strokeWidth={2.5} />
                 </motion.button>
               </div>
 
               {/* Drawer Navigation */}
-              <div className="flex flex-col gap-6 p-6 mt-4">
-                {[
-                  { label: "HOME", onClick: handleScrollToTop, isActive: activeSection === "home" },
-                  { label: "ABOUT", onClick: handleGoAbout, isActive: activeSection === "about" },
-                  { label: "WHITEPAPER", href: "https://docs.kpoproad.com" },
-                  { label: "NEWS", onClick: handleGoNews, isActive: activeSection === "news" },
-                ].map((item, index) => (
+              <nav className="relative flex flex-col gap-5 p-6 mt-6" role="navigation" aria-label="Mobile navigation">
+                {navItems.map((item, index) => (
                   <motion.div
                     key={item.label}
                     initial={{ x: -50, opacity: 0 }}
                     animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.1 }}
+                    transition={{ 
+                      delay: index * 0.08,
+                      type: "spring",
+                      stiffness: 200,
+                      damping: 20
+                    }}
+                    whileHover={{ x: 4 }}
                   >
                     <NavLink
                       {...(item.href ? { href: item.href } : { onClick: item.onClick })}
                       onClose={closeDrawer}
                       isActive={item.isActive}
+                      icon={item.icon}
                     >
                       {item.label}
                     </NavLink>
                   </motion.div>
                 ))}
 
-                {/* Action Button in Drawer */}
+                {/* Divider */}
                 <motion.div
-                  initial={{ y: 50, opacity: 0 }}
+                  initial={{ scaleX: 0, opacity: 0 }}
+                  animate={{ scaleX: 1, opacity: 1 }}
+                  transition={{ delay: 0.4, duration: 0.5 }}
+                  className="h-[1px] bg-gradient-to-r from-transparent via-amber-900/50 to-transparent my-4"
+                />
+
+                {/* Action Button */}
+                <motion.div
+                  initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
-                  transition={{ delay: 0.4 }}
-                  className="mt-8"
+                  transition={{ 
+                    delay: 0.5,
+                    type: "spring",
+                    stiffness: 200,
+                    damping: 20
+                  }}
+                  className="mt-4"
                 >
                   <HoverButton />
                 </motion.div>
-              </div>
+              </nav>
+
+              {/* Decorative glow */}
+              <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-amber-500/10 via-transparent to-transparent pointer-events-none" />
             </motion.div>
           </>
         )}
@@ -304,4 +491,4 @@ const AppHeader = ({ onHome, onAbout }) => {
   );
 };
 
-export default AppHeader;
+export default memo(AppHeader);
