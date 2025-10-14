@@ -74,20 +74,22 @@ const TokenomicsSection = () => {
       {/* Header Section */}
       <div className="flex flex-col relative z-10 mb-16">
         <h2
-          className="text-8xl font-normal leading-normal max-w-6xl"
+          className="text-8xl  font-normal leading-normal max-w-6xl"
           style={{
             color: "#F26457",
             WebkitTextStroke: "2px #876046",
             fontFamily: "'Luckiest Guy', cursive",
+            textShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
           }}
         >
           Blockchain & Tokenomics
         </h2>
         <p
-          className="text-2xl md:text-3xl mt-4"
+          className="text-2xl bold md:text-3xl mt-4"
           style={{
             color: "#333",
-            fontFamily: "'Luckiest Guy', cursive",
+            fontFamily: "'SVN-Gilroy', sans-serif",
+            textShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
           }}
         >
           Built on Solana Chain for low fees and fast transactions.
@@ -107,13 +109,6 @@ const TokenomicsSection = () => {
               {tokenomicsData.slice(0, 3).map((item, index) => (
                 <div key={index}>
                   <div className="flex gap-4 items-start">
-                    {/* <div 
-                      className="w-[86px] h-[44px] shadow-lg"
-                      // style={{ 
-                      //   backgroundColor: item.color,
-                      //   border: item.color === "#FFFFFF" || item.color === "#F5F5F5" ? "2px solid #E63946" : "none"
-                      // }}
-                    /> */}
                     <div>
                       <Image 
                         src={item.image}
@@ -126,10 +121,10 @@ const TokenomicsSection = () => {
                       />
                     </div>
                     <div className="flex flex-col gap-2 flex-1">
-                      <p className="text-xl font-bold text-white leading-tight">
+                      <p className="text-xl text-black  leading-tight">
                         {item.label}
                       </p>
-                      <p className="text-sm text-white font-normal">
+                      <p className="text-sm text-black font-normal">
                         {item.value}
                       </p>
                     </div>
@@ -162,10 +157,10 @@ const TokenomicsSection = () => {
                       />
                     </div>
                     <div className="flex flex-col gap-2 flex-1">
-                      <p className="text-xl font-bold text-white leading-tight">
+                      <p className="text-xl text-black  leading-tight">
                         {item.label}
                       </p>
-                      <p className="text-sm text-white font-normal">
+                      <p className="text-sm text-black font-normal">
                         {item.value}
                       </p>
                     </div>
