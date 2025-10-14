@@ -219,7 +219,7 @@ export default function Ecosystem() {
           {/* Header Section */}
           <motion.div variants={itemVariants} className="text-center mb-20">
             {/* Badge */}
-            <motion.div
+            {/* <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={isInView ? { scale: 1, rotate: 0 } : {}}
               transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
@@ -234,7 +234,10 @@ export default function Ecosystem() {
                 COMPLETE ECOSYSTEM
               </span>
               <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-400" />
-            </motion.div>
+            </motion.div> */}
+                <h1 className='text-6xl text-red-400 '>
+                  COMPLETE ECOSYSTEM
+                </h1>
 
             {/* Title */}
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">
@@ -492,7 +495,17 @@ export default function Ecosystem() {
             variants={itemVariants}
             className="relative"
           >
-            <div className="relative bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 rounded-3xl p-12 md:p-16 overflow-hidden shadow-2xl border-4 border-white/20">
+            <div
+            style={{
+              backgroundImage:
+                'url("/images/Market Analysis_banner_center.png")',
+              backgroundSize: "fill",
+              backgroundPosition: "center",
+              // backgroundRepeat: "no-repeat",
+              // backgroundAttachment: "fixed",
+            }}
+            
+            className="relative bg-gradient-to-br  rounded-3xl p-12 md:p-16 overflow-hidden shadow-2xl border-4 border-white/20">
               {/* Animated Background */}
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute inset-0" style={{
