@@ -1,28 +1,56 @@
 // src/components/layout/HeroBanner.jsx
-// Version KHÔNG dùng ref - Simple & Safe
+// Version với scroll lock - Video phải xem xong mới scroll được
 'use client';
-
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function HeroBanner() {
   const [showImage, setShowImage] = useState(false);
 
+  // Lock scroll when video is playing
+  useEffect(() => {
+    if (!showImage) {
+      // Disable scroll
+      document.body.style.overflow = 'hidden';
+      document.body.style.height = '100vh';
+    } else {
+      // Enable scroll
+      document.body.style.overflow = 'unset';
+      document.body.style.height = 'auto';
+    }
+
+    // Cleanup
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.height = 'auto';
+    };
+  }, [showImage]);
+
   // Handle video end
   const handleVideoEnd = () => {
     console.log('Video ended, showing image');
     setShowImage(true);
+    // Dispatch custom event to show header
+    window.dispatchEvent(new Event('videoComplete'));
   };
 
   // Handle video error
   const handleVideoError = (e) => {
     console.warn('Video error:', e);
     setShowImage(true);
+    window.dispatchEvent(new Event('videoComplete'));
+  };
+
+  // Handle skip video
+  const handleSkip = () => {
+    console.log('Video skipped');
+    setShowImage(true);
+    window.dispatchEvent(new Event('videoComplete'));
   };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-black">
+    <section className="relative w-full h-screen overflow-hidden">
       <AnimatePresence mode="wait">
         {!showImage ? (
           // Video Layer
@@ -78,41 +106,46 @@ export default function HeroBanner() {
       {!showImage && (
         <motion.button
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.7 }}
-          whileHover={{ opacity: 1, scale: 1.05 }}
+          animate={{ opacity: 1 }}
+          whileHover={{ scale: 1.05 }}
           transition={{ delay: 2 }}
-          onClick={() => setShowImage(true)}
-          className="absolute bottom-20 right-8 px-6 py-3 bg-white/20 backdrop-blur-md text-white rounded-full font-semibold hover:bg-white/30 transition-all z-10"
+          onClick={handleSkip}
+          className="absolute bottom-20 right-8 px-6 py-3 bg-black/70 backdrop-blur-md text-white rounded-full font-semibold hover:bg-black/90 transition-all z-10 shadow-2xl border border-white/20"
+          style={{ textShadow: '0 2px 10px rgba(0,0,0,0.8)' }}
         >
           Skip Video →
         </motion.button>
       )}
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.8,
-          delay: 1.5,
-          repeat: Infinity,
-          repeatType: 'reverse',
-          repeatDelay: 0.5,
-        }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10"
-      >
-        <svg
-          className="w-8 h-8 text-white drop-shadow-lg"
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+      {/* Scroll Indicator - Only show after video ends */}
+      {showImage && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            delay: 0.5,
+            repeat: Infinity,
+            repeatType: 'reverse',
+            repeatDelay: 0.5,
+          }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 bg-black/60 p-3 rounded-full backdrop-blur-sm"
         >
-          <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </motion.div>
+          <svg
+            className="w-8 h-8 text-white"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            style={{ filter: 'drop-shadow(0 2px 8px rgba(0,0,0,0.8))' }}
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </motion.div>
+      )}
+
     </section>
   );
 }

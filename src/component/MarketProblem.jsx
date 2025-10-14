@@ -30,25 +30,25 @@ export default function MarketProblem() {
 
   const problems = [
     {
-      icon: "💰",
+      icon: "/images/Opaque_Revenue.png",
       title: "Opaque Revenue",
       description:
         "Content creators don't see where their revenue goes or how it's calculated",
     },
     {
-      icon: "📉",
+      icon: "/images/Weak_Competition.png",
       title: "Weak Competition",
       description:
         "Small businesses struggle to compete with large platforms and middlemen",
     },
     {
-      icon: "🎭",
+      icon: "/images/Unfair_Voting.png",
       title: "Unfair Voting",
       description:
         "Event voting systems lack transparency and can be easily manipulated",
     },
     {
-      icon: "🎁",
+      icon: "/images/No_Rewards.png",
       title: "No Rewards",
       description:
         "Community members contribute value but receive no meaningful rewards",
@@ -118,7 +118,8 @@ export default function MarketProblem() {
               backgroundImage:
                 'url("/images/Market Analysis_banner_center.png")',
               backgroundSize: "fill",
-              // backgroundPosition: "center",
+              backgroundPosition: "center",
+              // backgroundRepeat: "no-repeat",
               // backgroundAttachment: "fixed",
             }}
             variants={itemVariants}
@@ -133,10 +134,10 @@ export default function MarketProblem() {
                 animate={isInView ? { scale: 1 } : {}}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                 className="inline-block">
-                <div className="text-7xl md:text-9xl font-black text-amber-200  mb-4 drop-shadow-2xl">
-                  $300B
+                <div className="text-7xl md:text-9xl font-black text-[#b9ed51]  mb-4 drop-shadow-2xl">
+                  $300B 📈
                 </div>
-                <div  className="text-red-400 text-2xl md:text-3xl font-bold  mb-2">
+                <div className="text-red-400 text-2xl md:text-3xl font-bold  mb-2">
                   Global Pet Industry 2024
                 </div>
                 <div className="text-lg md:text-xl text-black">
@@ -151,7 +152,9 @@ export default function MarketProblem() {
                 transition={{ delay: 0.8 }}
                 className="mt-8 flex justify-center items-center gap-2 text-white">
                 <span className="text-3xl">📈</span>
-                <span className="text-xl text-cyan-300 font-semibold">Continuous Growth</span>
+                <span className="text-xl text-cyan-300 font-semibold">
+                  Continuous Growth
+                </span>
               </motion.div>
             </div>
           </motion.div>
@@ -172,11 +175,12 @@ export default function MarketProblem() {
                   variants={itemVariants}
                   whileHover={{ y: -10, scale: 1.02 }}
                   className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border-2 border-red-100 dark:border-red-900/30 hover:border-red-300 dark:hover:border-red-700 transition-all cursor-pointer group">
-                  <motion.div
+                  <motion.img
+                    src={problem.icon}
+                    alt={problem.title}
                     whileHover={{ scale: 1.2, rotate: 10 }}
-                    className="text-5xl mb-4">
-                    {problem.icon}
-                  </motion.div>
+                    className="w-40 h-40 mb-4 mx-auto"
+                  />
                   <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-500 transition-colors">
                     {problem.title}
                   </h4>

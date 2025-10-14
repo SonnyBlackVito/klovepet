@@ -74,7 +74,7 @@ const TokenomicsSection = () => {
       {/* Header Section */}
       <div className="flex flex-col relative z-10 mb-16">
         <h2
-          className="text-8xl  font-normal leading-normal max-w-6xl"
+          className="text-8xl font-normal leading-normal max-w-6xl"
           style={{
             color: "#F26457",
             WebkitTextStroke: "2px #876046",
