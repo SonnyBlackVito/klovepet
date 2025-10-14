@@ -208,8 +208,7 @@ export default function RoadMap() {
         />
       </div>
 
-      <div
-      className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -220,7 +219,18 @@ export default function RoadMap() {
             variants={itemVariants}
             className="text-center mb-16 md:mb-20">
             {/* Badge */}
-            <motion.div
+                          <h1
+                style={{
+                  WebkitTextStrokeWidth: "2px",
+                  WebkitTextStrokeColor: "#876046",
+                  textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                  fontFamily: '"Luckiest Guy", cursive',
+                  lineHeight: "normal",
+                }}
+                className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
+                OUR JOURNEY
+              </h1>
+            {/* <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={isInView ? { scale: 1, rotate: 0 } : {}}
               transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
@@ -233,8 +243,20 @@ export default function RoadMap() {
               <span className="text-sm font-bold bg-gradient-to-r from-amber-700 via-orange-700 to-red-700 dark:from-amber-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent tracking-wider">
                 OUR JOURNEY
               </span>
+
+              <h1
+                style={{
+                  WebkitTextStrokeWidth: "2px",
+                  WebkitTextStrokeColor: "#876046",
+                  textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                  fontFamily: '"Luckiest Guy", cursive',
+                  lineHeight: "normal",
+                }}
+                className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
+                About K-LovePet
+              </h1>
               <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-400" />
-            </motion.div>
+            </motion.div> */}
 
             {/* Title */}
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">

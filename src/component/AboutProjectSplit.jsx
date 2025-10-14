@@ -14,12 +14,16 @@ export function AboutProjectSplit() {
     <section
       style={{
         fontFamily: "var(--font-luckiest-guy)",
+        // url('/images/image.png'),
         backgroundImage: `
         radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent),
         radial-gradient(circle 600px at 50% 200px, #fef3c7, transparent),
         radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
         radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
       `,
+    //         backgroundRepeat: "no-repeat",
+    // backgroundSize: "cover", // hoặc 'contain' tùy bạn
+    // backgroundPosition: "center",
       }}
       ref={ref}
       className="py-20 md:py-32 overflow-hidden ">
@@ -122,6 +126,7 @@ export function AboutProjectSplit() {
             </motion.div>
           </motion.div>
         </div>
+
       </div>
     </section>
   );

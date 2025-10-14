@@ -108,8 +108,8 @@ const TokenomicsSection = () => {
                       <Image
                         src={item.image}
                         alt={item.label}
-                        width={80}
-                        height={80}
+                        width={120}
+                        height={120}
                         className="w-full h-auto object-contain"
                         priority
                       />
@@ -147,8 +147,8 @@ const TokenomicsSection = () => {
                       <Image
                         src={item.image}
                         alt={item.label}
-                        width={80}
-                        height={80}
+                        width={120}
+                        height={120}
                         className="w-full h-auto object-contain"
                         priority
                       />

@@ -153,8 +153,18 @@ export default function Ecosystem() {
           className="max-w-7xl mx-auto">
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h1 className="text-8xl text-red-400"> ECOSYSTEM</h1>
-
+            {/* <h1 className="text-8xl text-red-400"> ECOSYSTEM</h1> */}
+ <h1
+          style={{
+            WebkitTextStrokeWidth: "2px",
+            WebkitTextStrokeColor: "#876046",
+            textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+            fontFamily: '"Luckiest Guy", cursive',
+            lineHeight: "normal",
+          }}
+          className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
+          ECOSYSTEM
+        </h1>
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">
               <span className="block drop-shadow-lg">5 PLATFORMS</span>
               <span className="block bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400 bg-clip-text text-transparent drop-shadow-2xl">

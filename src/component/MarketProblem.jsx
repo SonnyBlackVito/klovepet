@@ -100,10 +100,21 @@ export default function MarketProblem() {
           className="max-w-7xl mx-auto">
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            <h1 className="inline-block text-red-400  text-6xl px-6 py-3 font-bold mb-6">
+            {/* <h1 className="inline-block text-red-400  text-6xl px-6 py-3 font-bold mb-6">
               Market Analysis
-            </h1>
+            </h1> */}
 
+        <h1
+          style={{
+            WebkitTextStrokeWidth: "2px",
+            WebkitTextStrokeColor: "#876046",
+            textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+            fontFamily: '"Luckiest Guy", cursive',
+            lineHeight: "normal",
+          }}
+          className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
+          Market Analysis
+        </h1>
             <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-6 leading-tight">
               A Growing Industry
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-coral-500 via-pink-500 to-rose-400 mt-2">
