@@ -73,7 +73,7 @@ const TokenomicsSection = () => {
 <div className="flex flex-row justify-between relative">
   <div className="flex flex-col relative z-10 mb-16">
     <h2
-      className="md:text-6xl lg:text-8xl sm:text-4xl font-normal leading-normal max-w-6xl"
+      className="md:text-6xl lg:text-8xl sm:text-6xl font-normal leading-normal max-w-6xl"
       style={{
         color: "#F26457",
         WebkitTextStroke: "2px #876046",
@@ -81,8 +81,46 @@ const TokenomicsSection = () => {
         textShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
       }}
     >
-      Blockchain & Tokenomics
+      Blockchain{" "}
+      <span className="relative inline-block">
+        &
+        {/* Container cho bước chân - overflow-visible để không bị cắt */}
+        <div className="absolute top-0 left-full w-screen h-[200px] pointer-events-none" style={{ marginLeft: '10px' }}>
+          {/* Bước chân */}
+          {[
+            { delay: 0, top: 5, isLeft: true, color: "#F26457" },
+            { delay: 0.3, top: 45, isLeft: false, color: "#FF7F6E" },
+            { delay: 0.6, top: 5, isLeft: true, color: "#F26457" },
+            { delay: 0.9, top: 45, isLeft: false, color: "#FF7F6E" },
+            { delay: 1.2, top: 5, isLeft: true, color: "#F26457" },
+            { delay: 1.5, top: 45, isLeft: false, color: "#FF7F6E" },
+            { delay: 1.8, top: 5, isLeft: true, color: "#F26457" },
+            { delay: 2.1, top: 45, isLeft: false, color: "#FF7F6E" },
+            { delay: 2.4, top: 5, isLeft: true, color: "#F26457" },
+            { delay: 2.7, top: 45, isLeft: false, color: "#FF7F6E" },
+          ].map((paw, index) => (
+            <div
+              key={index}
+              className={`absolute text-3xl sm:text-4xl md:text-5xl ${
+                paw.isLeft ? "animate-paw-walk" : "animate-paw-walk-alt"
+              }`}
+              style={{
+                animationDelay: `${paw.delay}s`,
+                top: `${paw.top}px`,
+                left: "0",
+                filter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
+              }}
+            >
+              🐾
+            </div>
+          ))}
+
+
+        </div>
+      </span>{" "}
+      Tokenomics
     </h2>
+    
     <p
       className="text-2xl bold md:text-3xl mt-4"
       style={{
@@ -94,52 +132,6 @@ const TokenomicsSection = () => {
       Built on Solana Chain for low fees and fast transactions.
       <br />A dedicated Sub-chain will follow.
     </p>
-  </div>
-
-  <div className="absolute top-0 left-0 w-full h-[200px] overflow-hidden pointer-events-none">
-    {[
-      { delay: 0, top: 30, isLeft: true, color: "#F26457" },
-      { delay: 0.3, top: 65, isLeft: false, color: "#FF7F6E" },
-      { delay: 0.6, top: 30, isLeft: true, color: "#F26457" },
-      { delay: 0.9, top: 65, isLeft: false, color: "#FF7F6E" },
-      { delay: 1.2, top: 30, isLeft: true, color: "#F26457" },
-      { delay: 1.5, top: 65, isLeft: false, color: "#FF7F6E" },
-      { delay: 1.8, top: 30, isLeft: true, color: "#F26457" },
-      { delay: 2.1, top: 65, isLeft: false, color: "#FF7F6E" },
-      { delay: 2.4, top: 30, isLeft: true, color: "#F26457" },
-      { delay: 2.7, top: 65, isLeft: false, color: "#FF7F6E" },
-    ].map((paw, index) => (
-      <div
-        key={index}
-        className={`absolute text-5xl transition-all ${
-          paw.isLeft ? "animate-paw-walk" : "animate-paw-walk-alt"
-        }`}
-        style={{
-          animationDelay: `${paw.delay}s`,
-          top: `${paw.top}px`,
-          left: '500', 
-          filter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
-          WebkitFilter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
-        }}
-      >
-        🐾
-      </div>
-    ))}
-
-    {/* Hiệu ứng sparkle */}
-    {[0.4, 1.1, 1.8, 2.5].map((delay, index) => (
-      <div
-        key={`sparkle-${index}`}
-        className="absolute left-0 text-xl"
-        style={{
-          top: `${40 + (index % 2) * 30}px`,
-          animation: "sparkle 2s ease-out infinite",
-          animationDelay: `${delay}s`,
-        }}
-      >
-        {/* ✨ */}
-      </div>
-    ))}
   </div>
 </div>
 
