@@ -416,79 +416,7 @@ export default function Ecosystem() {
           </div>
 
           {/* Connection Visualization */}
-          <motion.div
-            variants={itemVariants}
-            className="relative mb-16 hidden lg:block"
-          >
-            <div className="relative h-64 bg-gradient-to-r from-amber-100/50 via-orange-100/50 to-yellow-100/50 dark:from-gray-800/80 dark:via-gray-800/80 dark:to-gray-800/80 rounded-3xl p-8 overflow-hidden border-2 border-amber-300 dark:border-gray-700 shadow-xl backdrop-blur-sm">
-              {/* Central Hub */}
-              <motion.div
-                initial={{ scale: 0, rotate: -180 }}
-                animate={isInView ? { scale: 1, rotate: 0 } : {}}
-                transition={{ delay: 1, type: "spring", stiffness: 200 }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
-              >
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-amber-500 to-orange-600 blur-2xl opacity-50 animate-pulse" />
-                  <div className="relative w-32 h-32 bg-gradient-to-br from-amber-500 via-orange-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white/30">
-                    <div className="text-center text-white">
-                      <Users className="w-12 h-12 mb-2 mx-auto" strokeWidth={2.5} />
-                      <div className="font-black text-sm tracking-wider">COMMUNITY</div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
 
-              {/* Orbiting Elements */}
-              {components.map((comp, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={isInView ? { 
-                    scale: 1, 
-                    opacity: 1,
-                    rotate: 360 
-                  } : {}}
-                  transition={{ 
-                    delay: 1.2 + i * 0.1,
-                    rotate: {
-                      duration: 20 + i * 5,
-                      repeat: Infinity,
-                      ease: "linear"
-                    }
-                  }}
-                  className="absolute top-1/2 left-1/2 w-14 h-14"
-                  style={{
-                    transform: `translate(-50%, -50%) rotate(${i * 72}deg) translateY(-100px)`
-                  }}
-                >
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/30 to-orange-500/30 blur-xl rounded-full" />
-                    <img 
-                      src={comp.icon} 
-                      alt={comp.title}
-                      className="relative w-full h-full object-contain drop-shadow-2xl"
-                    />
-                  </div>
-                </motion.div>
-              ))}
-
-              {/* Connection Lines */}
-              {[...Array(5)].map((_, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ scaleX: 0 }}
-                  animate={isInView ? { scaleX: 1 } : {}}
-                  transition={{ delay: 1.5 + i * 0.1, duration: 0.5 }}
-                  className="absolute top-1/2 left-1/2 w-24 h-1 origin-left"
-                  style={{
-                    background: `linear-gradient(to right, rgba(217, 119, 6, 0.6), transparent)`,
-                    transform: `translateY(-50%) rotate(${i * 72}deg)`
-                  }}
-                />
-              ))}
-            </div>
-          </motion.div>
 
           {/* CTA Section */}
           <motion.div
