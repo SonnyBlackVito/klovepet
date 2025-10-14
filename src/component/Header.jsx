@@ -133,7 +133,7 @@ const AppHeader = ({ onHome, onAbout }) => {
           pointerEvents: isVisible ? 'auto' : 'none',
         }}
         className={`
-          ${isScrolled ? 'fixed' : 'relative'} 
+          ${isScrolled ? 'fixed' : 'relative bg-amber-100'} 
           top-0 left-0 right-0 z-[100]
           transition-all duration-300
           ${isScrolled ? 'pt-5' : 'pt-6'}
