@@ -100,19 +100,15 @@ export default function MarketProblem() {
           className="max-w-7xl mx-auto">
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
-            {/* <h1 className="inline-block text-red-400  text-6xl px-6 py-3 font-bold mb-6">
-              Market Analysis
-            </h1> */}
-
             <h1
               style={{
-                WebkitTextStrokeWidth: "2px",
+                WebkitTextStrokeWidth: "1px",
                 WebkitTextStrokeColor: "#876046",
                 textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
                 fontFamily: '"Luckiest Guy", cursive',
                 lineHeight: "normal",
               }}
-              className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
+              className=" text-8xl px-4 py-2  text-[#F26457] rounded-full  font-semibold mb-4">
               Market Analysis
             </h1>
             <h2 className="text-4xl md:text-6xl font-bold text-black  mb-6 leading-tight">
@@ -148,7 +144,7 @@ export default function MarketProblem() {
                 <div className="text-7xl md:text-9xl font-black text-[#b9ed51]  mb-4 drop-shadow-2xl">
                   $300B 📈
                 </div>
-                <div className="text-red-400 text-2xl md:text-3xl font-bold  mb-2">
+                <div className="text-[#F26457] text-2xl md:text-3xl font-bold  mb-2">
                   Global Pet Industry 2024
                 </div>
                 <div className="text-lg md:text-xl text-black">
@@ -200,7 +196,7 @@ export default function MarketProblem() {
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     className="w-40 h-40 mb-4 mx-auto"
                   />
-                  <h4 className="text-xl font-bold text-gray-900  mb-2 group-hover:text-red-500 transition-colors">
+                  <h4 className="text-xl font-bold text-gray-900  mb-2 group-hover:text-[#F26457] transition-colors">
                     {problem.title}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">

@@ -114,126 +114,128 @@ export function AboutProjectSplit() {
         </div>
 
         {/* DESKTOP: Full Screen Image Layout (>= 1024px) */}
-<div className="hidden lg:block">
-  <motion.div
-    initial={{ opacity: 0, scale: 1.05 }}
-    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-    transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-    className="relative w-screen h-screen"
-    style={{
-      marginLeft: 'calc(-50vw + 50%)',
-      marginRight: 'calc(-50vw + 50%)',
-    }}
-  >
-    {/* Full screen image container */}
-    <div className="relative w-full h-full">
-      
-      {/* Main Image */}
-      <Image
-        src="/images/banner_xl.png"
-        alt="K-LovePet Banner - Connecting pet lovers worldwide"
-        fill
-        priority
-        quality={100}
-        sizes="100vw"
-        className="object-fit"
-      />
+        <div className="hidden lg:block">
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative w-screen h-screen"
+            style={{
+              marginLeft: "calc(-50vw + 50%)",
+              marginRight: "calc(-50vw + 50%)",
+            }}>
+            {/* Full screen image container */}
+            <div className="relative w-full h-full">
+              {/* Main Image */}
+              <Image
+                src="/images/banner_xl.png"
+                alt="K-LovePet Banner - Connecting pet lovers worldwide"
+                fill
+                priority
+                quality={100}
+                sizes="100vw"
+                className="object-fit"
+              />
 
-      {/* Horizontal blur effect - ABOVE image with high z-index */}
-      <div
-        className="absolute top-0  left-0 right-0 pointer-events-none z-20"
-        style={{
-          width: '100%',
-          height: '250px',
-          background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 247, 214, 0.90) 50%, rgba(255, 255, 255, 0.50) 100%)',
-          filter: 'blur(60px)',
-          opacity: 0.9,
-        }}
-        aria-hidden="true"
-      />
+              {/* Horizontal blur effect - ABOVE image with high z-index */}
+              <div
+                className="absolute top-0 left-0 right-0 pointer-events-none z-20"
+                style={{
+                  width: "100%",
+                  height: "250px",
+                  background:
+                    "linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 247, 214, 0.90) 50%, rgba(255, 255, 255, 0.50) 100%)",
+                  filter: "blur(60px)",
+                  opacity: 0.9,
+                }}
+                aria-hidden="true"
+              />
 
-      {/* Text overlay on blur effect */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute top-[-1px] left-0 right-0 z-30 flex flex-col items-center justify-center text-center px-8"
-      >
-        <h1
-          style={{
-            WebkitTextStrokeWidth: "1px",
-            WebkitTextStrokeColor: "#876046",
-            textShadow: "0 4px 8px rgba(0, 0, 0, 0.25)",
-            fontFamily: '"Luckiest Guy", cursive',
-            lineHeight: "normal",
-          }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F26457]  "
-        >
-          ABOUT K LOVE PET
-        </h1>
-        
-        <h2
-          style={{
-            // fontFamily: '"SVN-Gilroy", sans-serif',
-            fontFamily: '"Luckiest Guy", cursive',
-            textShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
-          }}
-          className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 max-w-8xl"
-        >
-          Building a Global Ecosystem for Pet Lovers.
-        </h2>
-      </motion.div>
+              {/* Text overlay on blur effect */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{
+                  duration: 1,
+                  delay: 0.3,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="absolute top-[-1px] left-0 right-0 z-30 flex flex-col items-center justify-center text-center px-8">
+                <h1
+                  style={{
+                    WebkitTextStrokeWidth: "1px",
+                    WebkitTextStrokeColor: "#876046",
+                    textShadow: "0 4px 8px rgba(0, 0, 0, 0.25)",
+                    fontFamily: '"Luckiest Guy", cursive',
+                    lineHeight: "normal",
+                  }}
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F26457]  ">
+                  ABOUT K LOVE PET
+                </h1>
 
-      {/* Gradient Overlays */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-10"
-        style={{
-          background: `
+                <h2
+                  style={{
+                    // fontFamily: '"SVN-Gilroy", sans-serif',
+                    fontFamily: '"Luckiest Guy", cursive',
+                    textShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
+                  }}
+                  className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 max-w-8xl">
+                  Building a Global Ecosystem for Pet Lovers.
+                </h2>
+              </motion.div>
+
+              {/* Gradient Overlays */}
+              <div
+                className="absolute inset-0 pointer-events-none z-10"
+                style={{
+                  background: `
             linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 30%, transparent 70%, rgba(0,0,0,0.2) 100%),
             linear-gradient(90deg, rgba(0,0,0,0.1) 0%, transparent 20%, transparent 80%, rgba(0,0,0,0.1) 100%)
-          `
-        }}
-        aria-hidden="true"
-      />
+          `,
+                }}
+                aria-hidden="true"
+              />
 
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={isInView ? {
-          y: [0, 15, 0],
-          opacity: [0.5, 1, 0.5]
-        } : {}}
-        transition={{ 
-          duration: 2, 
-          repeat: Infinity, 
-          ease: "easeInOut",
-          delay: 1
-        }}
-        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-40"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <svg
-            className="w-6 h-6 sm:w-8 sm:h-8 text-white drop-shadow-lg"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={3}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
-          </svg>
-          <span className="text-white text-xs sm:text-sm font-semibold drop-shadow-lg">
-            Scroll to explore
-          </span>
+              {/* Scroll Indicator */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={
+                  isInView
+                    ? {
+                        y: [0, 15, 0],
+                        opacity: [0.5, 1, 0.5],
+                      }
+                    : {}
+                }
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1,
+                }}
+                className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-40">
+                <div className="flex flex-col items-center gap-2">
+                  <svg
+                    className="w-6 h-6 sm:w-8 sm:h-8 text-white drop-shadow-lg"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={3}
+                      d="M19 14l-7 7m0 0l-7-7m7 7V3"
+                    />
+                  </svg>
+                  <span className="text-white text-xs sm:text-sm font-semibold drop-shadow-lg">
+                    Scroll to explore
+                  </span>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
-    </div>
-  </motion.div>
-</div>
       </div>
     </section>
   );
