@@ -54,8 +54,6 @@ const EcosystemSection = () => {
       subtitle: "Live Streaming Platform",
       description:
         "Connect with fans through live streaming. Share your pet's moments and monetize your content.",
-      features: ["Live streaming", "Monetization", "Fan interaction"],
-      stats: { value: "10K+", label: "Streamers" },
     },
     {
       id: "station",
@@ -64,8 +62,6 @@ const EcosystemSection = () => {
       subtitle: "NFT Marketplace",
       description:
         "Trade pet products and NFTs. Access exclusive merchandise and services for your pets.",
-      features: ["E-commerce", "NFT items", "Pet services"],
-      stats: { value: "50K+", label: "Products" },
     },
     {
       id: "audition",
@@ -74,8 +70,6 @@ const EcosystemSection = () => {
       subtitle: "Talent Competition",
       description:
         "Showcase your pet's talents and compete for amazing prizes. Vote for your favorites.",
-      features: ["Competitions", "Voting", "Prizes"],
-      stats: { value: "1M+", label: "Votes" },
     },
     {
       id: "card",
@@ -84,8 +78,6 @@ const EcosystemSection = () => {
       subtitle: "Digital Collectibles",
       description:
         "Collect and trade unique pet cards. Each card has special traits and benefits.",
-      features: ["NFT cards", "Trading", "Rewards"],
-      stats: { value: "100K+", label: "Cards" },
     },
     {
       id: "hunters",
@@ -94,8 +86,6 @@ const EcosystemSection = () => {
       subtitle: "Fitness & Rewards",
       description:
         "Stay active with your pet and earn rewards. Track fitness and complete challenges.",
-      features: ["Fitness tracking", "Earn rewards", "Challenges"],
-      stats: { value: "5K+", label: "Users" },
     },
   ];
 
@@ -207,7 +197,7 @@ const EcosystemSection = () => {
           </motion.div>
 
           {/* Swiper Carousel */}
-          <motion.div variants={itemVariants} className="relative mb-12 sm:mb-16 md:mb-20">
+          <motion.div variants={itemVariants} className="relative z-30 mb-12 sm:mb-16 md:mb-20">
             <div className="flex items-center justify-between mb-4 sm:mb-6 md:mb-8">
               <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 dark:text-white tracking-wide uppercase">
                 Explore Platforms
@@ -257,7 +247,7 @@ const EcosystemSection = () => {
                   centeredSlides: false,
                 },
               }}
-              className="ecosystem-swiper pb-8 sm:pb-12">
+              className="ecosystem-swiper pb-8 sm:pb-12 relative z-20">
               {components.map((component, index) => (
                 <SwiperSlide key={component.id}>
                   <Link href={`/ecosystem/${component.id}`}>
@@ -270,128 +260,91 @@ const EcosystemSection = () => {
                         stiffness: 300,
                         damping: 20,
                       }}
-                      className="relative h-[300px] sm:h-[320px] md:h-[340px] lg:h-[360px] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group bg-white dark:bg-gray-800 border-2 border-amber-200 dark:border-gray-700 shadow-xl hover:shadow-2xl">
+                      className={`relative h-[300px] sm:h-[320px] md:h-[340px] lg:h-[360px] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group bg-white dark:bg-gray-800 border-2 border-amber-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300 ${
+                        hoveredCard === index ? 'z-[9999]' : 'z-10'
+                      }`}>
                       {/* Gradient Background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" />
 
                       {/* Content */}
                       <div className="relative h-full p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center">
                         {/* External Link Icon */}
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0 }}
-                          animate={{
-                            opacity: hoveredCard === index ? 1 : 0,
-                            scale: hoveredCard === index ? 1 : 0,
-                          }}
-                          className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-amber-500 hover:bg-amber-600 rounded-full flex items-center justify-center shadow-lg z-10">
+                        <div className={`absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-amber-500 hover:bg-amber-600 rounded-full flex items-center justify-center shadow-lg z-10 transition-all duration-300 ease-out ${
+                          hoveredCard === index 
+                            ? 'opacity-100 scale-100' 
+                            : 'opacity-0 scale-0'
+                        }`}>
                           <ExternalLink
                             className="w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white"
                             strokeWidth={2.5}
                           />
-                        </motion.div>
+                        </div>
 
                         {/* Icon - Large by default */}
-                        <motion.div
-                          animate={{
-                            scale: hoveredCard === index ? 0.85 : 1,
-                            y: hoveredCard === index ? -20 : 0,
-                          }}
-                          transition={{ duration: 0.3 }}
-                          className="mb-4 sm:mb-5 md:mb-6">
+                        <div className={`mb-4 sm:mb-5 md:mb-6 transition-all duration-300 ease-out ${
+                          hoveredCard === index 
+                            ? 'scale-85 -translate-y-5' 
+                            : 'scale-100 translate-y-0'
+                        }`}>
                           <img
                             src={component.icon}
                             alt={component.title}
                             className="w-full h-28 sm:h-32 md:h-36 lg:h-40 object-contain drop-shadow-2xl"
                           />
-                        </motion.div>
+                        </div>
 
                         {/* Title - Always visible */}
-                        <motion.h3
-                          animate={{
-                            scale: hoveredCard === index ? 0.9 : 1,
-                          }}
-                          className="text-base sm:text-lg md:text-xl lg:text-2xl font-black text-gray-900 dark:text-white text-center tracking-wide uppercase leading-tight px-2 sm:px-3 md:px-2">
+                        <h3 className={`text-base sm:text-lg md:text-xl lg:text-2xl font-black text-gray-900 dark:text-white text-center tracking-wide uppercase leading-tight px-2 sm:px-3 md:px-2 transition-all duration-300 ease-out ${
+                          hoveredCard === index 
+                            ? 'scale-90' 
+                            : 'scale-100'
+                        }`}>
                           {component.title}
-                        </motion.h3>
+                        </h3>
 
                         {/* Expanded Content - Only on hover */}
-                        <AnimatePresence>
-                          {hoveredCard === index && (
-                            <motion.div
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 20 }}
-                              transition={{ duration: 0.3 }}
-                              className="absolute inset-0 p-3 sm:p-4 md:p-6 flex flex-col justify-end bg-gradient-to-t from-white via-white/95 to-transparent dark:from-gray-800 dark:via-gray-800/95 dark:to-transparent">
-                              <div className="space-y-2 sm:space-y-3">
-                                {/* Subtitle */}
-                                <p
-                                  className="text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400 text-center"
-                                  style={{
-                                    fontFamily: "system-ui, sans-serif",
-                                  }}>
-                                  {component.subtitle}
-                                </p>
+                        <div className={`absolute inset-0 p-3 sm:p-4 md:p-6 flex flex-col justify-end bg-gradient-to-t from-white via-white/95 to-transparent dark:from-gray-800 dark:via-gray-800/95 dark:to-transparent transition-all duration-300 ease-out ${
+                          hoveredCard === index 
+                            ? 'opacity-100 translate-y-0' 
+                            : 'opacity-0 translate-y-5 pointer-events-none'
+                        }`}>
+                          <div className="space-y-2 sm:space-y-3">
+                            {/* Subtitle */}
+                            <p
+                              className="text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400 text-center"
+                              style={{
+                                fontFamily: "system-ui, sans-serif",
+                              }}>
+                              {component.subtitle}
+                            </p>
 
-                                {/* Description */}
-                                <p
-                                  className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-center"
-                                  style={{
-                                    fontFamily: "system-ui, sans-serif",
-                                  }}>
-                                  {component.description}
-                                </p>
+                            {/* Description */}
+                            <p
+                              className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-center"
+                              style={{
+                                fontFamily: "system-ui, sans-serif",
+                              }}>
+                              {component.description}
+                            </p>
 
-                                {/* Stats Badge */}
-                                <div className="flex justify-center">
-                                  <div className="inline-flex items-center gap-1 sm:gap-2 py-1 sm:py-2 px-2 sm:px-4 bg-amber-100 dark:bg-amber-900/30 rounded-full border border-amber-300 dark:border-amber-700">
-                                    <span className="text-sm sm:text-lg font-black text-amber-800 dark:text-amber-300">
-                                      {component.stats.value}
-                                    </span>
-                                    <span className="text-xs font-bold text-amber-700 dark:text-amber-400">
-                                      {component.stats.label}
-                                    </span>
-                                  </div>
-                                </div>
-
-                                {/* Features */}
-                                <div className="flex flex-wrap gap-1 sm:gap-2 justify-center">
-                                  {component.features.map((feature) => (
-                                    <div
-                                      key={feature}
-                                      className="px-2 sm:px-3 py-0.5 sm:py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-300"
-                                      style={{
-                                        fontFamily: "system-ui, sans-serif",
-                                      }}>
-                                      {feature}
-                                    </div>
-                                  ))}
-                                </div>
-
-                                {/* CTA Button */}
-                                <motion.div
-                                  whileHover={{ scale: 1.05 }}
-                                  whileTap={{ scale: 0.95 }}
-                                  className="flex items-center justify-center gap-1 sm:gap-2 py-2 sm:py-3 px-4 sm:px-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-full font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg mx-auto">
-                                  <span>Explore</span>
-                                  <ArrowRight
-                                    className="w-3 h-3 sm:w-4 sm:h-4"
-                                    strokeWidth={3}
-                                  />
-                                </motion.div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
+                            {/* CTA Button */}
+                            <div className="flex items-center justify-center gap-1 sm:gap-2 py-2 sm:py-3 px-4 sm:px-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-full font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg mx-auto transition-transform duration-200 hover:scale-105 active:scale-95">
+                              <span>Explore</span>
+                              <ArrowRight
+                                className="w-3 h-3 sm:w-4 sm:h-4"
+                                strokeWidth={3}
+                              />
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       {/* Glow Effect on Hover */}
-                      <motion.div
-                        animate={{
-                          opacity: hoveredCard === index ? 0.5 : 0,
-                        }}
-                        className="absolute -inset-1 bg-gradient-to-br from-amber-500 to-orange-500 rounded-3xl blur-2xl -z-10"
-                      />
+                      <div className={`absolute inset-0 bg-gradient-to-br from-amber-500 to-orange-500 rounded-2xl sm:rounded-3xl blur-xl -z-10 transition-opacity duration-300 ease-out ${
+                        hoveredCard === index 
+                          ? 'opacity-50' 
+                          : 'opacity-0'
+                      }`} />
                     </motion.div>
                   </Link>
                 </SwiperSlide>
