@@ -219,17 +219,17 @@ export default function RoadMap() {
             variants={itemVariants}
             className="text-center mb-16 md:mb-20">
             {/* Badge */}
-                          <h1
-                style={{
-                  WebkitTextStrokeWidth: "2px",
-                  WebkitTextStrokeColor: "#876046",
-                  textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
-                  fontFamily: '"Luckiest Guy", cursive',
-                  lineHeight: "normal",
-                }}
-                className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
-                OUR JOURNEY
-              </h1>
+            <h1
+              style={{
+                WebkitTextStrokeWidth: "2px",
+                WebkitTextStrokeColor: "#876046",
+                textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                fontFamily: '"Luckiest Guy", cursive',
+                lineHeight: "normal",
+              }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl px-4 py-2 text-red-400 rounded-full font-semibold mb-4 text-center leading-tight">
+              OUR JOURNEY
+            </h1>
             {/* <motion.div
               initial={{ scale: 0, rotate: -180 }}
               animate={isInView ? { scale: 1, rotate: 0 } : {}}

@@ -21,9 +21,6 @@ export function AboutProjectSplit() {
         radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
         radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
       `,
-    //         backgroundRepeat: "no-repeat",
-    // backgroundSize: "cover", // hoặc 'contain' tùy bạn
-    // backgroundPosition: "center",
       }}
       ref={ref}
       className="py-20 md:py-32 overflow-hidden ">
@@ -39,7 +36,7 @@ export function AboutProjectSplit() {
           className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
           About K-LovePet
         </h1>
-        <h2 className="text-3xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-white">
+        <h2 className="text-3xl md:text-3xl font-bold mb-6 text-gray-900 dark:text-black">
           Building a Global Ecosystem For Pet Lovers
           {/* {" "} */}
           {/* <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
@@ -145,7 +142,7 @@ function ValueItem({ icon, title, description }) {
             fontFamily: '"Luckiest Guy", cursive',
             lineHeight: "normal",
           }}
-          className="font-semibold text-gray-900 dark:text-white mb-1">
+          className="font-semibold text-gray-900 dark:text-gray-900 mb-1">
           {title}
         </h4>
         <p
@@ -259,7 +256,7 @@ export function AboutProjectCards() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
           className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 dark:text-black">
             Building a Global Ecosystem for Pet Lovers
             {/* {" "} */}
             {/* <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">

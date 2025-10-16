@@ -1,5 +1,11 @@
 @import "tailwindcss";
-
+:root { color-scheme: light only; }
+@media (prefers-color-scheme: dark) {
+  :root, html, body {
+    color-scheme: light !important;
+    background-color: #ffffff !important;
+  }
+}
 @theme {
   --animate-paw-walk: paw-walk 3s ease-in-out infinite;
   --animate-paw-walk-alt: paw-walk-alt 3s ease-in-out infinite;

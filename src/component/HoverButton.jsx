@@ -63,13 +63,11 @@ const HoverButton = () => {
             ease: "easeInOut",
           }}
         >
-          <img
-            src="/left_arrow.svg"
-            alt="icon"
-            loading="lazy"
-            className="w-[46%] h-[46%] sm:w-[48%] sm:h-[48%] md:w-[50%] md:h-[50%] lg:w-[52%] lg:h-[52%] object-contain"
-          />
-        </motion.div>
+          <span 
+           className="w-[46%] h-[46%] sm:w-[48%] sm:h-[48%] md:w-[50%] md:h-[50%] lg:w-[52%] lg:h-[52%] object-contain"
+          >
+            🐾
+          </span>        </motion.div>
 
         {/* Right Arrow */}
         <motion.div
@@ -92,12 +90,11 @@ const HoverButton = () => {
             ease: "easeInOut",
           }}
         >
-          <img
-            src="/right_arrow.svg"
-            alt="icon"
-            loading="lazy"
-            className="w-[46%] h-[46%] sm:w-[48%] sm:h-[48%] md:w-[50%] md:h-[50%] lg:w-[52%] lg:h-[52%] object-contain"
-          />
+          <span 
+           className="w-[46%] h-[46%] sm:w-[48%] sm:h-[48%] md:w-[50%] md:h-[50%] lg:w-[52%] lg:h-[52%] object-contain"
+          >
+            🐾
+          </span>
         </motion.div>
 
         {/* Button Text Container */}

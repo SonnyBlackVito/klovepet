@@ -41,7 +41,7 @@ const TokenomicsSection = () => {
     },
     {
       label: "Team & Advisors",
-      value: "100,000,000",
+      value: "100,000,000  (3-year vesting)",
       color: "#F5F5F5",
       percentage: "5%",
       image: "/images/token_image_6.png",
@@ -50,7 +50,7 @@ const TokenomicsSection = () => {
 
   return (
     <div
-      className="bg-[#FEFBEA] tokenomics-sparkle-bg py-20 px-8 md:px-12 lg:px-16 xl:px-20 relative"
+      className="bg-[#FEFBEA] tokenomics-sparkle-bg py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 relative"
       style={{
         backgroundImage: `
         linear-gradient(180deg, 
@@ -70,41 +70,36 @@ const TokenomicsSection = () => {
       }}>
       <div className="sparkle-overlay" />
 
-      <div className="flex flex-row justify-between relative overflow-x-hidden">
-        <div className="flex flex-col relative z-10 mb-16">
+      {/* Header Section */}
+      <div className="flex flex-row justify-between relative overflow-x-hidden mb-8 sm:mb-12 md:mb-16">
+        <div className="flex flex-col relative z-10 w-full">
           <h2
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-normal leading-normal max-w-6xl"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-normal leading-tight sm:leading-normal max-w-6xl"
             style={{
               color: "#F26457",
-              WebkitTextStroke: "2px #876046",
+              WebkitTextStroke: "1px #876046",
               fontFamily: "'Luckiest Guy', cursive",
-              textShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
+              textShadow: "0px 4px 6px rgba(0, 0, 0, 0.25)",
             }}>
-            Blockchain{" "}
+            <span className="block sm:inline">Blockchain</span>{" "}
             <span className="relative inline-block">
-              &{/* Container bước chân - Ẩn trên mobile, hiện từ md trở lên */}
+              &
+              {/* Paw prints animation - hidden on mobile */}
               <div
-                className="hidden md:block absolute top-0 left-full h-[200px] pointer-events-none overflow-visible"
+                className="hidden lg:block absolute top-0 left-full h-[200px] pointer-events-none overflow-visible"
                 style={{
                   marginLeft: "10px",
-                  width: "1200px", // Đủ rộng cho bước chân chạy
+                  width: "1200px",
                 }}>
-                {/* 🐾 Bước chân xuất phát từ chữ & */}
                 {[
                   { delay: 0, top: 5, isLeft: true, color: "#F26457" },
                   { delay: 0.3, top: 50, isLeft: false, color: "#FF7F6E" },
                   { delay: 0.6, top: 5, isLeft: true, color: "#F26457" },
                   { delay: 0.9, top: 50, isLeft: false, color: "#FF7F6E" },
-                  { delay: 1.2, top: 5, isLeft: true, color: "#F26457" },
-                  { delay: 1.5, top: 50, isLeft: false, color: "#FF7F6E" },
-                  { delay: 1.8, top: 5, isLeft: true, color: "#F26457" },
-                  { delay: 2.1, top: 50, isLeft: false, color: "#FF7F6E" },
-                  { delay: 2.4, top: 5, isLeft: true, color: "#F26457" },
-                  { delay: 2.7, top: 50, isLeft: false, color: "#FF7F6E" },
                 ].map((paw, index) => (
                   <div
                     key={index}
-                    className={`absolute text-5xl ${
+                    className={`absolute text-4xl xl:text-5xl ${
                       paw.isLeft ? "animate-paw-walk" : "animate-paw-walk-alt"
                     }`}
                     style={{
@@ -117,107 +112,98 @@ const TokenomicsSection = () => {
                     🐾
                   </div>
                 ))}
-
-
               </div>
             </span>{" "}
-            Tokenomics
+            <span className="block sm:inline">Tokenomics</span>
           </h2>
 
           <p
-            className="text-xl sm:text-2xl md:text-3xl mt-4 font-bold"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mt-3 sm:mt-4 font-bold max-w-4xl"
             style={{
               color: "#333",
               fontFamily: "'SVN-Gilroy', sans-serif",
-              textShadow: "0px 8px 8px rgba(0, 0, 0, 0.25)",
+              textShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)",
             }}>
             Built on Solana Chain for low fees and fast transactions.
-            <br />A dedicated Sub-chain will follow.
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
+            A dedicated Sub-chain will follow.
           </p>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-12 min-h-[500px] relative z-10">
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-10 lg:gap-12 xl:gap-16 min-h-[400px] sm:min-h-[500px] relative z-10">
         {/* Left Side - Data List */}
-        <div className="flex-1 max-w-[800px]">
-          <div className="flex gap-12">
-            {/* First Column */}
-            <div className="flex flex-col gap-8 flex-1">
-              {tokenomicsData.slice(0, 3).map((item, index) => (
-                <div key={index}>
-                  <div className="flex gap-4 items-start">
-                    <div>
-                      <Image
-                        src={item.image}
-                        alt={item.label}
-                        width={120}
-                        height={120}
-                        className="w-full h-auto object-contain"
-                        priority
-                      />
-                    </div>
-                    <div className="flex flex-col gap-2 flex-1">
-                      <p
-                        style={{
-                          fontFamily: "'Luckiest Guy', cursive",
-                        }}
-                        className="text-xl text-black  leading-tight">
-                        {item.label}
-                      </p>
-                      <p className="text-sm text-black font-normal">
-                        {item.value}
-                      </p>
-                    </div>
-                  </div>
+        <div className="w-full lg:flex-1 max-w-[900px]">
+          {/* Mobile & Small Tablet: Single Column */}
+          <div className="flex flex-col gap-6 sm:gap-8 md:hidden">
+            {tokenomicsData.map((item, index) => (
+              <div key={index} className="flex gap-3 sm:gap-4 items-start">
+                <div className="flex-shrink-0">
+                  <Image
+                    src={item.image}
+                    alt={item.label}
+                    width={80}
+                    height={80}
+                    className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+                    priority
+                  />
                 </div>
-              ))}
-            </div>
+                <div className="flex flex-col gap-1 sm:gap-2 flex-1">
+                  <p
+                    style={{ fontFamily: "'Luckiest Guy', cursive" }}
+                    className="text-lg sm:text-xl text-black leading-tight">
+                    {item.label}
+                  </p>
+                  <p className="text-xs sm:text-sm text-black font-normal">
+                    {item.value}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
 
-            {/* Second Column */}
-            <div className="flex flex-col gap-8 flex-1">
-              {tokenomicsData.slice(3, 6).map((item, index) => (
-                <div key={index + 3}>
-                  <div className="flex gap-4 items-start">
-                    {/* <div 
-                      className="w-[86px] h-[44px] mt-0.5 shadow-lg"
-                      style={{ 
-                        backgroundColor: item.color,
-                        border: item.color === "#FFFFFF" || item.color === "#F5F5F5" ? "2px solid #E63946" : "none"
-                      }}
-                    /> */}
-                    <div>
-                      <Image
-                        src={item.image}
-                        alt={item.label}
-                        width={120}
-                        height={120}
-                        className="w-full h-auto object-contain"
-                        priority
-                      />
+          {/* Medium+ Screens: Two Columns */}
+          <div className="hidden md:flex gap-8 lg:gap-10 xl:gap-12">
+            {[0, 1].map((colIndex) => (
+              <div key={colIndex} className="flex flex-col gap-6 lg:gap-8 flex-1">
+                {tokenomicsData
+                  .slice(colIndex * 3, colIndex * 3 + 3)
+                  .map((item, index) => (
+                    <div key={index + colIndex * 3}>
+                      <div className="flex gap-3 lg:gap-4 items-start">
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={item.image}
+                            alt={item.label}
+                            width={120}
+                            height={120}
+                            className="w-20 h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-contain"
+                            priority
+                          />
+                        </div>
+                        <div className="flex flex-col gap-1 lg:gap-2 flex-1">
+                          <p
+                            style={{ fontFamily: "'Luckiest Guy', cursive" }}
+                            className="text-lg lg:text-xl xl:text-2xl text-black leading-tight">
+                            {item.label}
+                          </p>
+                          <p className="text-xs lg:text-sm xl:text-base text-black font-normal">
+                            {item.value}
+                          </p>
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex flex-col gap-2 flex-1">
-                      <p
-                        style={{
-                          fontFamily: "'Luckiest Guy', cursive",
-                        }}
-                        className="text-xl text-black  leading-tight">
-                        {item.label}
-                      </p>
-                      <p className="text-sm text-black font-normal">
-                        {item.value}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  ))}
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Right Side - Chart Image */}
-        <div className="relative animate-tokenomics-reveal hover:animate-tokenomics-glow">
-          <div className="relative max-w-[400px] w-full h-auto transition-all duration-300 hover:scale-110 hover:brightness-105 hover:drop-shadow-[0_0_30px_rgba(186, 142, 54, 1)]">
+        {/* Right Side - Pizza Token Chart */}
+        <div className="relative animate-tokenomics-reveal hover:animate-tokenomics-glow w-full lg:w-auto flex justify-center">
+          <div className="relative max-w-[280px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[380px] xl:max-w-[600px] w-full h-auto transition-all duration-300 hover:scale-105 lg:hover:scale-110 hover:brightness-105 hover:drop-shadow-[0_0_20px_rgba(186,142,54,0.8)] lg:hover:drop-shadow-[0_0_30px_rgba(186,142,54,1)]">
             <Image
               src="/images/pizza_token.png"
               alt="Tokenomics Chart"
@@ -281,6 +267,12 @@ const TokenomicsSection = () => {
         .animate-tokenomics-glow:hover {
           animation: tokenomicsGlow 2s ease-in-out infinite,
             tokenomicsPulse 1.5s ease-in-out infinite;
+        }
+
+        @media (max-width: 1024px) {
+          .animate-tokenomics-reveal {
+            animation: tokenomicsReveal 1.5s ease-out forwards;
+          }
         }
       `}</style>
     </div>

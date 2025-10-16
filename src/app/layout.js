@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { Luckiest_Guy } from "next/font/google";
 import "./globals.css";
+import Footer from "@/component/layout/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,11 +26,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      data-theme="light"
+      suppressHydrationWarning
+      className="overflow-x-hidden">
+      <head>
+        <meta name="color-scheme" content="light only" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} scroll-smooth antialiased overflow-x-hidden`}
-      >
-        {children}
+        style={{
+          colorScheme: "light",
+          background: "white",
+          backgroundColor: "white",
+        }}
+        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} scroll-smooth antialiased overflow-x-hidden `}>
+        <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

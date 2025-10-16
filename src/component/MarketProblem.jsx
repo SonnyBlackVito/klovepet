@@ -61,21 +61,21 @@ export default function MarketProblem() {
       title: "Full Transparency",
       subtitle: "Through Blockchain",
       description: "Every transaction visible and verifiable on-chain",
-      gradient: "from-cyan-400 to-sky-400",
+      gradient: "from-[#fef3c7] to-[#fecc00]",
     },
     {
       icon: "/images/NFT_ASSETIZATION.png",
       title: "NFT Assetization",
       subtitle: "Digital Ownership",
       description: "True ownership of digital assets and content",
-      gradient: "from-teal-400 to-emerald-400",
+      gradient: "from-[#fef3c7] to-[#fecc00]",
     },
     {
       icon: "/images/OPEN_MODEL.png",
       title: "Open Model",
       subtitle: "Inclusive Participation",
       description: "Everyone can participate and benefit equally",
-      gradient: "from-coral-400 to-pink-400",
+      gradient: "from-[#fef3c7] to-[#fecc00]",
     },
   ];
 
@@ -104,18 +104,18 @@ export default function MarketProblem() {
               Market Analysis
             </h1> */}
 
-        <h1
-          style={{
-            WebkitTextStrokeWidth: "2px",
-            WebkitTextStrokeColor: "#876046",
-            textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
-            fontFamily: '"Luckiest Guy", cursive',
-            lineHeight: "normal",
-          }}
-          className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
-          Market Analysis
-        </h1>
-            <h2 className="text-4xl md:text-6xl font-bold text-black dark:text-white mb-6 leading-tight">
+            <h1
+              style={{
+                WebkitTextStrokeWidth: "2px",
+                WebkitTextStrokeColor: "#876046",
+                textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                fontFamily: '"Luckiest Guy", cursive',
+                lineHeight: "normal",
+              }}
+              className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
+              Market Analysis
+            </h1>
+            <h2 className="text-4xl md:text-6xl font-bold text-black  mb-6 leading-tight">
               A Growing Industry
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-coral-500 via-pink-500 to-rose-400 mt-2">
                 Lacking Transparency
@@ -172,10 +172,18 @@ export default function MarketProblem() {
 
           {/* Problems Section */}
           <motion.div variants={itemVariants} className="mb-20">
-            <h3 className="text-3xl md:text-4xl font-bold text-center text-amber-200 dark:text-white mb-4">
+            <h3
+              style={{
+                WebkitTextStrokeWidth: "1px",
+                WebkitTextStrokeColor: "#876046",
+                textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                fontFamily: '"Luckiest Guy", cursive',
+                lineHeight: "normal",
+              }}
+              className="text-3xl md:text-4xl font-bold text-center text-amber-200 mb-4">
               But Behind That Growth...
             </h3>
-            <p className="text-xl text-center text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto">
+            <p className="text-xl text-center text-gray-600  mb-12 max-w-3xl mx-auto">
               Unresolved problems preventing true value creation
             </p>
 
@@ -185,14 +193,14 @@ export default function MarketProblem() {
                   key={index}
                   variants={itemVariants}
                   whileHover={{ y: -10, scale: 1.02 }}
-                  className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border-2 border-red-100 dark:border-red-900/30 hover:border-red-300 dark:hover:border-red-700 transition-all cursor-pointer group">
+                  className="bg-white  rounded-2xl p-6 shadow-lg border-2 border-red-100  hover:border-red-300 dark:hover:border-red-700 transition-all cursor-pointer group">
                   <motion.img
                     src={problem.icon}
                     alt={problem.title}
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     className="w-40 h-40 mb-4 mx-auto"
                   />
-                  <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-red-500 transition-colors">
+                  <h4 className="text-xl font-bold text-gray-900  mb-2 group-hover:text-red-500 transition-colors">
                     {problem.title}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
@@ -208,12 +216,6 @@ export default function MarketProblem() {
             variants={itemVariants}
             className="flex justify-center mb-12">
             <div className=" flex flex-col">
-              <motion.div
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-                className="text-6xl">
-                ⬇️
-              </motion.div>
               {/* <div className="pt-5 absolute -right-20 top-1/2 transform -translate-y-1/2 text-2xl font-bold text-gray-400 dark:text-gray-500">
                 Our Solution
               </div> */}
@@ -222,7 +224,15 @@ export default function MarketProblem() {
 
           {/* Solutions Section */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-3xl md:text-4xl font-bold text-center text-gray-900 white:text-white dark:text-white mb-12">
+            <h3
+              style={{
+                WebkitTextStrokeWidth: "1px",
+                WebkitTextStrokeColor: "#876046",
+                textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                fontFamily: '"Luckiest Guy", cursive',
+                lineHeight: "normal",
+              }}
+              className="text-3xl md:text-4xl font-bold text-center text-amber-200 white:text-white  mb-12">
               K-LovePet's Approach
             </h3>
 
@@ -244,7 +254,7 @@ export default function MarketProblem() {
                     className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity`}></motion.div>
 
                   {/* Card */}
-                  <div className="relative bg-white dark:bg-gray-800 rounded-3xl p-8 shadow-xl border-2 border-gray-100 dark:border-gray-700 group-hover:border-cyan-300 dark:group-hover:border-cyan-600 transition-all overflow-hidden">
+                  <div className="relative bg-white  rounded-3xl p-8 shadow-xl border-2 border-gray-100  group-hover:border-cyan-300  transition-all overflow-hidden">
                     {/* Top accent */}
                     <div
                       className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${solution.gradient}`}></div>
@@ -253,30 +263,22 @@ export default function MarketProblem() {
                     <motion.img
                       src={solution.icon}
                       alt={solution.title}
-                      whileHover={{ scale: 1.3, rotate: 360 }}
+                      // whileHover={{ scale: 1.3, rotate: 360 }}
                       transition={{ duration: 0.6 }}
                       className="w-40 h-40 mb-4 mx-auto"
                     />
 
                     {/* Content */}
-                    <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 text-center">
+                    <h4 className="text-2xl font-bold text-gray-900  mb-2 text-center">
                       {solution.title}
                     </h4>
-                    <p className="text-cyan-600 dark:text-cyan-400 font-semibold mb-3 text-center">
+                    <p className="text-cyan-600  font-semibold mb-3 text-center">
                       {solution.subtitle}
                     </p>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-center">
+                    <p className="text-gray-600  leading-relaxed text-center">
                       {solution.description}
                     </p>
 
-                    {/* Checkmark */}
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      transition={{ delay: 0.5 + index * 0.1, type: "spring" }}
-                      className="absolute top-6 right-6 w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white text-2xl shadow-lg">
-                      ✓
-                    </motion.div>
                   </div>
                 </motion.div>
               ))}
@@ -288,7 +290,8 @@ export default function MarketProblem() {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-coral-500 to-pink-500 text-white text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transition-all">
+              className="px-8 py-4 bg-gradient-to-r from-coral-500 to-[#fef3c7] text-dark text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transition-all">
+              {" "}
               Learn More About Our Solution →
             </motion.button>
           </motion.div>

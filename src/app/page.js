@@ -10,26 +10,32 @@ import RoadMap from "@/component/RoadMap";
 
 export default function Home() {
   return (
-    <div className="">
-        {/* <section className="bg-red-200 items-center "> */}
-          <Header />
-          {/* </section> */}
-      <section className="">
+    <div className="relative w-full overflow-x-hidden">
+      <Header />
+      
+      <section className="relative w-full">
         <HeroBanner />
       </section>
-      <section className="#about">
+      
+      <section id="about" className="relative w-full">
         <AboutProjectSplit />
       </section>
-      <section>
+      
+      <section className="relative w-full">
         <MarketProblem />
       </section>
-      <section>
+      
+      <section className="relative w-full">
         <Ecosystem />
       </section>
-      <section>
+      
+      <section className="relative w-full">
         <TokenomicsSection />
       </section>
-      <RoadMap />
+      
+      <section className="relative w-full">
+        <RoadMap />
+      </section>
     </div>
   );
 }
