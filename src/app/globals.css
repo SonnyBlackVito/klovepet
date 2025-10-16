@@ -5,8 +5,29 @@
   --animate-paw-walk-alt: paw-walk-alt 3s ease-in-out infinite;
 }
 
+/* Dark mode support */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
 body {
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Force unlock scroll utility */
+.force-unlock-scroll {
+  overflow: auto !important;
+  height: auto !important;
+  padding-right: 0 !important;
+}
+
+html.force-unlock-scroll {
+  overflow: auto !important;
 }
 
 /* Bước chân bắt đầu từ H2 (left: 0) và đi ra ngoài */

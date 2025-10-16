@@ -6,6 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useCallback, useMemo, memo } from "react";
 import { Menu, X, Home, Info, FileText, Newspaper } from "lucide-react";
 import HoverButton from "./HoverButton";
+import DarkModeToggle from "./DarkModeToggle";
 
 // ============ CUSTOM HOOKS ============
 const useScrollPosition = () => {
@@ -305,7 +306,7 @@ const AppHeader = ({ onHome, onAbout }) => {
             flex items-center justify-between
             transition-all duration-300
             ${isScrolled 
-              ? 'bg-black/70 backdrop-blur-2xl border border-amber-900/40 shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_100px_rgba(217,119,6,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]' 
+              ? 'bg-black/70 dark:bg-gray-900/70 backdrop-blur-2xl border border-amber-900/40 dark:border-amber-700/40 shadow-[0_8px_32px_rgba(0,0,0,0.5),0_0_100px_rgba(217,119,6,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]' 
               : 'bg-transparent'
             }
           `}
@@ -363,13 +364,14 @@ const AppHeader = ({ onHome, onAbout }) => {
             <Menu size={22} className="relative z-10" strokeWidth={2.5} />
           </motion.button>
 
-          {/* Desktop Action Button */}
+          {/* Desktop Action Buttons */}
           <motion.div 
-            className="hidden lg:block ml-12"
+            className="hidden lg:flex items-center gap-4 ml-12"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: isVisible ? 0.6 : 0, duration: 0.4 }}
           >
+            <DarkModeToggle />
             <HoverButton />
           </motion.div>
         </motion.div>
@@ -465,7 +467,7 @@ const AppHeader = ({ onHome, onAbout }) => {
                   className="h-[1px] bg-gradient-to-r from-transparent via-amber-900/50 to-transparent my-4"
                 />
 
-                {/* Action Button */}
+                {/* Action Buttons */}
                 <motion.div
                   initial={{ y: 30, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -475,8 +477,9 @@ const AppHeader = ({ onHome, onAbout }) => {
                     stiffness: 200,
                     damping: 20
                   }}
-                  className="mt-4"
+                  className="mt-4 flex items-center justify-center gap-4"
                 >
+                  <DarkModeToggle />
                   <HoverButton />
                 </motion.div>
               </nav>

@@ -1,9 +1,11 @@
-'use client';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+"use client";
 
-export default function HeroBanner() {
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import styles from './HeroSection.module.css';
+
+const HeroSection = () => {
   const [showImage, setShowImage] = useState(false);
   const [isFirstVisit, setIsFirstVisit] = useState(true);
   const [isVideoReady, setIsVideoReady] = useState(false);
@@ -24,7 +26,7 @@ export default function HeroBanner() {
           completeVideoSequence();
         }
       } catch (error) {
-        console.warn('SessionStorage not available:', error);
+        console.warn('SessionStorage không khả dụng:', error);
         setIsFirstVisit(false);
         setShowImage(true);
         completeVideoSequence();
@@ -72,7 +74,7 @@ export default function HeroBanner() {
     try {
       sessionStorage.setItem('hasSeenVideo', 'true');
     } catch (error) {
-      console.warn('Cannot save to sessionStorage:', error);
+      console.warn('Không thể lưu vào sessionStorage:', error);
     }
 
     // Dispatch event to show header
@@ -86,21 +88,21 @@ export default function HeroBanner() {
 
   // Handle video end
   const handleVideoEnd = () => {
-    console.log('Video ended, showing image');
+    console.log('Video kết thúc, hiển thị hình ảnh');
     setShowImage(true);
     completeVideoSequence();
   };
 
   // Handle video error
   const handleVideoError = (e) => {
-    console.warn('Video error:', e);
+    console.warn('Lỗi video:', e);
     setShowImage(true);
     completeVideoSequence();
   };
 
   // Handle skip video
   const handleSkip = () => {
-    console.log('Video skipped');
+    console.log('Bỏ qua video');
     if (videoRef.current) {
       videoRef.current.pause();
     }
@@ -109,7 +111,7 @@ export default function HeroBanner() {
   };
 
   return (
-    <section className="relative w-full h-screen overflow-hidden bg-black">
+    <section className={styles.heroSection}>
       <AnimatePresence mode="wait">
         {isFirstVisit && !showImage ? (
           // Video Layer - Full Screen
@@ -126,10 +128,10 @@ export default function HeroBanner() {
               transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
             }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 w-full h-full z-10"
+            className={styles.videoContainer}
           >
             {/* Video Container - Full Screen */}
-            <div className="relative w-full h-full">
+            <div className={styles.videoWrapper}>
               <video
                 ref={videoRef}
                 src="/videos/banner_pet.mp4"
@@ -141,23 +143,19 @@ export default function HeroBanner() {
                 onLoadedData={handleVideoLoaded}
                 onEnded={handleVideoEnd}
                 onError={handleVideoError}
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{
-                  objectFit: 'cover',
-                  objectPosition: 'center'
-                }}
+                className={styles.video}
               />
 
-              {/* Video Overlay - Subtle vignette effect */}
+              {/* Video Overlay */}
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1.5, delay: 0.5 }}
-                className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 pointer-events-none"
+                className={styles.videoOverlay}
               />
             </div>
 
-            {/* Skip Video Button - Enhanced design */}
+            {/* Skip Video Button */}
             <motion.button
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -169,26 +167,10 @@ export default function HeroBanner() {
               whileTap={{ scale: 0.95 }}
               transition={{ delay: 2, duration: 0.4 }}
               onClick={handleSkip}
-              className="absolute bottom-12 right-8 md:bottom-16 md:right-12 
-                px-6 py-3 md:px-8 md:py-4 
-                bg-black/80 backdrop-blur-xl 
-                text-white text-sm md:text-base font-bold tracking-wider
-                rounded-full 
-                hover:bg-black/95 
-                transition-all duration-300 
-                z-20 
-                shadow-[0_8px_32px_rgba(0,0,0,0.6)] 
-                border border-white/20
-                hover:border-amber-500/50
-                hover:shadow-[0_8px_32px_rgba(217,119,6,0.3)]
-                group"
-              style={{ 
-                textShadow: '0 2px 10px rgba(0,0,0,0.8)',
-                fontFamily: "'Luckiest Guy', cursive"
-              }}
+              className={styles.skipButton}
             >
-              <span className="flex items-center gap-2">
-                SKIP VIDEO
+              <span className={styles.skipButtonContent}>
+                BỎ QUA VIDEO
                 <motion.span
                   animate={{ x: [0, 4, 0] }}
                   transition={{ 
@@ -196,42 +178,42 @@ export default function HeroBanner() {
                     repeat: Infinity,
                     ease: "easeInOut" 
                   }}
-                  className="text-amber-500 group-hover:text-amber-400"
+                  className={styles.skipArrow}
                 >
                   →
                 </motion.span>
               </span>
             </motion.button>
 
-            {/* Loading indicator while video is loading */}
+            {/* Loading indicator */}
             {!isVideoReady && (
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute inset-0 flex items-center justify-center bg-black z-30"
+                className={styles.loadingContainer}
               >
-                <div className="flex flex-col items-center gap-4">
+                <div className={styles.loadingContent}>
                   <motion.div
                     animate={{ rotate: 360 }}
                     transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                    className="w-16 h-16 border-4 border-amber-500/30 border-t-amber-500 rounded-full"
+                    className={styles.loadingSpinner}
                   />
-                  <p className="text-white/80 text-sm font-semibold tracking-wider">
-                    Loading...
+                  <p className={styles.loadingText}>
+                    Đang tải...
                   </p>
                 </div>
               </motion.div>
             )}
           </motion.div>
         ) : (
-          // Image Layer - Shown after video or on repeat visits
+          // Image Layer
           <motion.div
             key="image"
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 w-full h-full"
+            className={styles.imageContainer}
           >
             <Image
               src="/images/banner_kpoppet.png"
@@ -240,11 +222,7 @@ export default function HeroBanner() {
               priority
               quality={100}
               sizes="100vw"
-              className="object-cover"
-              style={{
-                objectFit: 'cover',
-                objectPosition: 'center'
-              }}
+              className={styles.heroImage}
             />
 
             {/* Image Overlay */}
@@ -252,13 +230,13 @@ export default function HeroBanner() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.5, delay: 0.3 }}
-              className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/30 pointer-events-none"
+              className={styles.imageOverlay}
             />
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Scroll Indicator - Only show after video ends or on repeat visits */}
+      {/* Scroll Indicator */}
       <AnimatePresence>
         {showImage && (
           <motion.div
@@ -281,18 +259,17 @@ export default function HeroBanner() {
                 ease: "easeInOut"
               }
             }}
-            className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-20"
+            className={styles.scrollIndicator}
           >
-            <div className="bg-black/70 backdrop-blur-md p-3 md:p-4 rounded-full border border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.6)]">
+            <div className={styles.scrollIndicatorContainer}>
               <svg
-                className="w-6 h-6 md:w-8 md:h-8 text-white"
+                className={styles.scrollIcon}
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2.5"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
-                style={{ filter: 'drop-shadow(0 2px 8px rgba(255,255,255,0.3))' }}
               >
                 <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
               </svg>
@@ -303,32 +280,33 @@ export default function HeroBanner() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.8 }}
               transition={{ delay: 1 }}
-              className="absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap text-white/80 text-xs md:text-sm font-semibold tracking-wider"
-              style={{ textShadow: '0 2px 8px rgba(0,0,0,0.8)' }}
+              className={styles.scrollText}
             >
-              Scroll to explore
+              Cuộn để khám phá
             </motion.p>
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* Decorative corner elements - only visible with image */}
+      {/* Decorative corner elements */}
       {showImage && (
         <>
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 0.1, scale: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-amber-500 to-transparent blur-3xl pointer-events-none"
+            className={styles.decorativeElement1}
           />
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 0.1, scale: 1 }}
             transition={{ duration: 1, delay: 0.7 }}
-            className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-orange-500 to-transparent blur-3xl pointer-events-none"
+            className={styles.decorativeElement2}
           />
         </>
       )}
     </section>
   );
-}
+};
+
+export default HeroSection;

@@ -171,7 +171,7 @@ export default function RoadMap() {
   return (
     <section
       ref={ref}
-      className="relative py-24 md:py-32 lg:py-40 overflow-hidden"
+      className="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-gradient-to-br from-amber-50 to-orange-100 dark:from-gray-900 dark:to-gray-800"
       style={{
         fontFamily: "var(--font-luckiest-guy)",
         backgroundImage: `
@@ -180,7 +180,6 @@ export default function RoadMap() {
           radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
           radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
         `,
-        backgroundColor: "#ffffff",
       }}>
       {/* Dark Mode Overlay */}
       <div className="absolute inset-0 bg-gray-950 dark:opacity-95 opacity-0 transition-opacity duration-300 pointer-events-none" />
@@ -219,44 +218,17 @@ export default function RoadMap() {
             variants={itemVariants}
             className="text-center mb-16 md:mb-20">
             {/* Badge */}
-                          <h1
-                style={{
-                  WebkitTextStrokeWidth: "2px",
-                  WebkitTextStrokeColor: "#876046",
-                  textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
-                  fontFamily: '"Luckiest Guy", cursive',
-                  lineHeight: "normal",
-                }}
-                className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
-                OUR JOURNEY
-              </h1>
-            {/* <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={isInView ? { scale: 1, rotate: 0 } : {}}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-6 py-3 mb-8
-                bg-gradient-to-r from-amber-100 via-orange-100 to-red-100
-                dark:from-amber-500/20 dark:via-orange-500/20 dark:to-red-500/20
-                border-2 border-amber-300 dark:border-amber-700
-                rounded-full backdrop-blur-sm shadow-lg">
-              <Target className="w-5 h-5 text-amber-600 dark:text-amber-400" />
-              <span className="text-sm font-bold bg-gradient-to-r from-amber-700 via-orange-700 to-red-700 dark:from-amber-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent tracking-wider">
-                OUR JOURNEY
-              </span>
-
-              <h1
-                style={{
-                  WebkitTextStrokeWidth: "2px",
-                  WebkitTextStrokeColor: "#876046",
-                  textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
-                  fontFamily: '"Luckiest Guy", cursive',
-                  lineHeight: "normal",
-                }}
-                className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
-                About K-LovePet
-              </h1>
-              <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-400" />
-            </motion.div> */}
+            <h1
+              style={{
+                WebkitTextStrokeWidth: "2px",
+                WebkitTextStrokeColor: "#876046",
+                textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                fontFamily: '"Luckiest Guy", cursive',
+                lineHeight: "normal",
+              }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl px-4 py-2 text-red-400 rounded-full font-semibold mb-4 text-center leading-tight">
+              OUR JOURNEY
+            </h1>
 
             {/* Title */}
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">
@@ -733,92 +705,6 @@ export default function RoadMap() {
               })}
             </div>
           </div>
-
-          {/* CTA Section */}
-          {/* <motion.div
-            style={{
-              backgroundImage: 'url("/images/banner_ecosystem.png")',
-              backgroundSize: "fill",
-              backgroundPosition: "center",
-            }}
-            variants={itemVariants}
-            className="relative mt-10">
-            <div className="relative bg-gradient-to-br  rounded-3xl p-12 md:p-16 overflow-hidden shadow-2xl border-4 border-white/20">
-              <div className="absolute inset-0 opacity-10">
-                <motion.div
-                  animate={{
-                    backgroundPosition: ["0% 0%", "100% 100%"],
-                  }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: `radial-gradient(circle at 20% 50%, white 2px, transparent 2px),
-                                     radial-gradient(circle at 80% 50%, white 2px, transparent 2px)`,
-                    backgroundSize: "50px 50px",
-                  }}
-                />
-              </div>
-
-              <motion.div
-                animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute top-8 right-8 text-6xl opacity-20">
-                🐾
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-                className="absolute bottom-8 left-8 text-6xl opacity-20">
-                🐾
-              </motion.div>
-
-              <div className="relative z-10 text-center text-white">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={isInView ? { scale: 1, rotate: [0, 360] } : {}}
-                  transition={{ delay: 1.5, type: "spring", duration: 1 }}>
-                  <Award
-                    className="w-20 h-20 mx-auto mb-6 drop-shadow-2xl"
-                    strokeWidth={2}
-                  />
-                </motion.div>
-
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-wider drop-shadow-lg uppercase">
-                  JOIN OUR JOURNEY
-                </h3>
-                <p
-                  className="text-xl md:text-2xl mb-10 opacity-95 max-w-2xl mx-auto font-sans leading-relaxed"
-                  style={{ fontFamily: "system-ui, sans-serif" }}>
-                  Be part of something extraordinary. Together, we're building
-                  the future of pet communities.
-                </p>
-
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group px-10 py-5 bg-white text-gray-900 text-lg font-black rounded-full shadow-2xl hover:shadow-3xl transition-all flex items-center gap-3 tracking-wider uppercase">
-                    <span>Get Started</span>
-                    <motion.div
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1, repeat: Infinity }}>
-                      <ArrowRight className="w-6 h-6" strokeWidth={3} />
-                    </motion.div>
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-10 py-5 bg-white/20 backdrop-blur-xl text-white text-lg font-black rounded-full shadow-xl hover:bg-white/30 transition-all border-2 border-white/40 tracking-wider uppercase">
-                    Learn More
-                  </motion.button>
-                </div>
-              </div>
-            </div>
-          </motion.div> */}
         </motion.div>
       </div>
     </section>

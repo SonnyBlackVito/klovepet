@@ -1,0 +1,455 @@
+.marketSection {
+  font-family: var(--font-luckiest-guy);
+  background-image: 
+    radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent),
+    radial-gradient(circle 600px at 50% 200px, #fef3c7, transparent),
+    radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
+    radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent);
+  padding: 5rem 0 8rem;
+  background-color: #fefbeb;
+}
+
+/* Dark mode styles */
+.dark .marketSection {
+  background-color: #111827;
+  background-image: 
+    radial-gradient(circle 600px at 0% 200px, #374151, transparent),
+    radial-gradient(circle 600px at 50% 200px, #374151, transparent),
+    radial-gradient(circle 600px at 80% 200px, #374151, transparent),
+    radial-gradient(circle 600px at 100% 200px, #374151, transparent);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.sectionTitle {
+  margin-bottom: 0;
+}
+
+.marketCard {
+  background: linear-gradient(to bottom right, #06b6d4, #14b8a6, #10b981);
+  border-radius: 3rem;
+  padding: 3rem 4rem;
+  margin-bottom: 4rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .marketCard {
+    padding: 4rem;
+  }
+}
+
+.decorativeElement1 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 16rem;
+  height: 16rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+.decorativeElement2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 24rem;
+  height: 24rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+.marketContent {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+}
+
+.marketStats {
+  display: inline-block;
+}
+
+.marketValue {
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #b9ed51;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 25px 50px -12px rgba(0, 0, 0, 0.25));
+}
+
+@media (min-width: 768px) {
+  .marketValue {
+    font-size: 6rem;
+  }
+}
+
+.marketLabel {
+  color: #f87171;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .marketLabel {
+    font-size: 1.875rem;
+  }
+}
+
+.marketDescription {
+  font-size: 1.125rem;
+  color: black;
+}
+
+.dark .marketDescription {
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .marketDescription {
+    font-size: 1.25rem;
+  }
+}
+
+.growthIndicator {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+}
+
+.growthIcon {
+  font-size: 1.875rem;
+}
+
+.growthText {
+  font-size: 1.25rem;
+  color: #67e8f9;
+  font-weight: 600;
+}
+
+.problemsSection {
+  margin-bottom: 5rem;
+}
+
+.problemsTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  color: #fcd34d;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .problemsTitle {
+    font-size: 2.25rem;
+  }
+}
+
+.dark .problemsTitle {
+  color: white;
+}
+
+.problemsDescription {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 3rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dark .problemsDescription {
+  color: #d1d5db;
+}
+
+.problemsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .problemsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .problemsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.problemCard {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(239, 68, 68, 0.1);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.problemCard:hover {
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+@media (prefers-color-scheme: dark) {
+  .problemCard {
+    background-color: #1f2937;
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+  
+  .problemCard:hover {
+    border-color: rgba(239, 68, 68, 0.7);
+  }
+}
+
+.problemIcon {
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.problemTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s;
+}
+
+.problemCard:hover .problemTitle {
+  color: #ef4444;
+}
+
+@media (prefers-color-scheme: dark) {
+  .problemTitle {
+    color: white;
+  }
+}
+
+.problemDescription {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.625;
+}
+
+@media (prefers-color-scheme: dark) {
+  .problemDescription {
+    color: #d1d5db;
+  }
+}
+
+.arrowContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.arrowWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.arrowIcon {
+  font-size: 3.75rem;
+}
+
+.solutionsSection {
+  margin-bottom: 4rem;
+}
+
+.solutionsTitle {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  color: #111827;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .solutionsTitle {
+    font-size: 2.25rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .solutionsTitle {
+    color: white;
+  }
+}
+
+.solutionsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .solutionsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.solutionCard {
+  position: relative;
+  cursor: pointer;
+}
+
+.solutionGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 1.5rem;
+  filter: blur(1.5rem);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.solutionCard:hover .solutionGlow {
+  opacity: 0.6;
+}
+
+
+.solutionCardContent {
+  position: relative;
+  background-color: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  border: 2px solid #f3f4f6;
+  transition: all 0.3s;
+  overflow: hidden;
+}
+
+.solutionCard:hover .solutionCardContent {
+  border-color: #22d3ee;
+}
+
+@media (prefers-color-scheme: dark) {
+  .solutionCardContent {
+    background-color: #1f2937;
+    border-color: #374151;
+  }
+  
+  .solutionCard:hover .solutionCardContent {
+    border-color: #22d3ee;
+  }
+}
+
+.solutionAccent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0.5rem;
+}
+
+.solutionIcon {
+  width: 10rem;
+  height: 10rem;
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.solutionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .solutionTitle {
+    color: white;
+  }
+}
+
+.solutionSubtitle {
+  color: #0891b2;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .solutionSubtitle {
+    color: #22d3ee;
+  }
+}
+
+.solutionDescription {
+  color: #6b7280;
+  line-height: 1.625;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .solutionDescription {
+    color: #d1d5db;
+  }
+}
+
+.checkmark {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.ctaSection {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.ctaButton {
+  padding: 1rem 2rem;
+  background: linear-gradient(to right, #ff6b6b, #f472b6);
+  color: white;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.ctaButton:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}

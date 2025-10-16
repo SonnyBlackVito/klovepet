@@ -18,7 +18,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 
-export default function Ecosystem() {
+const EcosystemSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredCard, setHoveredCard] = useState(null);
@@ -109,7 +109,7 @@ export default function Ecosystem() {
   return (
     <section
       ref={ref}
-      className="relative py-24 md:py-32 lg:py-40 overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 overflow-hidden bg-gradient-to-br from-amber-50 to-orange-100 dark:from-gray-900 dark:to-gray-800"
       style={{
         fontFamily: "var(--font-luckiest-guy)",
         backgroundImage: `
@@ -118,7 +118,6 @@ export default function Ecosystem() {
           radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
           radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
         `,
-        backgroundColor: "#ffffff",
       }}>
       {/* Dark Mode Overlay */}
       <div className="absolute inset-0 bg-gray-950 dark:opacity-95 opacity-0 transition-opacity duration-300 pointer-events-none" />
@@ -145,27 +144,26 @@ export default function Ecosystem() {
         />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="max-w-7xl mx-auto">
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            {/* <h1 className="text-8xl text-red-400"> ECOSYSTEM</h1> */}
- <h1
-          style={{
-            WebkitTextStrokeWidth: "2px",
-            WebkitTextStrokeColor: "#876046",
-            textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
-            fontFamily: '"Luckiest Guy", cursive',
-            lineHeight: "normal",
-          }}
-          className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
-          ECOSYSTEM
-        </h1>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">
+          <motion.div variants={itemVariants} className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h1
+              style={{
+                WebkitTextStrokeWidth: "2px",
+                WebkitTextStrokeColor: "#876046",
+                textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                fontFamily: '"Luckiest Guy", cursive',
+                lineHeight: "normal",
+              }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl px-2 sm:px-4 py-1 sm:py-2 text-red-400 rounded-full font-semibold mb-2 sm:mb-4">
+              ECOSYSTEM
+            </h1>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-gray-900 dark:text-white mb-4 sm:mb-5 md:mb-6 leading-tight tracking-wide">
               <span className="block drop-shadow-lg">5 PLATFORMS</span>
               <span className="block bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-400 dark:to-orange-400 bg-clip-text text-transparent drop-shadow-2xl">
                 ONE ECOSYSTEM
@@ -174,7 +172,7 @@ export default function Ecosystem() {
 
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-sans"
+              className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-sans px-4 sm:px-0"
               style={{ fontFamily: "system-ui, sans-serif" }}>
               Interconnected platforms creating value for pet lovers worldwide
             </motion.p>
@@ -183,23 +181,23 @@ export default function Ecosystem() {
           {/* Stats */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 mb-8 sm:mb-12 md:mb-16">
             {stats.map((stat) => (
               <motion.div
                 key={stat.label}
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="relative group">
-                <div className="absolute inset-0 bg-amber-500/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-2xl p-5 border-2 border-amber-200 dark:border-amber-700 shadow-lg hover:shadow-2xl transition-all">
+                <div className="absolute inset-0 bg-amber-500/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 border-2 border-amber-200 dark:border-amber-700 shadow-lg hover:shadow-2xl transition-all">
                   <stat.icon
-                    className="w-7 h-7 mb-2 text-amber-600 dark:text-amber-400"
+                    className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 mb-2 sm:mb-3 text-amber-600 dark:text-amber-400"
                     strokeWidth={2.5}
                   />
-                  <div className="text-2xl font-black text-gray-900 dark:text-white mb-1">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 dark:text-white mb-1 sm:mb-2">
                     {stat.value}
                   </div>
                   <div
-                    className="text-xs text-gray-600 dark:text-gray-400 font-bold uppercase"
+                    className="text-xs sm:text-sm md:text-sm text-gray-600 dark:text-gray-400 font-bold uppercase"
                     style={{ fontFamily: "system-ui, sans-serif" }}>
                     {stat.label}
                   </div>
@@ -209,19 +207,18 @@ export default function Ecosystem() {
           </motion.div>
 
           {/* Swiper Carousel */}
-          <motion.div variants={itemVariants} className="relative mb-20">
-            <div className="flex items-center justify-between mb-8">
-              <h3 className="text-3xl font-black text-gray-900 dark:text-white tracking-wide uppercase">
+          <motion.div variants={itemVariants} className="relative mb-12 sm:mb-16 md:mb-20">
+            <div className="flex items-center justify-between mb-4 sm:mb-6 md:mb-8">
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-gray-900 dark:text-white tracking-wide uppercase">
                 Explore Platforms
               </h3>
             </div>
 
             <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
-              spaceBetween={24}
-              slidesPerView={1.5}
-              centeredSlides={false}
-              navigation
+              modules={[Pagination, Autoplay]}
+              spaceBetween={16}
+              slidesPerView={1.1}
+              centeredSlides={true}
               pagination={{ clickable: true }}
               autoplay={{
                 delay: 3000,
@@ -229,24 +226,38 @@ export default function Ecosystem() {
                 pauseOnMouseEnter: true,
               }}
               breakpoints={{
-                640: {
-                  slidesPerView: 2.5,
+                480: {
+                  slidesPerView: 1.3,
                   spaceBetween: 20,
+                  centeredSlides: true,
+                },
+                640: {
+                  slidesPerView: 1.8,
+                  spaceBetween: 24,
+                  centeredSlides: false,
                 },
                 768: {
-                  slidesPerView: 3,
+                  slidesPerView: 2.2,
                   spaceBetween: 24,
+                  centeredSlides: false,
                 },
                 1024: {
-                  slidesPerView: 4,
+                  slidesPerView: 3,
                   spaceBetween: 24,
+                  centeredSlides: false,
                 },
                 1280: {
-                  slidesPerView: 5,
+                  slidesPerView: 4,
                   spaceBetween: 24,
+                  centeredSlides: false,
+                },
+                1536: {
+                  slidesPerView: 4.5,
+                  spaceBetween: 24,
+                  centeredSlides: false,
                 },
               }}
-              className="ecosystem-swiper pb-12">
+              className="ecosystem-swiper pb-8 sm:pb-12">
               {components.map((component, index) => (
                 <SwiperSlide key={component.id}>
                   <Link href={`/ecosystem/${component.id}`}>
@@ -259,12 +270,12 @@ export default function Ecosystem() {
                         stiffness: 300,
                         damping: 20,
                       }}
-                      className="relative h-[340px] rounded-3xl overflow-hidden cursor-pointer group bg-white dark:bg-gray-800 border-2 border-amber-200 dark:border-gray-700 shadow-xl hover:shadow-2xl">
+                      className="relative h-[300px] sm:h-[320px] md:h-[340px] lg:h-[360px] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group bg-white dark:bg-gray-800 border-2 border-amber-200 dark:border-gray-700 shadow-xl hover:shadow-2xl">
                       {/* Gradient Background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" />
 
                       {/* Content */}
-                      <div className="relative h-full p-6 flex flex-col items-center justify-center">
+                      <div className="relative h-full p-3 sm:p-4 md:p-6 flex flex-col items-center justify-center">
                         {/* External Link Icon */}
                         <motion.div
                           initial={{ opacity: 0, scale: 0 }}
@@ -272,9 +283,9 @@ export default function Ecosystem() {
                             opacity: hoveredCard === index ? 1 : 0,
                             scale: hoveredCard === index ? 1 : 0,
                           }}
-                          className="absolute top-4 right-4 w-10 h-10 bg-amber-500 hover:bg-amber-600 rounded-full flex items-center justify-center shadow-lg z-10">
+                          className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-amber-500 hover:bg-amber-600 rounded-full flex items-center justify-center shadow-lg z-10">
                           <ExternalLink
-                            className="w-5 h-5 text-white"
+                            className="w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5 text-white"
                             strokeWidth={2.5}
                           />
                         </motion.div>
@@ -286,11 +297,11 @@ export default function Ecosystem() {
                             y: hoveredCard === index ? -20 : 0,
                           }}
                           transition={{ duration: 0.3 }}
-                          className="mb-6">
+                          className="mb-4 sm:mb-5 md:mb-6">
                           <img
                             src={component.icon}
                             alt={component.title}
-                            className="w-full h-40 object-contain drop-shadow-2xl"
+                            className="w-full h-28 sm:h-32 md:h-36 lg:h-40 object-contain drop-shadow-2xl"
                           />
                         </motion.div>
 
@@ -299,7 +310,7 @@ export default function Ecosystem() {
                           animate={{
                             scale: hoveredCard === index ? 0.9 : 1,
                           }}
-                          className="text-2xl font-black text-gray-900 dark:text-white text-center tracking-wide uppercase leading-tight px-2">
+                          className="text-base sm:text-lg md:text-xl lg:text-2xl font-black text-gray-900 dark:text-white text-center tracking-wide uppercase leading-tight px-2 sm:px-3 md:px-2">
                           {component.title}
                         </motion.h3>
 
@@ -311,11 +322,11 @@ export default function Ecosystem() {
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 20 }}
                               transition={{ duration: 0.3 }}
-                              className="absolute inset-0 p-6 flex flex-col justify-end bg-gradient-to-t from-white via-white/95 to-transparent dark:from-gray-800 dark:via-gray-800/95 dark:to-transparent">
-                              <div className="space-y-3">
+                              className="absolute inset-0 p-3 sm:p-4 md:p-6 flex flex-col justify-end bg-gradient-to-t from-white via-white/95 to-transparent dark:from-gray-800 dark:via-gray-800/95 dark:to-transparent">
+                              <div className="space-y-2 sm:space-y-3">
                                 {/* Subtitle */}
                                 <p
-                                  className="text-sm font-bold text-amber-600 dark:text-amber-400 text-center"
+                                  className="text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400 text-center"
                                   style={{
                                     fontFamily: "system-ui, sans-serif",
                                   }}>
@@ -324,7 +335,7 @@ export default function Ecosystem() {
 
                                 {/* Description */}
                                 <p
-                                  className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-center"
+                                  className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed text-center"
                                   style={{
                                     fontFamily: "system-ui, sans-serif",
                                   }}>
@@ -333,8 +344,8 @@ export default function Ecosystem() {
 
                                 {/* Stats Badge */}
                                 <div className="flex justify-center">
-                                  <div className="inline-flex items-center gap-2 py-2 px-4 bg-amber-100 dark:bg-amber-900/30 rounded-full border border-amber-300 dark:border-amber-700">
-                                    <span className="text-lg font-black text-amber-800 dark:text-amber-300">
+                                  <div className="inline-flex items-center gap-1 sm:gap-2 py-1 sm:py-2 px-2 sm:px-4 bg-amber-100 dark:bg-amber-900/30 rounded-full border border-amber-300 dark:border-amber-700">
+                                    <span className="text-sm sm:text-lg font-black text-amber-800 dark:text-amber-300">
                                       {component.stats.value}
                                     </span>
                                     <span className="text-xs font-bold text-amber-700 dark:text-amber-400">
@@ -344,11 +355,11 @@ export default function Ecosystem() {
                                 </div>
 
                                 {/* Features */}
-                                <div className="flex flex-wrap gap-2 justify-center">
+                                <div className="flex flex-wrap gap-1 sm:gap-2 justify-center">
                                   {component.features.map((feature) => (
                                     <div
                                       key={feature}
-                                      className="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-300"
+                                      className="px-2 sm:px-3 py-0.5 sm:py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-xs font-semibold text-gray-700 dark:text-gray-300"
                                       style={{
                                         fontFamily: "system-ui, sans-serif",
                                       }}>
@@ -361,10 +372,10 @@ export default function Ecosystem() {
                                 <motion.div
                                   whileHover={{ scale: 1.05 }}
                                   whileTap={{ scale: 0.95 }}
-                                  className="flex items-center justify-center gap-2 py-3 px-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-full font-black text-sm uppercase tracking-wider shadow-lg mx-auto">
+                                  className="flex items-center justify-center gap-1 sm:gap-2 py-2 sm:py-3 px-4 sm:px-6 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-full font-black text-xs sm:text-sm uppercase tracking-wider shadow-lg mx-auto">
                                   <span>Explore</span>
                                   <ArrowRight
-                                    className="w-4 h-4"
+                                    className="w-3 h-3 sm:w-4 sm:h-4"
                                     strokeWidth={3}
                                   />
                                 </motion.div>
@@ -391,57 +402,116 @@ export default function Ecosystem() {
           {/* CTA */}
           <motion.div variants={itemVariants} className="relative">
             <div
-              className="relative rounded-3xl overflow-hidden shadow-2xl "
+              className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl"
               style={{
                 backgroundImage: 'url("/images/banner_ecosystem.png")',
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                minHeight: "400px",
-              }}></div>
+                minHeight: "250px",
+              }}>
+              {/* Mobile overlay for better text readability */}
+              <div className="sm:hidden absolute inset-0 bg-black/20"></div>
+            </div>
           </motion.div>
         </motion.div>
       </div>
 
       <style jsx global>{`
+        /* Hide navigation arrows on all screen sizes */
         .ecosystem-swiper .swiper-button-next,
         .ecosystem-swiper .swiper-button-prev {
-          width: 48px;
-          height: 48px;
-          background: linear-gradient(to right, #f59e0b, #ea580c);
-          border-radius: 50%;
-          color: white;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+          display: none !important;
         }
 
-        .ecosystem-swiper .swiper-button-next:after,
-        .ecosystem-swiper .swiper-button-prev:after {
-          font-size: 20px;
-          font-weight: bold;
-        }
-
-        .ecosystem-swiper .swiper-button-next:hover,
-        .ecosystem-swiper .swiper-button-prev:hover {
-          background: linear-gradient(to right, #d97706, #c2410c);
-          transform: scale(1.1);
+        /* Enhanced pagination styling */
+        .ecosystem-swiper .swiper-pagination {
+          position: relative !important;
+          margin-top: 24px;
+          bottom: auto !important;
+          left: auto !important;
+          transform: none !important;
+          width: 100% !important;
+          text-align: center;
         }
 
         .ecosystem-swiper .swiper-pagination-bullet {
-          width: 12px;
-          height: 12px;
+          width: 10px;
+          height: 10px;
           background: #d1d5db;
           opacity: 1;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          border-radius: 50%;
+          margin: 0 6px !important;
+          cursor: pointer;
+        }
+
+        .ecosystem-swiper .swiper-pagination-bullet:hover {
+          background: #9ca3af;
+          transform: scale(1.1);
         }
 
         .ecosystem-swiper .swiper-pagination-bullet-active {
-          background: linear-gradient(to right, #f59e0b, #ea580c);
           width: 32px;
+          height: 10px;
+          background: linear-gradient(90deg, #f59e0b, #ea580c);
           border-radius: 6px;
+          transform: scale(1);
+          margin: 0 6px !important;
+          box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
         }
 
+        .ecosystem-swiper .swiper-pagination-bullet-active:hover {
+          transform: scale(1.05);
+          box-shadow: 0 4px 12px rgba(245, 158, 11, 0.6);
+        }
+
+        /* Dark mode pagination */
         .dark .ecosystem-swiper .swiper-pagination-bullet {
           background: #4b5563;
+        }
+
+        .dark .ecosystem-swiper .swiper-pagination-bullet:hover {
+          background: #6b7280;
+        }
+
+        /* Responsive pagination sizing */
+        @media (min-width: 640px) {
+          .ecosystem-swiper .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            margin: 0 8px !important;
+          }
+          
+          .ecosystem-swiper .swiper-pagination-bullet-active {
+            width: 36px;
+            height: 12px;
+            margin: 0 8px !important;
+          }
+        }
+
+        @media (min-width: 1024px) {
+          .ecosystem-swiper .swiper-pagination-bullet {
+            width: 14px;
+            height: 14px;
+            margin: 0 10px !important;
+          }
+          
+          .ecosystem-swiper .swiper-pagination-bullet-active {
+            width: 40px;
+            height: 14px;
+            margin: 0 10px !important;
+          }
+        }
+
+        /* Ensure proper spacing for all screen sizes */
+        @media (max-width: 640px) {
+          .ecosystem-swiper .swiper-pagination {
+            margin-top: 20px;
+          }
         }
       `}</style>
     </section>
   );
-}
+};
+
+export default EcosystemSection;
