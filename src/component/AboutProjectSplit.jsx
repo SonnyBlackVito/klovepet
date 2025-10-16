@@ -167,7 +167,7 @@ export function AboutProjectSplit() {
             fontFamily: '"Luckiest Guy", cursive',
             lineHeight: "normal",
           }}
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-[#F26457] mb-4 sm:mb-6"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#F26457]  "
         >
           ABOUT K LOVE PET
         </h1>
@@ -178,7 +178,7 @@ export function AboutProjectSplit() {
             fontFamily: '"Luckiest Guy", cursive',
             textShadow: "0 2px 4px rgba(0, 0, 0, 0.2)",
           }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 max-w-8xl"
+          className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 max-w-8xl"
         >
           Building a Global Ecosystem for Pet Lovers.
         </h2>
