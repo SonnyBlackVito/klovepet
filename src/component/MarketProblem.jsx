@@ -79,6 +79,7 @@ export default function MarketProblem() {
   return (
     <section
       ref={ref}
+      className="min-h-screen relative"
       style={{
         fontFamily: "var(--font-luckiest-guy)",
         backgroundImage: `
@@ -87,8 +88,10 @@ export default function MarketProblem() {
         radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
         radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
       `,
+      backgroundAttachment: 'fixed',
+      backgroundSize: 'cover',
       }}
-      className="  ">
+      >
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -232,10 +235,10 @@ export default function MarketProblem() {
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     className="w-40 h-40 mb-4 mx-auto"
                   />
-                  <h4 className="text-xl font-bold text-gray-900  mb-2 group-hover:text-[#F26457] transition-colors">
+                  <h4 className="text-xl font-bold text-[#F26457]  mb-2 group-hover:text-[#F26457] transition-colors">
                     {problem.title}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p className=" text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                     {problem.description}
                   </p>
                 </motion.div>
@@ -253,6 +256,18 @@ export default function MarketProblem() {
               </div> */}
             </div>
           </motion.div>
+          <div className="flex justify-center mb-8">
+            <motion.img
+              src="/images/snake.png"
+              className="
+      w-[120px] h-[160px]        
+      sm:w-[150px] sm:h-[200px]   /* >= 640px */
+      md:w-[180px] md:h-[240px]   /* >= 768px */
+      lg:w-[220px] lg:h-[300px]   /* >= 1024px */
+      xl:w-[260px] xl:h-[350px]   /* >= 1280px */
+    "
+            />
+          </div>
 
           {/* Solutions Section */}
           <motion.div variants={itemVariants}>
@@ -301,7 +316,7 @@ export default function MarketProblem() {
                     />
 
                     {/* Content */}
-                    <h4 className="text-2xl font-bold text-gray-900  mb-2 text-center">
+                    <h4 className="text-2xl text-[#5EB658] font-bold   mb-2 text-center">
                       {solution.title}
                     </h4>
                     <p className="text-cyan-600  font-semibold mb-3 text-center">
@@ -317,14 +332,39 @@ export default function MarketProblem() {
           </motion.div>
 
           {/* CTA */}
-          <motion.div variants={itemVariants} className="text-center mt-16">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 bg-gradient-to-r from-coral-500 to-[#fef3c7] text-dark text-lg font-bold rounded-full shadow-xl hover:shadow-2xl transition-all">
-              {" "}
-              Learn More About Our Solution →
-            </motion.button>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            variants={itemVariants}
+            className="text-center py-32 ">
+            <div className="relative inline-block">
+              <motion.img
+                src="/images/snake_coil.png"
+                className="absolute -top-24 right-1/2 translate-x-1/2 z-20  h-auto"
+                width={273}
+                hight={120}
+                alt="Snake Coil"
+              />
+              <motion.button
+                style={{
+                  borderRadius: "99px",
+                  background:
+                    "linear-gradient(270deg, #F26457 0%, #FFDCD9 100%)",
+                  display: "flex",
+                  width: "352px",
+                  height: "57px",
+                  padding: "12px 16px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "8px",
+                  flexShrink: 0,
+                }}
+                // whileHover={{ scale: 1.05 }}
+                // whileTap={{ scale: 0.95 }}
+                className="text-dark text-lg font-bold shadow-xl hover:shadow-2xl transition-all relative z-10 ">
+                Learn More About Our Solution →
+              </motion.button>
+            </div>
           </motion.div>
         </motion.div>
       </div>
