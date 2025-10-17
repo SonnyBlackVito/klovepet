@@ -74,7 +74,7 @@ const TokenomicsSection = () => {
       <div className="flex flex-row justify-between relative overflow-x-hidden mb-8 sm:mb-12 md:mb-16">
         <div className="flex flex-col relative z-10 w-full">
           <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-normal leading-tight sm:leading-normal max-w-6xl"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-normal  max-w-6xl"
             style={{
               color: "#F26457",
               WebkitTextStroke: "1px #876046",
@@ -86,7 +86,9 @@ const TokenomicsSection = () => {
               &
               {/* Paw prints animation - hidden on mobile */}
               <div
-                className="hidden lg:block absolute top-0 left-full h-[200px] pointer-events-none overflow-visible"
+                // className="hidden lg:block absolute top-0 left-full h-[240px] pointer-events-none  md:overflow-hidden lg:overflow-hidden sm:overflow-hidden "
+                  className="hidden lg:block absolute top-0 left-0 translate-x-full h-[240px] pointer-events-none overflow-hidden"
+
                 style={{
                   marginLeft: "10px",
                   width: "1200px",
