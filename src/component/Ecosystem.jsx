@@ -122,6 +122,13 @@ export default function Ecosystem() {
       {/* Dark Mode Overlay */}
       <div className="absolute inset-0 bg-gray-950 dark:opacity-95 opacity-0 transition-opacity duration-300 pointer-events-none" />
 
+      <motion.div>
+        <motion.img
+          src="/images/step_left.png"
+          className="w-42 h-64 absolute top-56 left-32"
+        />
+      </motion.div>
+
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
@@ -144,7 +151,7 @@ export default function Ecosystem() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-2 relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -155,7 +162,8 @@ export default function Ecosystem() {
             {/* Header */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col flex-1">
+              className="relative flex flex-col flex-1">
+              
               <h1
                 style={{
                   WebkitTextStrokeWidth: "1px",
@@ -164,7 +172,7 @@ export default function Ecosystem() {
                   fontFamily: '"Luckiest Guy", cursive',
                   lineHeight: "normal",
                 }}
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl px-2 sm:px-4 py-1 sm:py-2 text-red-400 rounded-full font-semibold mb-3 sm:mb-3">
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl px-2 sm:px-4 sm:py-2 text-red-400 rounded-full font-semibold mb-3 sm:mb-3">
                 ECOSYSTEM
               </h1>
               <h2
@@ -180,7 +188,7 @@ export default function Ecosystem() {
                   5 PLATFORMS ONE ECOSYSTEM
                 </span>
               </h2>
-              <span className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-sans">
+              <span className="text-base sm:text-xs md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-sans">
                 Interconnected platforms creating value for pet lovers worldwide
               </span>
             </motion.div>
@@ -193,9 +201,7 @@ export default function Ecosystem() {
                 <motion.div
                   key={stat.label}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className={`relative group z-10 ${
-                    index === 1 ? "" : ""
-                  }`}>
+                  className={`relative group z-10 ${index === 1 ? "" : ""}`}>
                   <div className="absolute inset-0 bg-amber-500/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="w-full sm:w-[180px] md:w-[220px] lg:w-[280px] h-[100px] sm:h-[120px] lg:h-[140px] shadow-lg sm:shadow-[8px_10px_10px_0_rgba(0,0,0,0.15)] relative bg-white/90  backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 border-2 border-amber-200 dark:border-amber-700 hover:shadow-2xl transition-all">
                     <stat.icon
