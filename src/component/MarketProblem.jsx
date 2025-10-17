@@ -198,9 +198,11 @@ export default function MarketProblem() {
               <motion.img
                 src="/images/cat-chart.png"
                 alt="Cat chart"
+                // width={422}
+                // height={328}
                 animate={isInView ? { scale: 1 } : {}}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                className="absolute w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-100 xl:h-100 -top-8 sm:-top-12 md:-top-16 lg:-top-20 xl:-top-30 right-0 sm:right-4 md:right-8 xl:right-20 opacity-100"
+                className="absolute w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-110 xl:h-82 -top-8 sm:-top-12 md:-top-16 lg:-top-20 xl:-top-30 right-0 sm:right-4 md:right-8 xl:right-16 opacity-100"
               />
             </div>
           </motion.div>

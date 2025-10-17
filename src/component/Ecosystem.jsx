@@ -164,7 +164,7 @@ export default function Ecosystem() {
                   fontFamily: '"Luckiest Guy", cursive',
                   lineHeight: "normal",
                 }}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl px-2 sm:px-4 py-1 sm:py-2 text-red-400 rounded-full font-semibold mb-3 sm:mb-4">
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl px-2 sm:px-4 py-1 sm:py-2 text-red-400 rounded-full font-semibold mb-3 sm:mb-3">
                 ECOSYSTEM
               </h1>
               <h2
