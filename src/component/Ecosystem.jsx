@@ -109,7 +109,7 @@ export default function Ecosystem() {
   return (
     <section
       ref={ref}
-      className="relative py-12 sm:py-16 md:py-24 lg:py-32 xl:py-40 overflow-hidden"
+      className="relative py-12 sm:py-16 md:py-24 lg:py-32 xl:py-45 overflow-hidden"
       style={{
         fontFamily: "var(--font-luckiest-guy)",
         backgroundImage: `
@@ -150,12 +150,12 @@ export default function Ecosystem() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
           className="mx-auto">
-          
           {/* Header & Stats Section - Now Fully Responsive */}
           <motion.div className="flex flex-col lg:flex-row w-full gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
-            
             {/* Header */}
-            <motion.div variants={itemVariants} className="flex flex-col flex-1">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col flex-1">
               <h1
                 style={{
                   WebkitTextStrokeWidth: "1px",
@@ -188,14 +188,16 @@ export default function Ecosystem() {
             {/* Stats - Fully Responsive Grid */}
             <motion.div
               variants={itemVariants}
-              className="shrink-0 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4">
-              {stats.map((stat) => (
+              className="relative shrink-0  bg-amber-50 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4">
+              {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
                   whileHover={{ scale: 1.05, y: -5 }}
-                  className="relative group">
+                  className={`relative group z-10 ${
+                    index === 1 ? "" : "overflow-hidden"
+                  }`}>
                   <div className="absolute inset-0 bg-amber-500/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="w-full sm:w-[180px] md:w-[220px] lg:w-[280px] h-[100px] sm:h-[120px] lg:h-[140px] shadow-lg sm:shadow-[8px_10px_10px_0_rgba(0,0,0,0.15)] relative bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 border-2 border-amber-200 dark:border-amber-700 hover:shadow-2xl transition-all">
+                  <div className="w-full sm:w-[180px] md:w-[220px] lg:w-[280px] h-[100px] sm:h-[120px] lg:h-[140px] shadow-lg sm:shadow-[8px_10px_10px_0_rgba(0,0,0,0.15)] relative bg-white/90  backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 border-2 border-amber-200 dark:border-amber-700 hover:shadow-2xl transition-all">
                     <stat.icon
                       className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mb-1 sm:mb-2 text-amber-600 dark:text-amber-400"
                       strokeWidth={2.5}
@@ -207,13 +209,42 @@ export default function Ecosystem() {
                       {stat.label}
                     </div>
                   </div>
+
+                  {index === 1 && (
+                    <motion.img
+                      src="/images/shy_rabbit.png"
+                      alt="Shy Rabbit"
+                      className="block sm:hidden absolute w-[220px] h-[440px] sm:w-[320px] sm:h-[640px] lg:w-[400px] lg:h-[800px] -top-[220px] sm:-top-[320px] lg:-top-[400px] left-1/2 -translate-x-1/2 z-20 pointer-events-none drop-shadow-2xl object-contain"
+                      initial={{ y: -50, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      transition={{
+                        duration: 1.2,
+                        ease: [0.34, 1.56, 0.64, 1],
+                        delay: 0.8,
+                      }}
+                    />
+                  )}
                 </motion.div>
               ))}
+              <motion.img
+                src="/images/shy_rabbit.png"
+                alt="Shy Rabbit"
+                className="absolute w-[220px] h-[440px] sm:w-[320px] sm:h-[640px] lg:w-[700px] lg:h-[790px] -top-[220px] sm:-top-[320px] lg:-top-[450px]  -right-110 -translate-x-1/2 z-5 pointer-events-none drop-shadow-2xl object-contain"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                  duration: 1.2,
+                  ease: [0.34, 1.56, 0.64, 1],
+                  delay: 0.8,
+                }}
+              />
             </motion.div>
           </motion.div>
 
           {/* Swiper Carousel - Enhanced Responsive */}
-          <motion.div variants={itemVariants} className="relative mb-12 sm:mb-16 lg:mb-20">
+          <motion.div
+            variants={itemVariants}
+            className="relative mb-12 sm:mb-16 lg:mb-20">
             <div className="flex items-center justify-between mb-6 sm:mb-8">
               <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-gray-900 dark:text-white tracking-wide uppercase">
                 Explore Platforms
@@ -271,14 +302,12 @@ export default function Ecosystem() {
                         stiffness: 300,
                         damping: 20,
                       }}
-                      className="relative h-[280px] sm:h-[320px] lg:h-[340px] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group bg-white dark:bg-gray-800 border-2 border-amber-200 dark:border-gray-700 shadow-lg sm:shadow-xl hover:shadow-2xl">
-                      
+                      className="relative h-[280px] sm:h-[320px] lg:h-[340px] rounded-2xl sm:rounded-3xl  cursor-pointer group bg-white dark:bg-gray-800 border-2 border-amber-200 dark:border-gray-700 shadow-lg sm:shadow-xl hover:shadow-2xl">
                       {/* Gradient Background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" />
 
                       {/* Content */}
                       <div className="relative h-full p-4 sm:p-5 lg:p-6 flex flex-col items-center justify-center">
-                        
                         {/* External Link Icon */}
                         <motion.div
                           initial={{ opacity: 0, scale: 0 }}
@@ -327,7 +356,6 @@ export default function Ecosystem() {
                               transition={{ duration: 0.3 }}
                               className="absolute inset-0 p-4 sm:p-5 lg:p-6 flex flex-col justify-end bg-gradient-to-t from-white via-white/95 to-transparent dark:from-gray-800 dark:via-gray-800/95 dark:to-transparent">
                               <div className="space-y-2 sm:space-y-3">
-                                
                                 {/* Subtitle */}
                                 <p
                                   className="text-xs sm:text-sm font-bold text-amber-600 dark:text-amber-400 text-center"
