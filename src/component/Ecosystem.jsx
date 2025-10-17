@@ -194,7 +194,7 @@ export default function Ecosystem() {
                   key={stat.label}
                   whileHover={{ scale: 1.05, y: -5 }}
                   className={`relative group z-10 ${
-                    index === 1 ? "" : "overflow-hidden"
+                    index === 1 ? "" : ""
                   }`}>
                   <div className="absolute inset-0 bg-amber-500/20 rounded-xl sm:rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="w-full sm:w-[180px] md:w-[220px] lg:w-[280px] h-[100px] sm:h-[120px] lg:h-[140px] shadow-lg sm:shadow-[8px_10px_10px_0_rgba(0,0,0,0.15)] relative bg-white/90  backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 border-2 border-amber-200 dark:border-amber-700 hover:shadow-2xl transition-all">
@@ -302,7 +302,7 @@ export default function Ecosystem() {
                         stiffness: 300,
                         damping: 20,
                       }}
-                      className="relative h-[280px] sm:h-[320px] lg:h-[340px] rounded-2xl sm:rounded-3xl  cursor-pointer group bg-white dark:bg-gray-800 border-2 border-amber-200 dark:border-gray-700 shadow-lg sm:shadow-xl hover:shadow-2xl">
+                      className="relative h-[280px] sm:h-[320px] lg:h-[340px] rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer group bg-white dark:bg-gray-800 border-2 border-amber-200 dark:border-gray-700 shadow-lg sm:shadow-xl hover:shadow-2xl">
                       {/* Gradient Background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" />
 
