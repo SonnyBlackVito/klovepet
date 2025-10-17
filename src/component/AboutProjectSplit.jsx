@@ -25,7 +25,7 @@ export function AboutProjectSplit() {
       <div className=" lg:hidden container mx-auto text-center px-4 mb-8 sm:mb-12 lg:mb-0 lg:py-16">
         <h1
           style={{
-            WebkitStrokeWidth: "2px",
+            WebkitStrokeWidth: "1px",
             WebkitTextStrokeColor: "#876046",
             textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
             fontFamily: '"Luckiest Guy", cursive',
@@ -142,7 +142,20 @@ export function AboutProjectSplit() {
                 className="absolute top-0 left-0 right-0 pointer-events-none z-20"
                 style={{
                   width: "100%",
-                  height: "250px",
+                  height: "128px",
+                  background:
+                    "linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 247, 214, 0.90) 50%, rgba(255, 255, 255, 0.50) 100%)",
+                  filter: "blur(60px)",
+                  opacity: 0.9,
+                }}
+                aria-hidden="true"
+              />
+
+              <div
+                className="absolute bottom-0 left-0 right-0 pointer-events-none z-20"
+                style={{
+                  width: "100%",
+                  height: "80px",
                   background:
                     "linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 247, 214, 0.90) 50%, rgba(255, 255, 255, 0.50) 100%)",
                   filter: "blur(60px)",

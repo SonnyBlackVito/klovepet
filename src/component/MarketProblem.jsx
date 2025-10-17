@@ -7,27 +7,24 @@ import { useRef } from "react";
 export default function MarketProblem() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6 },
     },
   };
-
   const problems = [
     {
       icon: "/images/Opaque_Revenue.png",
@@ -91,7 +88,7 @@ export default function MarketProblem() {
         radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
       `,
       }}
-      className="py-20 md:py-32  ">
+      className="  ">
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -99,24 +96,70 @@ export default function MarketProblem() {
           animate={isInView ? "visible" : "hidden"}
           className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
-            <h1
-              style={{
-                WebkitTextStrokeWidth: "1px",
-                WebkitTextStrokeColor: "#876046",
-                textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
-                fontFamily: '"Luckiest Guy", cursive',
-                lineHeight: "normal",
-              }}
-              className=" text-8xl px-4 py-2  text-[#F26457] rounded-full  font-semibold mb-4">
-              Market Analysis
-            </h1>
-            <h2 className="text-4xl md:text-6xl font-bold text-black  mb-6 leading-tight">
-              A Growing Industry
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-coral-500 via-pink-500 to-rose-400 mt-2">
-                Lacking Transparency
-              </span>
-            </h2>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            className="relative py-16 md:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+            <div className="max-w-7xl mx-auto relative">
+              {/* Parrot - Positioned at top right, floating above */}
+              <motion.div
+                variants={itemVariants}
+                className="absolute sm:-top-8 mg:-top-8 xl:-top-45 right-0 sm:right-8 md:right-16 lg:right-0 z-20">
+                <motion.img
+                  src="/images/parrot.png"
+                  alt="Parrot"
+                  animate={{
+                    y: [0, -10, 0],
+                    rotate: [0, 2, 0, -2, 0],
+                    scaleY: [1, 0.95, 1],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="z-50 w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 xl:w-160 xl:h-110 object-contain drop-shadow-2xl"
+                  style={{
+                    filter: "drop-shadow(0 10px 30px rgba(252, 252, 252, 0.3))",
+                    transformOrigin: "center",
+                  }}
+                />
+              </motion.div>
+
+              {/* Main Content */}
+              <div className="relative pt-20 sm:pt-24 md:pt-32 lg:pt-20">
+                {/* Title - Left aligned, below parrot */}
+                <motion.div variants={itemVariants} className="">
+                  <h1
+                    style={{
+                      WebkitTextStrokeWidth: "1px",
+                      WebkitTextStrokeColor: "#876046",
+                      textShadow: "0 4px 8px rgba(0, 0, 0, 0.25)",
+                      fontFamily: '"Luckiest Guy", cursive',
+                      lineHeight: "0.95",
+                    }}
+                    className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#F26457] font-semibold">
+                    MARKET
+                    <br />
+                    ANALYSIS
+                  </h1>
+                </motion.div>
+
+                {/* Subtitle - Bottom */}
+                <motion.div variants={itemVariants}>
+                  <h2
+                    style={{
+                      fontFamily: '"Luckiest Guy", cursive',
+                      lineHeight: "1.2",
+                    }}
+                    className="text-xl sm:text-2xl md:text-xl lg:text-3xl xl:text-4xl font-bold text-black uppercase">
+                    A GROWING INDUSTRY LACKING TRANSPARENCY
+                  </h2>
+                </motion.div>
+              </div>
+            </div>
           </motion.div>
 
           {/* Market Size Card */}
@@ -124,16 +167,14 @@ export default function MarketProblem() {
             style={{
               backgroundImage:
                 'url("/images/Market Analysis_banner_center.png")',
-              backgroundSize: "fill",
+              backgroundSize: "cover", // Fix: "fill" không hợp lệ
               backgroundPosition: "center",
-              // backgroundRepeat: "no-repeat",
-              // backgroundAttachment: "fixed",
             }}
             variants={itemVariants}
-            className="bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 rounded-[3rem] p-12 md:p-16 mb-16 shadow-2xl relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+            className="bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 rounded-2xl sm:rounded-3xl lg:rounded-[3rem] p-6 sm:p-8 md:p-12 lg:p-16 mb-8 md:mb-16 shadow-2xl relative overflow-hidden">
+            {/* Decorative elements - ẩn trên mobile nhỏ */}
+            <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-white/10 rounded-full blur-3xl"></div>
 
             <div className="relative z-10 text-center">
               <motion.div
@@ -141,28 +182,23 @@ export default function MarketProblem() {
                 animate={isInView ? { scale: 1 } : {}}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                 className="inline-block">
-                <div className="text-7xl md:text-9xl font-black text-[#b9ed51]  mb-4 drop-shadow-2xl">
-                  $300B 📈
+                <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-[#3F9F39] mb-2 sm:mb-3 md:mb-4 drop-shadow-2xl">
+                  $300B
                 </div>
-                <div className="text-[#F26457] text-2xl md:text-3xl font-bold  mb-2">
+                <div className="text-[#5B5B5B] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold md:font-bold font-[SVN-Gilroy] mb-2">
                   Global Pet Industry 2024
                 </div>
-                <div className="text-lg md:text-xl text-black">
+                <div className="text-[#5B5B5B] text-sm sm:text-base md:text-lg lg:text-xl font-[SVN-Gilroy] font-semibold">
                   Growing rapidly year over year
                 </div>
               </motion.div>
-
-              {/* Growth indicator */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.8 }}
-                className="mt-8 flex justify-center items-center gap-2 text-white">
-                <span className="text-3xl">📈</span>
-                <span className="text-xl text-cyan-300 font-semibold">
-                  Continuous Growth
-                </span>
-              </motion.div>
+              <motion.img
+                src="/images/cat-chart.png"
+                alt="Cat chart"
+                animate={isInView ? { scale: 1 } : {}}
+                transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+                className="absolute w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-100 xl:h-100 -top-8 sm:-top-12 md:-top-16 lg:-top-20 xl:-top-30 right-0 sm:right-4 md:right-8 xl:right-20 opacity-100"
+              />
             </div>
           </motion.div>
 
@@ -274,7 +310,6 @@ export default function MarketProblem() {
                     <p className="text-gray-600  leading-relaxed text-center">
                       {solution.description}
                     </p>
-
                   </div>
                 </motion.div>
               ))}
