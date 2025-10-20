@@ -14,9 +14,9 @@ export default function Home() {
     <div className="relative w-full overflow-x-hidden">
       <Header />
       
-      {/* <section className="relative w-full"> */}
+      <section className="relative w-full">
         <HeroBanner />
-      {/* </section> */}
+      </section>
       
       <section id="about" className="relative w-full">
         <AboutProjectSplit />
