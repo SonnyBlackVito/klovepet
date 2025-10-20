@@ -109,12 +109,27 @@ export default function PartnersSectionComponent() {
             variants={titleVariants}
           >
             <h2 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white text-center"
-              style={{ textShadow: '0 0 20px rgba(254, 244, 205, 0.6)' }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-red-400 text-center"
+            //   style={{ textShadow: '0 0 20px rgba(254, 244, 205, 0.6)' }}
+            style={{
+                WebkitTextStrokeWidth: "1px",
+                WebkitTextStrokeColor: "#876046",
+                textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                fontFamily: '"Luckiest Guy", cursive',
+                lineHeight: "normal",
+              }}
             >
               Artists
             </h2>
-            <p className="text-lg md:text-xl text-white/80 text-center max-w-[600px]">
+            <p
+            style={{
+                WebkitTextStrokeWidth: "1px",
+                WebkitTextStrokeColor: "#876046",
+                textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
+                fontFamily: '"Luckiest Guy", cursive',
+                lineHeight: "normal",
+              }}
+            className="text-lg md:text-xl text-dark text-center max-w-[600px]">
               The people and organizations supporting our journey
             </p>
           </motion.div>
