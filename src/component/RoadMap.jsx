@@ -1,21 +1,8 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import {
-  Rocket,
-  Target,
-  Zap,
-  Globe,
-  Sparkles,
-  CheckCircle2,
-  Clock,
-  Calendar,
-  TrendingUp,
-  Users,
-  Award,
-  Star,
-  ArrowRight,
-} from "lucide-react";
+import { CheckCircle2, Clock, Calendar } from "lucide-react";
+import Image from "next/image";
 
 export default function RoadMap() {
   const ref = useRef(null);
@@ -51,7 +38,7 @@ export default function RoadMap() {
       quarter: "Q4 2024",
       title: "Foundation",
       status: "completed",
-      icon: Rocket,
+      image: "/images/roadmap_1.png",
       color: "from-emerald-500 via-teal-500 to-cyan-500",
       darkColor: "from-emerald-400 via-teal-400 to-cyan-400",
       progress: 100,
@@ -67,7 +54,7 @@ export default function RoadMap() {
       quarter: "Q1 2025",
       title: "Expansion",
       status: "in-progress",
-      icon: TrendingUp,
+      image: "/images/roadmap_2.png",
       color: "from-amber-500 via-orange-500 to-red-500",
       darkColor: "from-amber-400 via-orange-400 to-red-400",
       progress: 65,
@@ -83,7 +70,7 @@ export default function RoadMap() {
       quarter: "Q2 2025",
       title: "Growth",
       status: "in-progress",
-      icon: Users,
+      image: "/images/roadmap_3.png",
       color: "from-purple-500 via-violet-500 to-fuchsia-500",
       darkColor: "from-purple-400 via-violet-400 to-fuchsia-400",
       progress: 30,
@@ -99,7 +86,7 @@ export default function RoadMap() {
       quarter: "Q3 2025",
       title: "Gaming",
       status: "upcoming",
-      icon: Zap,
+      image: "/images/roadmap_4.png",
       color: "from-pink-500 via-rose-500 to-red-500",
       darkColor: "from-pink-400 via-rose-400 to-red-400",
       progress: 0,
@@ -115,7 +102,7 @@ export default function RoadMap() {
       quarter: "Q4 2025",
       title: "Global",
       status: "upcoming",
-      icon: Globe,
+      image: "/images/roadmap_5.png",
       color: "from-blue-500 via-indigo-500 to-purple-500",
       darkColor: "from-blue-400 via-indigo-400 to-purple-400",
       progress: 0,
@@ -131,7 +118,7 @@ export default function RoadMap() {
       quarter: "2026+",
       title: "Future",
       status: "upcoming",
-      icon: Star,
+      image: "/images/roadmap_6.png",
       color: "from-yellow-500 via-amber-500 to-orange-500",
       darkColor: "from-yellow-400 via-amber-400 to-orange-400",
       progress: 0,
@@ -187,7 +174,6 @@ export default function RoadMap() {
 
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Gradient Orbs */}
         <motion.div
           animate={{
             x: [0, 100, 0],
@@ -218,7 +204,6 @@ export default function RoadMap() {
           <motion.div
             variants={itemVariants}
             className="text-center mb-16 md:mb-20">
-            {/* Badge */}
             <h1
               style={{
                 WebkitTextStrokeWidth: "2px",
@@ -230,35 +215,7 @@ export default function RoadMap() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl px-4 py-2 text-red-400 rounded-full font-semibold mb-4 text-center leading-tight">
               OUR JOURNEY
             </h1>
-            {/* <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={isInView ? { scale: 1, rotate: 0 } : {}}
-              transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-6 py-3 mb-8
-                bg-gradient-to-r from-amber-100 via-orange-100 to-red-100
-                dark:from-amber-500/20 dark:via-orange-500/20 dark:to-red-500/20
-                border-2 border-amber-300 dark:border-amber-700
-                rounded-full backdrop-blur-sm shadow-lg">
-              <Target className="w-5 h-5 text-amber-600 dark:text-amber-400" />
-              <span className="text-sm font-bold bg-gradient-to-r from-amber-700 via-orange-700 to-red-700 dark:from-amber-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent tracking-wider">
-                OUR JOURNEY
-              </span>
 
-              <h1
-                style={{
-                  WebkitTextStrokeWidth: "2px",
-                  WebkitTextStrokeColor: "#876046",
-                  textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
-                  fontFamily: '"Luckiest Guy", cursive',
-                  lineHeight: "normal",
-                }}
-                className=" text-8xl px-4 py-2  text-red-400 rounded-full  font-semibold mb-4">
-                About K-LovePet
-              </h1>
-              <Sparkles className="w-5 h-5 text-orange-600 dark:text-orange-400" />
-            </motion.div> */}
-
-            {/* Title */}
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">
               <span className="block drop-shadow-lg">ROADMAP TO</span>
               <span className="block bg-gradient-to-r from-amber-600 via-orange-600 to-red-600 dark:from-amber-400 dark:via-orange-400 dark:to-red-400 bg-clip-text text-transparent drop-shadow-2xl">
@@ -266,7 +223,6 @@ export default function RoadMap() {
               </span>
             </h2>
 
-            {/* Description */}
             <motion.p
               variants={itemVariants}
               className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-sans"
@@ -284,7 +240,6 @@ export default function RoadMap() {
           <div className="relative mb-20">
             {/* Desktop View */}
             <div className="hidden lg:block">
-              {/* Wave Line Container */}
               <div className="relative h-[800px] mb-10">
                 {/* SVG Wave Background */}
                 <svg
@@ -292,7 +247,6 @@ export default function RoadMap() {
                   viewBox="0 0 1400 200"
                   preserveAspectRatio="none"
                   style={{ height: "200px" }}>
-                  {/* Background Wave */}
                   <path
                     d="M 0 100 Q 233 30, 466 100 T 932 100 T 1400 100"
                     stroke="rgba(217, 119, 6, 0.15)"
@@ -300,8 +254,6 @@ export default function RoadMap() {
                     fill="none"
                     strokeDasharray="10 5"
                   />
-
-                  {/* Main Wave */}
                   <motion.path
                     d="M 0 100 Q 233 30, 466 100 T 932 100 T 1400 100"
                     stroke="url(#roadmapGradient)"
@@ -312,7 +264,6 @@ export default function RoadMap() {
                     animate={isInView ? { pathLength: 0.35 } : {}}
                     transition={{ duration: 2, delay: 0.5, ease: "easeOut" }}
                   />
-
                   <defs>
                     <linearGradient
                       id="roadmapGradient"
@@ -358,7 +309,7 @@ export default function RoadMap() {
                         style={{ height: "150px" }}
                       />
 
-                      {/* Phase Dot */}
+                      {/* Phase Dot - INCREASED SIZE */}
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={isInView ? { scale: 1 } : {}}
@@ -368,12 +319,11 @@ export default function RoadMap() {
                           stiffness: 200,
                         }}
                         className={`absolute left-1/2 -translate-x-1/2 ${
-                          isTop ? "bottom-[-8px]" : "top-[-8px]"
+                          isTop ? "bottom-[-12px]" : "top-[-12px]"
                         } z-20`}
                         onMouseEnter={() => setHoveredPhase(index)}
                         onMouseLeave={() => setHoveredPhase(null)}>
                         <div className="relative">
-                          {/* Glow */}
                           <motion.div
                             animate={{
                               scale: hoveredPhase === index ? [1, 1.3, 1] : 1,
@@ -381,16 +331,17 @@ export default function RoadMap() {
                                 hoveredPhase === index ? [0.5, 0.8, 0.5] : 0.3,
                             }}
                             transition={{ duration: 2, repeat: Infinity }}
-                            className={`absolute -inset-3 bg-gradient-to-br ${phase.color} rounded-full blur-xl`}
+                            className={`absolute -inset-4 bg-gradient-to-br ${phase.color} rounded-full blur-xl`}
                           />
-
-                          {/* Dot */}
                           <motion.div
                             whileHover={{ scale: 1.2, rotate: 360 }}
-                            className={`relative w-16 h-16 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-2xl border-4 border-white dark:border-gray-900 cursor-pointer`}>
-                            <phase.icon
-                              className="w-8 h-8 text-white"
-                              strokeWidth={2.5}
+                            className={`relative w-24 h-24 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-2xl border-4 border-white dark:border-gray-900 cursor-pointer overflow-hidden`}>
+                            <Image
+                              src={phase.image}
+                              alt={`${phase.title} roadmap phase`}
+                              width={96}
+                              height={96}
+                              className="object-contain p-2"
                             />
                           </motion.div>
                         </div>
@@ -405,9 +356,8 @@ export default function RoadMap() {
                         onMouseLeave={() => setHoveredPhase(null)}
                         whileHover={{ y: isTop ? -10 : 10, scale: 1.05 }}
                         className={`${
-                          isTop ? "pb-[170px]" : "pt-[170px]"
+                          isTop ? "pb-[180px]" : "pt-[180px]"
                         } cursor-pointer`}>
-                        {/* Card Glow */}
                         <motion.div
                           animate={{
                             opacity: hoveredPhase === index ? 0.6 : 0,
@@ -416,14 +366,11 @@ export default function RoadMap() {
                           className={`absolute inset-0 bg-gradient-to-br ${phase.color} rounded-3xl blur-2xl`}
                         />
 
-                        {/* Card */}
                         <div className="relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl p-5 border-2 border-amber-200 dark:border-gray-700 shadow-2xl overflow-hidden">
-                          {/* Decorative Corner */}
                           <div
                             className={`absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl ${phase.color} opacity-10 rounded-bl-full`}
                           />
 
-                          {/* Status Badge */}
                           <div className="flex items-center justify-between mb-3">
                             <div
                               className={`${StatusBadge.color} ${StatusBadge.textColor} px-2.5 py-1 rounded-full flex items-center gap-1.5 shadow-lg`}>
@@ -437,18 +384,14 @@ export default function RoadMap() {
                             </div>
                           </div>
 
-                          {/* Quarter */}
                           <div className="text-xs font-black text-amber-600 dark:text-amber-400 tracking-widest mb-2">
                             {phase.quarter}
                           </div>
 
-                          {/* Title */}
-                          <h3
-                            className={`text-lg font-black text-gray-900 dark:text-white mb-3 tracking-wide uppercase leading-tight`}>
+                          <h3 className="text-lg font-black text-gray-900 dark:text-white mb-3 tracking-wide uppercase leading-tight">
                             {phase.title}
                           </h3>
 
-                          {/* Progress */}
                           <div className="mb-3">
                             <div className="flex justify-between items-center mb-1.5">
                               <span className="text-[10px] font-bold text-gray-600 dark:text-gray-400 uppercase">
@@ -476,7 +419,6 @@ export default function RoadMap() {
                             </div>
                           </div>
 
-                          {/* Milestones */}
                           <div className="space-y-1.5">
                             {phase.milestones.map((milestone, i) => (
                               <motion.div
@@ -515,15 +457,21 @@ export default function RoadMap() {
                             ))}
                           </div>
 
-                          {/* Decorative Icon */}
+                          {/* Watermark Image - INCREASED SIZE */}
                           <motion.div
                             animate={{
                               scale: hoveredPhase === index ? 1.1 : 1,
                               rotate: hoveredPhase === index ? 10 : 0,
                               opacity: hoveredPhase === index ? 0.15 : 0.08,
                             }}
-                            className="absolute -bottom-2 -right-2">
-                            <phase.icon className="w-16 h-16" strokeWidth={1} />
+                            className="absolute -bottom-3 -right-3 w-24 h-24 overflow-hidden">
+                            <Image
+                              src={phase.image}
+                              alt=""
+                              width={96}
+                              height={96}
+                              className="object-contain opacity-50"
+                            />
                           </motion.div>
                         </div>
                       </motion.div>
@@ -533,7 +481,7 @@ export default function RoadMap() {
               </div>
             </div>
 
-            {/* Tablet View - 2 columns */}
+            {/* Tablet View - 2 columns - INCREASED SIZE */}
             <div className="hidden md:grid lg:hidden grid-cols-2 gap-6">
               {roadmapPhases.map((phase, index) => {
                 const StatusBadge = getStatusBadge(phase.status);
@@ -558,10 +506,13 @@ export default function RoadMap() {
                               className={`absolute inset-0 bg-gradient-to-br ${phase.color} rounded-full blur-lg opacity-50`}
                             />
                             <div
-                              className={`relative w-14 h-14 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-xl border-3 border-white dark:border-gray-900`}>
-                              <phase.icon
-                                className="w-7 h-7 text-white"
-                                strokeWidth={2.5}
+                              className={`relative w-20 h-20 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-xl border-3 border-white dark:border-gray-900 overflow-hidden`}>
+                              <Image
+                                src={phase.image}
+                                alt={`${phase.title} icon`}
+                                width={80}
+                                height={80}
+                                className="object-contain p-2"
                               />
                             </div>
                           </div>
@@ -585,7 +536,6 @@ export default function RoadMap() {
                         </div>
                       </div>
 
-                      {/* Progress */}
                       <div className="mb-4">
                         <div className="flex justify-between mb-1.5">
                           <span className="text-xs text-gray-600 dark:text-gray-400 font-bold">
@@ -610,7 +560,6 @@ export default function RoadMap() {
                         </div>
                       </div>
 
-                      {/* Milestones */}
                       <div className="space-y-2">
                         {phase.milestones.map((milestone, i) => (
                           <div key={i} className="flex items-center gap-2">
@@ -635,7 +584,7 @@ export default function RoadMap() {
               })}
             </div>
 
-            {/* Mobile View */}
+            {/* Mobile View - INCREASED SIZE */}
             <div className="grid md:hidden gap-6">
               {roadmapPhases.map((phase, index) => {
                 const StatusBadge = getStatusBadge(phase.status);
@@ -659,10 +608,13 @@ export default function RoadMap() {
                             className={`absolute inset-0 bg-gradient-to-br ${phase.color} rounded-full blur-xl opacity-50`}
                           />
                           <div
-                            className={`relative w-16 h-16 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-xl border-4 border-white dark:border-gray-900`}>
-                            <phase.icon
-                              className="w-8 h-8 text-white"
-                              strokeWidth={2.5}
+                            className={`relative w-20 h-20 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-xl border-4 border-white dark:border-gray-900 overflow-hidden`}>
+                            <Image
+                              src={phase.image}
+                              alt={`${phase.title} icon`}
+                              width={80}
+                              height={80}
+                              className="object-contain p-1"
                             />
                           </div>
                         </div>
@@ -733,92 +685,6 @@ export default function RoadMap() {
               })}
             </div>
           </div>
-
-          {/* CTA Section */}
-          {/* <motion.div
-            style={{
-              backgroundImage: 'url("/images/banner_ecosystem.png")',
-              backgroundSize: "fill",
-              backgroundPosition: "center",
-            }}
-            variants={itemVariants}
-            className="relative mt-10">
-            <div className="relative bg-gradient-to-br  rounded-3xl p-12 md:p-16 overflow-hidden shadow-2xl border-4 border-white/20">
-              <div className="absolute inset-0 opacity-10">
-                <motion.div
-                  animate={{
-                    backgroundPosition: ["0% 0%", "100% 100%"],
-                  }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute inset-0"
-                  style={{
-                    backgroundImage: `radial-gradient(circle at 20% 50%, white 2px, transparent 2px),
-                                     radial-gradient(circle at 80% 50%, white 2px, transparent 2px)`,
-                    backgroundSize: "50px 50px",
-                  }}
-                />
-              </div>
-
-              <motion.div
-                animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="absolute top-8 right-8 text-6xl opacity-20">
-                🐾
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-                className="absolute bottom-8 left-8 text-6xl opacity-20">
-                🐾
-              </motion.div>
-
-              <div className="relative z-10 text-center text-white">
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={isInView ? { scale: 1, rotate: [0, 360] } : {}}
-                  transition={{ delay: 1.5, type: "spring", duration: 1 }}>
-                  <Award
-                    className="w-20 h-20 mx-auto mb-6 drop-shadow-2xl"
-                    strokeWidth={2}
-                  />
-                </motion.div>
-
-                <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-wider drop-shadow-lg uppercase">
-                  JOIN OUR JOURNEY
-                </h3>
-                <p
-                  className="text-xl md:text-2xl mb-10 opacity-95 max-w-2xl mx-auto font-sans leading-relaxed"
-                  style={{ fontFamily: "system-ui, sans-serif" }}>
-                  Be part of something extraordinary. Together, we're building
-                  the future of pet communities.
-                </p>
-
-                <div className="flex flex-wrap gap-4 justify-center">
-                  <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="group px-10 py-5 bg-white text-gray-900 text-lg font-black rounded-full shadow-2xl hover:shadow-3xl transition-all flex items-center gap-3 tracking-wider uppercase">
-                    <span>Get Started</span>
-                    <motion.div
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1, repeat: Infinity }}>
-                      <ArrowRight className="w-6 h-6" strokeWidth={3} />
-                    </motion.div>
-                  </motion.button>
-                  <motion.button
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="px-10 py-5 bg-white/20 backdrop-blur-xl text-white text-lg font-black rounded-full shadow-xl hover:bg-white/30 transition-all border-2 border-white/40 tracking-wider uppercase">
-                    Learn More
-                  </motion.button>
-                </div>
-              </div>
-            </div>
-          </motion.div> */}
         </motion.div>
       </div>
     </section>

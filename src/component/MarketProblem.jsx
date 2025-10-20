@@ -114,9 +114,9 @@ export default function MarketProblem() {
                   src="/images/parrot.png"
                   alt="Parrot"
                   animate={{
-                    y: [0, -10, 0],
+                    y: [0, -15, 0],
                     rotate: [0, 2, 0, -2, 0],
-                    scaleY: [1, 0.95, 1],
+                    scaleY: [1, 0.90, 1],
                   }}
                   transition={{
                     duration: 3,
