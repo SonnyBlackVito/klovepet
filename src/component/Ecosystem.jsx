@@ -378,7 +378,7 @@ export default function Ecosystem() {
                           animate={{
                             scale: hoveredCard === index ? 0.85 : 1,
                             width: hoveredCard === index ? 350 : 350,
-                            height: hoveredCard === index ? 700 : 284,
+                            height: hoveredCard === index ? 368 : 284,
                           }}
                           transition={{
                             type: "spring",
@@ -404,7 +404,7 @@ export default function Ecosystem() {
                             stiffness: 350,
                             damping: 22,
                           }}
-                          className="text-lg sm:text-xl lg:text-2xl font-black text-gray-900 dark:text-white text-center tracking-wide uppercase leading-tight px-2 relative z-10"
+                          className="text-lg sm:text-xl lg:text-xl font-black text-gray-900 dark:text-white text-center tracking-wide uppercase leading-tight px-2 relative z-10"
                           style={{
                             textShadow: "0 2px 4px rgba(0,0,0,0.1)",
                           }}>
@@ -415,7 +415,7 @@ export default function Ecosystem() {
                         <AnimatePresence>
                           {hoveredCard === index && (
                             <motion.div
-                              // initial={{ opacity: 0, y: 40 }}
+                              initial={{ opacity: 0, y: 40 }}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 40 }}
                               transition={{

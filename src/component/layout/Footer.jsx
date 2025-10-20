@@ -2,7 +2,7 @@ export default function Footer() {
   return (
     <footer 
       style={{
-        fontFamily: "var(--font-luckiest-guy)",
+      fontFamily: "var(--font-luckiest-guy)"
       }}
     
     className="w-full py-4 px-6 bg-gray-800 text-gray-200 text-center">
