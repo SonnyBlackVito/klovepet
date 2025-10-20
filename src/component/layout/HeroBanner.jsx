@@ -56,18 +56,25 @@ export default function HeroBanner() {
     hasEnded: false,
     wasSkipped: false
   });
+  const [showTransition, setShowTransition] = useState(false);
   
   const videoRef = useRef(null);
   const containerRef = useRef(null);
   const hasDispatchedEventRef = useRef(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // Determine if we should show video or image
+  useEffect(() => {
+    const bannerImg = new window.Image();
+    bannerImg.src = '/images/banner_kpoppet.png';
+    
+    const transitionImg = new window.Image();
+    transitionImg.src = '/images/logo_header.png';
+  }, []);
+
   const showVideo = isFirstVisit === true && !videoState.hasEnded && !videoState.wasSkipped;
   const showImage = isFirstVisit === false || videoState.hasEnded || videoState.wasSkipped;
 
-  // Lock scroll only when video is playing
-  useScrollLock(showVideo);
+  useScrollLock(showVideo || showTransition);
 
   // Dispatch completion event once
   const dispatchVideoComplete = useCallback(() => {
@@ -142,17 +149,28 @@ export default function HeroBanner() {
 
   // Handle video completion (ended or skipped)
   const handleVideoComplete = useCallback(() => {
+    setShowTransition(true);
     setVideoState(prev => ({ ...prev, hasEnded: true }));
     dispatchVideoComplete();
     exitFullscreen();
+    
+    setTimeout(() => {
+      setShowTransition(false);
+    }, 1500);
   }, [dispatchVideoComplete, exitFullscreen]);
 
   // Handle skip
   const handleSkip = useCallback(() => {
     videoRef.current?.pause();
+    setShowTransition(true);
     setVideoState(prev => ({ ...prev, wasSkipped: true }));
     dispatchVideoComplete();
     exitFullscreen();
+    
+    // Kết thúc transition sau 2s
+    setTimeout(() => {
+      setShowTransition(false);
+    }, 1500);
   }, [dispatchVideoComplete, exitFullscreen]);
 
   // Video event handlers
@@ -176,34 +194,59 @@ export default function HeroBanner() {
     },
     exit: { 
       opacity: 0,
-      scale: 1.05,
-      transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+      scale: 1.2,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
     }
   }), [videoState.isReady]);
 
+  const transitionImageVariants = useMemo(() => ({
+    initial: { 
+      opacity: 0, 
+      scale: 0.3 
+    },
+    animate: { 
+      opacity: [0, 1, 1, 0],
+      scale: [0.3, 1, 1.5, 2],
+      transition: { 
+        duration: 2,
+        times: [0, 0.3, 0.7, 1],
+        ease: [0.22, 1, 0.36, 1]
+      }
+    },
+    exit: { 
+      opacity: 0,
+      transition: { duration: 0.3 }
+    }
+  }), []);
+
   const imageVariants = useMemo(() => ({
-    initial: { opacity: 0, scale: 1.05 },
+    initial: { opacity: 0, scale: 1.1 },
     animate: { opacity: 1, scale: 1 },
     transition: { duration: 1, ease: [0.22, 1, 0.36, 1] }
   }), []);
 
-  // Don't render until we know if it's first visit
   if (isFirstVisit === null) {
     return (
       <section className="relative w-full h-screen overflow-hidden bg-black">
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-            className="w-16 h-16 border-4 border-amber-500/30 border-t-amber-500 rounded-full"
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+            className="w-32 h-32 border-4 border-amber-500/30 border-t-amber-500 rounded-full"
           />
+          {/* <motion.img 
+
+            src='/images/logo_header.png'
+            className='h-200 w'
+          
+          /> */}
         </div>
       </section>
     );
   }
 
   return (
-    <section className="relative w-full max-w-[100vw] h-screen overflow-hidden">
+    <section className="relative w-full max-w-[100vw] h-screen overflow-hidden bg-black">
       <AnimatePresence mode="wait">
         {showVideo ? (
           <motion.div
@@ -214,7 +257,7 @@ export default function HeroBanner() {
             animate="animate"
             exit="exit"
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0 w-full h-full z-10"
+            className="absolute inset-0 w-full h-full z-20"
           >
             <div className="relative w-full h-full">
               <video
@@ -342,18 +385,38 @@ export default function HeroBanner() {
               </motion.div>
             )}
           </motion.div>
-        ) : showImage && (
+        ) : showTransition ? (
+          <motion.div
+            key="transition"
+            variants={transitionImageVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="absolute inset-0 w-full h-full z-30 bg-black flex items-center justify-center"
+          >
+            <motion.div
+              className="relative w-64 h-64 md:w-96 md:h-96"
+            >
+              <Image
+                src="/images/logo_header.png"
+                alt="Transition Logo"
+                fill
+                className="object-contain"
+              />
+            </motion.div>
+          </motion.div>
+        ) : showImage ? (
           <motion.div
             key="image"
             {...imageVariants}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full z-10"
           >
             <Image
               src="/images/banner_kpoppet.png"
               alt="K-LovePet Banner"
               fill
               priority
-              quality={100}
+              quality={90}
               sizes="100vw"
               className="object-cover"
             />
@@ -378,11 +441,11 @@ export default function HeroBanner() {
               className="absolute bottom-0 right-0 w-64 h-64 bg-gradient-to-tl from-orange-500 to-transparent blur-3xl pointer-events-none"
             />
           </motion.div>
-        )}
+        ) : null}
       </AnimatePresence>
 
       <AnimatePresence>
-        {showImage && (
+        {showImage && !showTransition && (
           <motion.div
             key="scroll-indicator"
             initial={{ opacity: 0, y: -30 }}

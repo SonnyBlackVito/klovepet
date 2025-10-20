@@ -170,7 +170,7 @@ export default function MarketProblem() {
             style={{
               backgroundImage:
                 'url("/images/Market Analysis_banner_center.png")',
-              backgroundSize: "cover", // Fix: "fill" không hợp lệ
+              backgroundSize: "cover", 
               backgroundPosition: "center",
             }}
             variants={itemVariants}
