@@ -298,7 +298,7 @@ export default function Ecosystem() {
                   lineHeight: "normal",
                 }}
                 className="text-xl sm:text-2xl lg:text-3xl xl:text-5xl font-black text-[#FEE685]  tracking-wide uppercase">
-                K-LovePet's Approach 
+                K-LovePet's Approach
               </motion.h3>
             </div>
 
@@ -340,7 +340,7 @@ export default function Ecosystem() {
                         stiffness: 350,
                         damping: 22,
                       }}
-                      className="relative h-[280px] sm:h-[320px] lg:h-[368px] w-full rounded-2xl sm:rounded-3xl overflow-hidden cursor-pointer"
+                      className="relative overflow-hidden cursor-pointer rounded-2xl"
                       style={{
                         boxShadow:
                           hoveredCard === index
@@ -352,7 +352,7 @@ export default function Ecosystem() {
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" />
 
                       {/* Content Container */}
-                      <div className="relative h-full w-full p-4 sm:p-5 lg:p-6 flex flex-col items-center justify-center border rounded-xl">
+                      <div className="relative h-full w-full p-4 sm:p-5 lg:p-6 flex flex-col items-center justify-center ">
                         {/* Enhanced External Link Icon */}
                         <motion.div
                           initial={{ opacity: 0, scale: 0, rotate: -45 }}
@@ -378,7 +378,7 @@ export default function Ecosystem() {
                           animate={{
                             scale: hoveredCard === index ? 0.85 : 1,
                             width: hoveredCard === index ? 350 : 350,
-                            height: hoveredCard === index ? 368 : 284,
+                            height: hoveredCard === index ? 700 : 284,
                           }}
                           transition={{
                             type: "spring",
@@ -396,7 +396,7 @@ export default function Ecosystem() {
                         {/* Enhanced Title */}
                         <motion.h3
                           animate={{
-                            y: hoveredCard === index ? -10 : 0,
+                            y: hoveredCard === index ? -50 : 0,
                             scale: hoveredCard === index ? 0.95 : 1,
                           }}
                           transition={{
@@ -415,7 +415,7 @@ export default function Ecosystem() {
                         <AnimatePresence>
                           {hoveredCard === index && (
                             <motion.div
-                              initial={{ opacity: 0, y: 40 }}
+                              // initial={{ opacity: 0, y: 40 }}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: 40 }}
                               transition={{

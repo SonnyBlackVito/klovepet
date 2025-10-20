@@ -334,14 +334,14 @@ export default function RoadMap() {
                             className={`absolute -inset-4 bg-gradient-to-br ${phase.color} rounded-full blur-xl`}
                           />
                           <motion.div
-                            whileHover={{ scale: 1.2, rotate: 360 }}
+                            whileHover={{ scale: 1.2}}
                             className={`relative w-24 h-24 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-2xl border-4 border-white dark:border-gray-900 cursor-pointer overflow-hidden`}>
                             <Image
                               src={phase.image}
                               alt={`${phase.title} roadmap phase`}
-                              width={96}
-                              height={96}
-                              className="object-contain p-2"
+                              width={156}
+                              height={156}
+                              className="object-contain p-2 "
                             />
                           </motion.div>
                         </div>
