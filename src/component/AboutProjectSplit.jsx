@@ -10,14 +10,25 @@ export function AboutProjectSplit() {
 
   return (
     <section
+      // style={{
+      //   fontFamily: "var(--font-luckiest-guy)",
+      //   backgroundImage: `
+      //     radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent),
+      //     radial-gradient(circle 600px at 50% 200px, #fef3c7, transparent),
+      //     radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
+      //     radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
+      //   `,
+      // }}
       style={{
         fontFamily: "var(--font-luckiest-guy)",
         backgroundImage: `
-          radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent),
-          radial-gradient(circle 600px at 50% 200px, #fef3c7, transparent),
-          radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
-          radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
-        `,
+        radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent),
+        radial-gradient(circle 600px at 50% 200px, #fef3c7, transparent),
+        radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
+        radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
+      `,
+      backgroundAttachment: 'fixed',
+      backgroundSize: 'cover',
       }}
       ref={ref}
       className="py-12 sm:py-16 md:py-20 lg:py-0 overflow-hidden">
@@ -134,7 +145,7 @@ export function AboutProjectSplit() {
                 priority
                 quality={100}
                 sizes="100vw"
-                className="object-fit"
+                className="object-cover"
               />
 
               {/* Horizontal blur effect - ABOVE image with high z-index */}
