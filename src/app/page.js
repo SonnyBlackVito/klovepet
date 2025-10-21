@@ -8,6 +8,7 @@ import Ecosystem from "@/component/Ecosystem";
 import TokenomicsSection from "@/component/TokenomicsSection";
 import RoadMap from "@/component/RoadMap";
 import Artists from "@/component/Artists";
+import  NFTCard  from "@/component/NFTCard";
 
 export default function Home() {
   return (
@@ -28,6 +29,11 @@ export default function Home() {
       
       <section className="relative w-full">
         <Ecosystem />
+      </section>
+
+      <section>
+        {/* <NFTCard /> */}
+        <NFTCard />
       </section>
       
       <section className="relative ">
