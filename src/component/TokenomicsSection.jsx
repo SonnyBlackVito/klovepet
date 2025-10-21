@@ -56,10 +56,10 @@ const TokenomicsSection = () => {
         linear-gradient(180deg, 
           rgba(254,251,234,1) 0%, 
           rgba(254,251,234,0.95) 15%,
-          rgba(229,210,163,0.6) 35%, 
-          rgba(190,162,115,0.4) 55%, 
-          rgba(176,155,123,0.3) 75%, 
-          rgba(125,116,99,0.2) 100%
+          rgba(234, 225, 200, 0.6) 35%, 
+          rgba(255, 246, 231, 0.4) 55%, 
+          rgba(237, 219, 192, 0.3) 75%, 
+          rgba(250, 233, 200, 0.2) 100%
         ),
         radial-gradient(ellipse at 25% 25%, rgba(229,210,163,0.3) 0%, transparent 60%),
         radial-gradient(ellipse at 75% 75%, rgba(190,162,115,0.25) 0%, transparent 65%),
@@ -71,66 +71,69 @@ const TokenomicsSection = () => {
       <div className="sparkle-overlay" />
 
       {/* Header Section */}
-      <div className="flex flex-row justify-between relative overflow-x-hidden mb-8 sm:mb-12 md:mb-16">
-        <div className="flex flex-col relative z-10 w-full">
-          <h2
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-normal  max-w-6xl"
-            style={{
-              color: "#F26457",
-              WebkitTextStroke: "1px #876046",
-              fontFamily: "'Luckiest Guy', cursive",
-              textShadow: "0px 4px 6px rgba(0, 0, 0, 0.25)",
-            }}>
-            <span className="block sm:inline">Blockchain</span>{" "}
-            <span className="relative inline-block">
-              &{/* Paw prints animation - hidden on mobile */}
-              <div
-                // className="hidden lg:block absolute top-0 left-full h-[240px] pointer-events-none  md:overflow-hidden lg:overflow-hidden sm:overflow-hidden "
-                className="hidden lg:block absolute top-0 left-0 translate-x-full h-[240px] pointer-events-none overflow-hidden"
-                style={{
-                  marginLeft: "10px",
-                  width: "1200px",
-                }}>
-                {[
-                  { delay: 0, top: 5, isLeft: true, color: "#F26457" },
-                  { delay: 0.3, top: 50, isLeft: false, color: "#FF7F6E" },
-                  { delay: 0.6, top: 5, isLeft: true, color: "#F26457" },
-                  { delay: 0.9, top: 50, isLeft: false, color: "#FF7F6E" },
-                ].map((paw, index) => (
-                  <div
-                    key={index}
-                    className={`absolute text-4xl xl:text-5xl ${
-                      paw.isLeft ? "animate-paw-walk" : "animate-paw-walk-alt"
-                    }`}
-                    style={{
-                      animationDelay: `${paw.delay}s`,
-                      top: `${paw.top}px`,
-                      left: "0",
-                      filter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
-                      WebkitFilter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
-                    }}>
-                    🐾
-                  </div>
-                ))}
-              </div>
-            </span>{" "}
-            <span className="block sm:inline">Tokenomics</span>
-          </h2>
+        
+        <div className="flex overflow-x-hidden overflow-y-hidden mb-8 sm:mb-12 md:mb-16 pt-5" >
+          <div className="flex flex-col relative z-10 w-full">
+            <h2
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-normal  max-w-6xl"
+              style={{
+                color: "#F26457",
+                WebkitTextStroke: "1px #876046",
+                fontFamily: "'Luckiest Guy', cursive",
+                textShadow: "0px 4px 6px rgba(0, 0, 0, 0.25)",
+              }}>
+              <span className="block sm:inline">Blockchain</span>{" "}
+              <span className="relative inline-block">
+                &{/* Paw prints animation - hidden on mobile */}
+                <div
+                  className="hidden lg:block absolute top-0 left-full h-[320px] pointer-events-none "
+                  style={{
+                    marginLeft: "10px",
+                    width: "1200px",
+                    height:"320px"
+                  }}>
+                  {[
+                    { delay: 0, top: 5, isLeft: true, color: "#F26457" },
+                    { delay: 0.3, top: 50, isLeft: false, color: "#FF7F6E" },
+                    { delay: 0.6, top: 5, isLeft: true, color: "#F26457" },
+                    { delay: 0.9, top: 50, isLeft: false, color: "#FF7F6E" },
+                  ].map((paw, index) => (
+                    <div
+                      key={index}
+                      className={`absolute text-4xl xl:text-5xl ${
+                        paw.isLeft ? "animate-paw-walk" : "animate-paw-walk-alt"
+                      }`}
+                      style={{
+                        animationDelay: `${paw.delay}s`,
+                        top: `${paw.top}px`,
+                        left: "0",
+                        filter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
+                        WebkitFilter: `drop-shadow(0 4px 8px ${paw.color}40) brightness(1.1)`,
+                      }}>
+                      🐾
+                    </div>
+                  ))}
+                </div>
+              </span>{" "}
+              <span className="block sm:inline">Tokenomics</span>
+            </h2>
 
-          <p
-            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mt-3 sm:mt-4 font-bold max-w-4xl"
-            style={{
-              color: "#333",
-              fontFamily: "'SVN-Gilroy', sans-serif",
-              textShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)",
-            }}>
-            Built on Solana Chain for low fees and fast transactions.
-            <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>A dedicated Sub-chain will
-            follow.
-          </p>
+            <p
+              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mt-3 sm:mt-4 font-bold max-w-4xl"
+              style={{
+                color: "#333",
+                fontFamily: "'SVN-Gilroy', sans-serif",
+                textShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)",
+              }}>
+              Built on Solana Chain for low fees and fast transactions.
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>A dedicated Sub-chain will
+              follow.
+            </p>
+          </div>
         </div>
-      </div>
+      
+
 
       {/* Main Content */}
       <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-10 lg:gap-12 xl:gap-16 min-h-[400px] sm:min-h-[500px] relative z-10">
@@ -214,9 +217,9 @@ const TokenomicsSection = () => {
             <Image
               src="/images/pizza_token.png"
               alt="Tokenomics Chart"
-              width={800}
-              height={800}
-              className="w-full h-auto object-contain"
+              width={400}
+              height={400}
+              className="object-fill"
               priority
             />
           </div>

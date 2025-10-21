@@ -39,7 +39,7 @@ export default function RoadMap() {
       title: "Foundation",
       status: "completed",
       image: "/images/roadmap_1.png",
-      color: "from-emerald-500 via-teal-500 to-cyan-500",
+      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
       darkColor: "from-emerald-400 via-teal-400 to-cyan-400",
       progress: 100,
       position: "top",
@@ -55,7 +55,7 @@ export default function RoadMap() {
       title: "Expansion",
       status: "in-progress",
       image: "/images/roadmap_2.png",
-      color: "from-amber-500 via-orange-500 to-red-500",
+      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
       darkColor: "from-amber-400 via-orange-400 to-red-400",
       progress: 65,
       position: "bottom",
@@ -71,7 +71,7 @@ export default function RoadMap() {
       title: "Growth",
       status: "in-progress",
       image: "/images/roadmap_3.png",
-      color: "from-purple-500 via-violet-500 to-fuchsia-500",
+      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
       darkColor: "from-purple-400 via-violet-400 to-fuchsia-400",
       progress: 30,
       position: "top",
@@ -87,7 +87,7 @@ export default function RoadMap() {
       title: "Gaming",
       status: "upcoming",
       image: "/images/roadmap_4.png",
-      color: "from-pink-500 via-rose-500 to-red-500",
+      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
       darkColor: "from-pink-400 via-rose-400 to-red-400",
       progress: 0,
       position: "bottom",
@@ -103,7 +103,7 @@ export default function RoadMap() {
       title: "Global",
       status: "upcoming",
       image: "/images/roadmap_5.png",
-      color: "from-blue-500 via-indigo-500 to-purple-500",
+      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
       darkColor: "from-blue-400 via-indigo-400 to-purple-400",
       progress: 0,
       position: "top",
@@ -119,7 +119,7 @@ export default function RoadMap() {
       title: "Future",
       status: "upcoming",
       image: "/images/roadmap_6.png",
-      color: "from-yellow-500 via-amber-500 to-orange-500",
+      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
       darkColor: "from-yellow-400 via-amber-400 to-orange-400",
       progress: 0,
       position: "bottom",
@@ -216,9 +216,20 @@ export default function RoadMap() {
               OUR JOURNEY
             </h1>
 
-            <motion.img 
+            <motion.img
               src="/images/dog.png"
-              className=" w-[567px] h-[378px] absolute -right-8 -top-32"
+              alt="Dog mascot"
+              className="
+    absolute 
+    z-0
+    w-[200px] h-[130px]   /* mobile */
+    sm:w-[300px] sm:h-[200px]  /* small tablets */
+    md:w-[400px] md:h-[270px]  /* medium screens */
+    lg:w-[500px] lg:h-[330px]  /* desktops */
+    xl:w-[567px] xl:h-[378px]  /* large screens */
+    -right-13 sm:-right-2 md:-right-6 lg:-right-8
+    -top-10 sm:-top-16 md:-top-24 lg:-top-32
+  "
             />
 
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">
@@ -339,14 +350,15 @@ export default function RoadMap() {
                             className={`absolute -inset-4 bg-gradient-to-br ${phase.color} rounded-full blur-xl`}
                           />
                           <motion.div
-                            whileHover={{ scale: 1.2}}
-                            className={`relative w-24 h-24 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-2xl border-4 border-white dark:border-gray-900 cursor-pointer overflow-hidden`}>
+                            whileHover={{ scale: 1.2 }}
+                            className={`relative w-32 h-32 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-2xl border-4 border-white dark:border-gray-900 cursor-pointer overflow-hidden`}>
                             <Image
                               src={phase.image}
                               alt={`${phase.title} roadmap phase`}
                               width={156}
                               height={156}
-                              className="object-contain p-2 "
+                              // fill
+                              className="object-fill"
                             />
                           </motion.div>
                         </div>

@@ -30,7 +30,7 @@ export default function Home() {
         <Ecosystem />
       </section>
       
-      <section className="relative w-full">
+      <section className="relative ">
         <TokenomicsSection />
       </section>
       
