@@ -2,7 +2,88 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { CheckCircle2, Clock, Calendar } from "lucide-react";
-import Image from "next/image";
+
+// SVG Component cho Dog Mascot
+const DogMascotSVG = ({ className }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="68"
+    height="68"
+    viewBox="0 0 68 68"
+    fill="none"
+    className={className}>
+    <path
+      d="M53.2213 27.2145C48.8657 24.5841 41.5701 24.2797 38.5212 28.8232C37.6066 30.3015 37.171 31.9754 36.1475 32.0624C35.2981 32.2363 33.9262 31.3667 32.4453 30.758C21.8612 26.6058 13.4549 38.9538 17.2225 47.5191C19.4874 54.3017 25.4545 58.9539 31.7048 62.454C35.995 64.9105 42.0928 68.4758 46.4484 65.9975L46.7316 65.8236C56.1832 58.5844 64.9596 34.932 53.2213 27.2145Z"
+      fill="#B7896B"
+    />
+    <path
+      d="M14.8272 37.4536C16.8526 35.3015 16.3953 31.584 13.8255 29.1927C11.2557 26.7796 7.50987 26.584 5.5063 28.7579C3.50274 30.9319 3.93834 34.6275 6.50813 37.0189C9.07792 39.4319 12.8237 39.6276 14.8272 37.4536Z"
+      fill="#B7896B"
+    />
+    <path
+      d="M23.6686 27.1707C27.2838 25.6489 28.6558 20.7358 26.7175 16.1923C24.8011 11.6705 20.293 9.23571 16.6997 10.7575C13.0846 12.2792 11.7126 17.1923 13.6508 21.7358C15.5672 26.2576 20.0753 28.6924 23.6686 27.1707Z"
+      fill="#B7896B"
+    />
+    <path
+      d="M55.4643 12.7578C52.5679 12.1273 49.6061 14.3882 48.8439 17.823C48.0817 21.2579 49.8021 24.5622 52.6985 25.2144C55.595 25.8666 58.5568 23.584 59.319 20.1492C60.0813 16.7143 58.3608 13.41 55.4643 12.7578Z"
+      fill="#B7896B"
+    />
+    <path
+      d="M38.7617 21.9533C42.6599 21.4316 45.2732 17.062 44.6417 12.1923C43.9883 7.32273 40.3079 3.77923 36.4314 4.30097C32.5332 4.82271 29.9198 9.19232 30.5514 14.0619C31.1829 18.9315 34.8852 22.4751 38.7617 21.9533Z"
+      fill="#B7896B"
+    />
+  </svg>
+);
+
+// SVG Component tối giản với icon con chó - Màu cam
+const RoadmapPhaseSVG = ({ phase, className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 100"
+      className={className}>
+      {/* Background circle - đơn giản, chỉ 1 màu */}
+      <circle 
+        cx="50" 
+        cy="50" 
+        r="45" 
+        fill="#f5f5f5"
+        className="dark:fill-gray-800"
+      />
+      <circle 
+        cx="50" 
+        cy="50" 
+        r="25" 
+        fill="#ffffff"
+        className="dark:fill-gray-700"
+      />
+      
+      {/* Dog Icon màu cam */}
+      <g transform="translate(34, 34) scale(0.47)">
+        <path
+          d="M53.2213 27.2145C48.8657 24.5841 41.5701 24.2797 38.5212 28.8232C37.6066 30.3015 37.171 31.9754 36.1475 32.0624C35.2981 32.2363 33.9262 31.3667 32.4453 30.758C21.8612 26.6058 13.4549 38.9538 17.2225 47.5191C19.4874 54.3017 25.4545 58.9539 31.7048 62.454C35.995 64.9105 42.0928 68.4758 46.4484 65.9975L46.7316 65.8236C56.1832 58.5844 64.9596 34.932 53.2213 27.2145Z"
+          fill="#f97316"
+        />
+        <path
+          d="M14.8272 37.4536C16.8526 35.3015 16.3953 31.584 13.8255 29.1927C11.2557 26.7796 7.50987 26.584 5.5063 28.7579C3.50274 30.9319 3.93834 34.6275 6.50813 37.0189C9.07792 39.4319 12.8237 39.6276 14.8272 37.4536Z"
+          fill="#f97316"
+        />
+        <path
+          d="M23.6686 27.1707C27.2838 25.6489 28.6558 20.7358 26.7175 16.1923C24.8011 11.6705 20.293 9.23571 16.6997 10.7575C13.0846 12.2792 11.7126 17.1923 13.6508 21.7358C15.5672 26.2576 20.0753 28.6924 23.6686 27.1707Z"
+          fill="#f97316"
+        />
+        <path
+          d="M55.4643 12.7578C52.5679 12.1273 49.6061 14.3882 48.8439 17.823C48.0817 21.2579 49.8021 24.5622 52.6985 25.2144C55.595 25.8666 58.5568 23.584 59.319 20.1492C60.0813 16.7143 58.3608 13.41 55.4643 12.7578Z"
+          fill="#f97316"
+        />
+        <path
+          d="M38.7617 21.9533C42.6599 21.4316 45.2732 17.062 44.6417 12.1923C43.9883 7.32273 40.3079 3.77923 36.4314 4.30097C32.5332 4.82271 29.9198 9.19232 30.5514 14.0619C31.1829 18.9315 34.8852 22.4751 38.7617 21.9533Z"
+          fill="#f97316"
+        />
+      </g>
+    </svg>
+  );
+};
 
 export default function RoadMap() {
   const ref = useRef(null);
@@ -38,8 +119,7 @@ export default function RoadMap() {
       quarter: "Q4 2024",
       title: "Foundation",
       status: "completed",
-      image: "/images/roadmap_1.png",
-      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
+      color: "from-emerald-300 via-teal-400 to-cyan-500",
       darkColor: "from-emerald-400 via-teal-400 to-cyan-400",
       progress: 100,
       position: "top",
@@ -54,8 +134,7 @@ export default function RoadMap() {
       quarter: "Q1 2025",
       title: "Expansion",
       status: "in-progress",
-      image: "/images/roadmap_2.png",
-      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
+      color: "from-amber-400 via-orange-500 to-red-400",
       darkColor: "from-amber-400 via-orange-400 to-red-400",
       progress: 65,
       position: "bottom",
@@ -70,8 +149,7 @@ export default function RoadMap() {
       quarter: "Q2 2025",
       title: "Growth",
       status: "in-progress",
-      image: "/images/roadmap_3.png",
-      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
+      color: "from-indigo-400 via-purple-500 to-fuchsia-500",
       darkColor: "from-purple-400 via-violet-400 to-fuchsia-400",
       progress: 30,
       position: "top",
@@ -86,8 +164,7 @@ export default function RoadMap() {
       quarter: "Q3 2025",
       title: "Gaming",
       status: "upcoming",
-      image: "/images/roadmap_4.png",
-      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
+      color: "from-pink-400 via-rose-500 to-red-500",
       darkColor: "from-pink-400 via-rose-400 to-red-400",
       progress: 0,
       position: "bottom",
@@ -102,8 +179,7 @@ export default function RoadMap() {
       quarter: "Q4 2025",
       title: "Global",
       status: "upcoming",
-      image: "/images/roadmap_5.png",
-      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
+      color: "from-sky-400 via-blue-500 to-indigo-500",
       darkColor: "from-blue-400 via-indigo-400 to-purple-400",
       progress: 0,
       position: "top",
@@ -118,8 +194,7 @@ export default function RoadMap() {
       quarter: "2026+",
       title: "Future",
       status: "upcoming",
-      image: "/images/roadmap_6.png",
-      color: "radial-gradient(circle 600px at 0% 200px, #fef3c7, transparent)",
+      color: "from-lime-400 via-emerald-400 to-teal-500",
       darkColor: "from-yellow-400 via-amber-400 to-orange-400",
       progress: 0,
       position: "bottom",
@@ -216,21 +291,20 @@ export default function RoadMap() {
               OUR JOURNEY
             </h1>
 
-            <motion.img
-              src="/images/dog.png"
-              alt="Dog mascot"
+            {/* Dog Mascot SVG */}
+            <motion.div
               className="
-    absolute 
-    z-0
-    w-[200px] h-[130px]   /* mobile */
-    sm:w-[300px] sm:h-[200px]  /* small tablets */
-    md:w-[400px] md:h-[270px]  /* medium screens */
-    lg:w-[500px] lg:h-[330px]  /* desktops */
-    xl:w-[567px] xl:h-[378px]  /* large screens */
-    -right-13 sm:-right-2 md:-right-6 lg:-right-8
-    -top-10 sm:-top-16 md:-top-24 lg:-top-32
-  "
-            />
+                absolute z-0
+                w-[200px] h-[130px]
+                sm:w-[300px] sm:h-[200px]
+                md:w-[400px] md:h-[270px]
+                lg:w-[500px] lg:h-[330px]
+                xl:w-[567px] xl:h-[378px]
+                -right-13 sm:-right-2 md:-right-6 lg:-right-8
+                -top-10 sm:-top-16 md:-top-24 lg:-top-32
+              ">
+              {/* <DogMascotSVG className="w-full h-full" /> */}
+            </motion.div>
 
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">
               <span className="block drop-shadow-lg">ROADMAP TO</span>
@@ -325,7 +399,7 @@ export default function RoadMap() {
                         style={{ height: "150px" }}
                       />
 
-                      {/* Phase Dot - INCREASED SIZE */}
+                      {/* Phase Dot - SVG tối giản */}
                       <motion.div
                         initial={{ scale: 0 }}
                         animate={isInView ? { scale: 1 } : {}}
@@ -347,24 +421,20 @@ export default function RoadMap() {
                                 hoveredPhase === index ? [0.5, 0.8, 0.5] : 0.3,
                             }}
                             transition={{ duration: 2, repeat: Infinity }}
-                            className={`absolute -inset-4 bg-gradient-to-br ${phase.color} rounded-full blur-xl`}
+                            className={`absolute   `}
                           />
                           <motion.div
                             whileHover={{ scale: 1.2 }}
-                            className={`relative w-32 h-32 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-2xl border-4 border-white dark:border-gray-900 cursor-pointer overflow-hidden`}>
-                            <Image
-                              src={phase.image}
-                              alt={`${phase.title} roadmap phase`}
-                              width={156}
-                              height={156}
-                              // fill
-                              className="object-fill"
+                            className="relative w-32 h-32 cursor-pointer">
+                            <RoadmapPhaseSVG
+                              phase={phase.id}
+                              className="w-full h-full "
                             />
                           </motion.div>
                         </div>
                       </motion.div>
 
-                      {/* Phase Card */}
+                      {/* Phase Card với màu sắc gradient */}
                       <motion.div
                         initial={{ opacity: 0, y: isTop ? 20 : -20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -474,20 +544,17 @@ export default function RoadMap() {
                             ))}
                           </div>
 
-                          {/* Watermark Image - INCREASED SIZE */}
+                          {/* Watermark SVG tối giản */}
                           <motion.div
                             animate={{
                               scale: hoveredPhase === index ? 1.1 : 1,
                               rotate: hoveredPhase === index ? 10 : 0,
                               opacity: hoveredPhase === index ? 0.15 : 0.08,
                             }}
-                            className="absolute -bottom-3 -right-3 w-24 h-24 overflow-hidden">
-                            <Image
-                              src={phase.image}
-                              alt=""
-                              width={96}
-                              height={96}
-                              className="object-contain opacity-50"
+                            className="absolute -bottom-3 -right-3 w-24 h-24">
+                            <RoadmapPhaseSVG
+                              phase={phase.id}
+                              className="w-full h-full opacity-50"
                             />
                           </motion.div>
                         </div>
@@ -498,111 +565,8 @@ export default function RoadMap() {
               </div>
             </div>
 
-            {/* Tablet View - 2 columns - INCREASED SIZE */}
-            <div className="hidden md:grid lg:hidden grid-cols-2 gap-6">
-              {roadmapPhases.map((phase, index) => {
-                const StatusBadge = getStatusBadge(phase.status);
-                return (
-                  <motion.div
-                    key={phase.id}
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.03, y: -5 }}
-                    className="relative">
-                    <div className="bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-2xl p-6 border-2 border-amber-200 dark:border-gray-700 shadow-xl">
-                      <div className="flex items-start gap-4 mb-4">
-                        <motion.div
-                          initial={{ scale: 0 }}
-                          animate={isInView ? { scale: 1 } : {}}
-                          transition={{
-                            delay: 0.5 + index * 0.1,
-                            type: "spring",
-                          }}
-                          className="flex-shrink-0">
-                          <div className="relative">
-                            <div
-                              className={`absolute inset-0 bg-gradient-to-br ${phase.color} rounded-full blur-lg opacity-50`}
-                            />
-                            <div
-                              className={`relative w-20 h-20 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-xl border-3 border-white dark:border-gray-900 overflow-hidden`}>
-                              <Image
-                                src={phase.image}
-                                alt={`${phase.title} icon`}
-                                width={80}
-                                height={80}
-                                className="object-contain p-2"
-                              />
-                            </div>
-                          </div>
-                        </motion.div>
-
-                        <div className="flex-1">
-                          <div className="flex items-center justify-between mb-2">
-                            <div
-                              className={`${StatusBadge.color} ${StatusBadge.textColor} px-2 py-1 rounded-full flex items-center gap-1 text-xs font-black`}>
-                              <StatusBadge.icon className="w-3 h-3" />
-                              {StatusBadge.text}
-                            </div>
-                            <div className="text-xs font-bold text-amber-600 dark:text-amber-400">
-                              {phase.quarter}
-                            </div>
-                          </div>
-
-                          <h3 className="text-xl font-black text-gray-900 dark:text-white mb-2 uppercase tracking-wide">
-                            {phase.title}
-                          </h3>
-                        </div>
-                      </div>
-
-                      <div className="mb-4">
-                        <div className="flex justify-between mb-1.5">
-                          <span className="text-xs text-gray-600 dark:text-gray-400 font-bold">
-                            Progress
-                          </span>
-                          <span className="text-sm font-black text-gray-900 dark:text-white">
-                            {phase.progress}%
-                          </span>
-                        </div>
-                        <div className="h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                          <motion.div
-                            initial={{ width: 0 }}
-                            animate={
-                              isInView ? { width: `${phase.progress}%` } : {}
-                            }
-                            transition={{
-                              duration: 1.5,
-                              delay: 1 + index * 0.1,
-                            }}
-                            className={`h-full bg-gradient-to-r ${phase.color}`}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-2">
-                        {phase.milestones.map((milestone, i) => (
-                          <div key={i} className="flex items-center gap-2">
-                            <div
-                              className={`w-3.5 h-3.5 rounded-full ${
-                                milestone.completed
-                                  ? "bg-emerald-500"
-                                  : "bg-gray-400"
-                              }`}
-                            />
-                            <span
-                              className="text-xs text-gray-700 dark:text-gray-300 font-semibold"
-                              style={{ fontFamily: "system-ui" }}>
-                              {milestone.text}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Mobile View - INCREASED SIZE */}
-            <div className="grid md:hidden gap-6">
+            {/* Mobile & Tablet Views */}
+            <div className="grid lg:hidden gap-6 max-w-2xl mx-auto">
               {roadmapPhases.map((phase, index) => {
                 const StatusBadge = getStatusBadge(phase.status);
 
@@ -610,6 +574,7 @@ export default function RoadMap() {
                   <motion.div
                     key={phase.id}
                     variants={itemVariants}
+                    whileHover={{ scale: 1.02 }}
                     className="relative">
                     <div className="flex gap-4">
                       <motion.div
@@ -620,20 +585,11 @@ export default function RoadMap() {
                           type: "spring",
                         }}
                         className="flex-shrink-0">
-                        <div className="relative">
-                          <div
-                            className={`absolute inset-0 bg-gradient-to-br ${phase.color} rounded-full blur-xl opacity-50`}
+                        <div className="w-20 h-20">
+                          <RoadmapPhaseSVG
+                            phase={phase.id}
+                            className="w-full h-full drop-shadow-lg"
                           />
-                          <div
-                            className={`relative w-20 h-20 bg-gradient-to-br ${phase.color} rounded-full flex items-center justify-center shadow-xl border-4 border-white dark:border-gray-900 overflow-hidden`}>
-                            <Image
-                              src={phase.image}
-                              alt={`${phase.title} icon`}
-                              width={80}
-                              height={80}
-                              className="object-contain p-1"
-                            />
-                          </div>
                         </div>
                       </motion.div>
 
@@ -644,7 +600,7 @@ export default function RoadMap() {
                             <StatusBadge.icon className="w-3 h-3" />
                             {StatusBadge.text}
                           </div>
-                          <div className="text-xs font-bold text-amber-600">
+                          <div className="text-xs font-bold text-amber-600 dark:text-amber-400">
                             {phase.quarter}
                           </div>
                         </div>
@@ -655,7 +611,7 @@ export default function RoadMap() {
 
                         <div className="mb-3">
                           <div className="flex justify-between mb-1">
-                            <span className="text-xs text-gray-600 dark:text-gray-400">
+                            <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">
                               Progress
                             </span>
                             <span className="text-sm font-black text-gray-900 dark:text-white">
@@ -688,7 +644,7 @@ export default function RoadMap() {
                                 }`}
                               />
                               <span
-                                className="text-xs text-gray-700 dark:text-gray-300"
+                                className="text-xs text-gray-700 dark:text-gray-300 font-medium"
                                 style={{ fontFamily: "system-ui" }}>
                                 {milestone.text}
                               </span>
