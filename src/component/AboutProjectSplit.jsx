@@ -42,7 +42,7 @@ export function AboutProjectSplit() {
             fontFamily: '"Luckiest Guy", cursive',
             lineHeight: "normal",
           }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl px-4 py-2 text-red-400 rounded-full font-semibold mb-4">
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl px-4 py-2 text-[#F26457] rounded-full font-semibold mb-4">
           About K-LovePet
         </h1>
         <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 text-gray-900">

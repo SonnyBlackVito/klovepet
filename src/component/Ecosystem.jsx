@@ -185,7 +185,7 @@ export default function Ecosystem() {
                   fontFamily: '"Luckiest Guy", cursive',
                   lineHeight: "normal",
                 }}
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl px-2 sm:px-4 sm:py-2 text-red-400 rounded-full font-semibold mb-3 sm:mb-3">
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl px-2 sm:px-4 sm:py-2 text-[#F26457] rounded-full font-semibold mb-3 sm:mb-3">
                 ECOSYSTEM
               </motion.h1>
               <motion.h2

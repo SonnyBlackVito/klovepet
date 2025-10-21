@@ -203,18 +203,23 @@ export default function RoadMap() {
           {/* Header Section */}
           <motion.div
             variants={itemVariants}
-            className="text-center mb-16 md:mb-20">
+            className="relative text-center mb-16 md:mb-20">
             <h1
               style={{
-                WebkitTextStrokeWidth: "2px",
+                WebkitTextStrokeWidth: "1px",
                 WebkitTextStrokeColor: "#876046",
                 textShadow: "0 4px 4px rgba(0, 0, 0, 0.25)",
                 fontFamily: '"Luckiest Guy", cursive',
                 lineHeight: "normal",
               }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl px-4 py-2 text-red-400 rounded-full font-semibold mb-4 text-center leading-tight">
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl px-4 py-2 text-[#F26457] rounded-full font-semibold mb-4 text-center leading-tight">
               OUR JOURNEY
             </h1>
+
+            <motion.img 
+              src="/images/dog.png"
+              className=" w-[567px] h-[378px] absolute -right-8 -top-32"
+            />
 
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 dark:text-white mb-6 leading-tight tracking-wide">
               <span className="block drop-shadow-lg">ROADMAP TO</span>
@@ -225,7 +230,7 @@ export default function RoadMap() {
 
             <motion.p
               variants={itemVariants}
-              className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-sans"
+              className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed font-sans"
               style={{ fontFamily: "system-ui, sans-serif" }}>
               Follow our journey as we build the future of
               <span className="font-bold text-transparent bg-gradient-to-r from-amber-700 to-orange-700 dark:from-amber-400 dark:to-orange-400 bg-clip-text">

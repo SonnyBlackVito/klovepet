@@ -83,12 +83,10 @@ const TokenomicsSection = () => {
             }}>
             <span className="block sm:inline">Blockchain</span>{" "}
             <span className="relative inline-block">
-              &
-              {/* Paw prints animation - hidden on mobile */}
+              &{/* Paw prints animation - hidden on mobile */}
               <div
                 // className="hidden lg:block absolute top-0 left-full h-[240px] pointer-events-none  md:overflow-hidden lg:overflow-hidden sm:overflow-hidden "
-                  className="hidden lg:block absolute top-0 left-0 translate-x-full h-[240px] pointer-events-none overflow-hidden"
-
+                className="hidden lg:block absolute top-0 left-0 translate-x-full h-[240px] pointer-events-none overflow-hidden"
                 style={{
                   marginLeft: "10px",
                   width: "1200px",
@@ -128,8 +126,8 @@ const TokenomicsSection = () => {
             }}>
             Built on Solana Chain for low fees and fast transactions.
             <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>
-            A dedicated Sub-chain will follow.
+            <span className="sm:hidden"> </span>A dedicated Sub-chain will
+            follow.
           </p>
         </div>
       </div>
@@ -141,16 +139,19 @@ const TokenomicsSection = () => {
           {/* Mobile & Small Tablet: Single Column */}
           <div className="flex flex-col gap-6 sm:gap-8 md:hidden">
             {tokenomicsData.map((item, index) => (
-              <div key={index} className="flex gap-3 sm:gap-4 items-start">
+              <div key={index} className="flex gap-3 sm:gap-4 items-center">
                 <div className="flex-shrink-0">
-                  <Image
-                    src={item.image}
-                    alt={item.label}
-                    width={80}
-                    height={80}
-                    className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
-                    priority
-                  />
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+                    <Image
+                      src={item.image}
+                      alt={item.label}
+                      width={80}
+                      height={80}
+                      // fill
+                      className=" object-contain"
+                      priority
+                    />
+                  </div>
                 </div>
                 <div className="flex flex-col gap-1 sm:gap-2 flex-1">
                   <p
@@ -169,21 +170,25 @@ const TokenomicsSection = () => {
           {/* Medium+ Screens: Two Columns */}
           <div className="hidden md:flex gap-8 lg:gap-10 xl:gap-12">
             {[0, 1].map((colIndex) => (
-              <div key={colIndex} className="flex flex-col gap-6 lg:gap-8 flex-1">
+              <div
+                key={colIndex}
+                className="flex flex-col gap-6 lg:gap-8 flex-1">
                 {tokenomicsData
                   .slice(colIndex * 3, colIndex * 3 + 3)
                   .map((item, index) => (
                     <div key={index + colIndex * 3}>
-                      <div className="flex gap-3 lg:gap-4 items-start">
+                      <div className="flex gap-3 lg:gap-4 items-center">
                         <div className="flex-shrink-0">
-                          <Image
-                            src={item.image}
-                            alt={item.label}
-                            width={120}
-                            height={120}
-                            className="w-20 h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28 object-contain"
-                            priority
-                          />
+                          <div className="relative w-20 h-20 lg:w-24 lg:h-24 xl:w-28 xl:h-28">
+                            <Image
+                              src={item.image}
+                              alt={item.label}
+                              width={120}
+                              height={120}
+                              className="object-contain"
+                              priority
+                            />
+                          </div>
                         </div>
                         <div className="flex flex-col gap-1 lg:gap-2 flex-1">
                           <p

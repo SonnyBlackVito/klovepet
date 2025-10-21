@@ -11,7 +11,7 @@ export default function PartnersSectionComponent() {
       id: 1,
       name: "Kim",
       role: "Creative Director",
-      description: "Creative visionary leading brand strategy and artistic direction for KpopRoad's visual identity.",
+      description: "Creative visionary leading brand strategy and artistic direction for KLovePet's visual identity.",
       image: "/images/partner-1.png",
       category: "Creative",
       links: {}
@@ -29,7 +29,7 @@ export default function PartnersSectionComponent() {
       id: 3,
       name: "Jasmin",
       role: "Designer",
-      description: "UI/UX specialist creating intuitive interfaces and stunning visual designs for the KpopRoad platform.",
+      description: "UI/UX specialist creating intuitive interfaces and stunning visual designs for the KLovePet platform.",
       image: "/images/partner-3.png",
       category: "Designer",
       links: {}
@@ -121,7 +121,7 @@ export default function PartnersSectionComponent() {
             variants={titleVariants}
           >
             <h2 
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-red-400 text-center"
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#F26457] text-center"
             //   style={{ textShadow: '0 0 20px rgba(254, 244, 205, 0.6)' }}
             style={{
                 WebkitTextStrokeWidth: "1px",
@@ -166,7 +166,7 @@ export default function PartnersSectionComponent() {
             variants={titleVariants}
           >
             <p className="text-sm text-white/30 mt-8 italic">
-              Designed by the KpopRoad artist team
+              Designed by the KLovePet artist team
             </p>
           </motion.div>
         </motion.div>
