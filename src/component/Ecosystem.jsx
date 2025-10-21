@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
@@ -22,6 +22,24 @@ export default function Ecosystem() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [hoveredCard, setHoveredCard] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile and set first card as active
+  useEffect(() => {
+    const checkMobile = () => {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      if (mobile) {
+        setHoveredCard(0); // Set first card as active on mobile
+      } else {
+        setHoveredCard(null); // Reset on desktop
+      }
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -328,57 +346,64 @@ export default function Ecosystem() {
                 <SwiperSlide key={component.id} style={{ height: "auto" }}>
                   <Link href={`/ecosystem/${component.id}`}>
                     <motion.div
-                      onMouseEnter={() => setHoveredCard(index)}
-                      onMouseLeave={() => setHoveredCard(null)}
+                      onMouseEnter={() => !isMobile && setHoveredCard(index)}
+                      onMouseLeave={() => !isMobile && setHoveredCard(null)}
+                      onClick={() => isMobile && setHoveredCard(hoveredCard === index ? null : index)}
                       animate={{
-                        scale: hoveredCard === index ? 1.1 : 1,
-                        y: hoveredCard === index ? -24 : 0,
+                        scale: hoveredCard === index ? 1.05 : 1,
+                        y: hoveredCard === index ? -12 : 0,
                         zIndex: hoveredCard === index ? 50 : 1,
                       }}
                       transition={{
                         type: "spring",
-                        stiffness: 350,
-                        damping: 22,
+                        stiffness: 300,
+                        damping: 25,
                       }}
-                      className="relative overflow-hidden cursor-pointer rounded-2xl"
+                      className="relative overflow-hidden cursor-pointer rounded-2xl h-[350px] w-full"
                       style={{
                         boxShadow:
                           hoveredCard === index
-                            ? "0 30px 60px -15px rgba(251, 146, 60, 0.5), 0 0 0 2px rgba(251, 146, 60, 0.2)"
-                            : "0 10px 20px -5px rgba(0, 0, 0, 0.1)",
+                            ? "0 25px 50px -12px rgba(139, 92, 246, 0.25), 0 0 0 1px rgba(139, 92, 246, 0.3)"
+                            : "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
                       }}>
-                      {/* Multi-layer background */}
+                      
+                      {/* Original background */}
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
                       <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" />
+                      
+                      {/* Hover background */}
+                      <motion.div
+                        animate={{
+                          opacity: hoveredCard === index ? 1 : 0,
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 bg-gray-900"
+                      />
 
-                      {/* Content Container */}
-                      <div className="relative h-full w-full p-4 sm:p-5 lg:p-6 flex flex-col items-center justify-center ">
-                        {/* Enhanced External Link Icon */}
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0, rotate: -45 }}
-                          animate={{
-                            opacity: hoveredCard === index ? 1 : 0,
-                            scale: hoveredCard === index ? 1 : 0,
-                            rotate: hoveredCard === index ? 0 : -45,
-                          }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 500,
-                            damping: 20,
-                          }}
-                          className="absolute top-3 sm:top-4 right-3 sm:right-4 w-9 h-9 sm:w-11 sm:h-11 bg-gradient-to-br from-amber-500 to-orange-600 hover:from-amber-600 hover:to-orange-700 rounded-full flex items-center justify-center shadow-xl z-20 group/icon">
-                          <ExternalLink
-                            className="w-4 h-4 sm:w-5 sm:h-5 text-white group-hover/icon:scale-110 transition-transform"
-                            strokeWidth={2.5}
-                          />
-                        </motion.div>
+                      <motion.div
+                        animate={{
+                          opacity: hoveredCard === index ? 1 : 0,
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 rounded-2xl"
+                        style={{
+                          background: "linear-gradient(135deg, rgba(139, 92, 246, 0.5) 0%, rgba(236, 72, 153, 0.5) 100%)",
+                          padding: "1px"
+                        }}
+                      >
+                        <div className="w-full h-full bg-gray-900 rounded-2xl" />
+                      </motion.div>
 
-                        {/* Enhanced Icon */}
+                      <motion.div
+                        animate={{
+                          opacity: hoveredCard === index ? 0 : 1,
+                          y: hoveredCard === index ? 20 : 0,
+                        }}
+                        transition={{ duration: 0.3 }}
+                        className="relative h-full w-full p-4 sm:p-5 lg:p-6 flex flex-col items-center justify-center">
                         <motion.div
                           animate={{
                             scale: hoveredCard === index ? 0.85 : 1,
-                            width: hoveredCard === index ? 350 : 350,
-                            height: hoveredCard === index ? 368 : 284,
                           }}
                           transition={{
                             type: "spring",
@@ -393,10 +418,8 @@ export default function Ecosystem() {
                           />
                         </motion.div>
 
-                        {/* Enhanced Title */}
                         <motion.h3
                           animate={{
-                            y: hoveredCard === index ? -50 : 0,
                             scale: hoveredCard === index ? 0.95 : 1,
                           }}
                           transition={{
@@ -410,50 +433,52 @@ export default function Ecosystem() {
                           }}>
                           {component.title}
                         </motion.h3>
+                      </motion.div>
 
-                        {/* Enhanced Expanded Content */}
-                        <AnimatePresence>
-                          {hoveredCard === index && (
-                            <motion.div
-                              initial={{ opacity: 0, y: 40 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              exit={{ opacity: 0, y: 40 }}
-                              transition={{
-                                type: "spring",
-                                stiffness: 350,
-                                damping: 22,
-                              }}
-                              className="absolute inset-0 p-4 sm:p-5 lg:p-6 flex flex-col justify-end bg-gradient-to-t from-white via-white/98 to-white/50 dark:from-gray-900 dark:via-gray-900/98 dark:to-gray-900/50 backdrop-blur-sm">
-                              <div className="space-y-2 sm:space-y-3">
-                                <p
-                                  className="text-xs sm:text-sm lg:text-base font-bold text-amber-600 dark:text-amber-400 text-center"
-                                  style={{
-                                    fontFamily: "system-ui, sans-serif",
-                                  }}>
-                                  {component.subtitle}
-                                </p>
-                                <p
-                                  className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 leading-relaxed text-center"
-                                  style={{
-                                    fontFamily: "system-ui, sans-serif",
-                                  }}>
-                                  {component.description}
-                                </p>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-
-                      {/* Enhanced Glow Effect */}
                       <motion.div
                         animate={{
-                          opacity: hoveredCard === index ? 0.7 : 0,
-                          scale: hoveredCard === index ? 1.1 : 1,
+                          opacity: hoveredCard === index ? 1 : 0,
+                          y: hoveredCard === index ? 0 : -20,
                         }}
-                        transition={{ duration: 0.4 }}
-                        className="absolute -inset-3 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-3xl blur-3xl -z-10"
-                      />
+                        transition={{ duration: 0.3 }}
+                        className="absolute inset-0 flex flex-col justify-between p-6">
+                        <div className="relative h-32 rounded-t-2xl overflow-hidden mb-4">
+                          <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-red-500 to-blue-500 opacity-80" />
+                          <div className="absolute inset-0 flex flex-col items-center justify-center">
+                            <img 
+                              src={component.icon} 
+                              alt={component.title}
+                              className="w-full h-full object-cover opacity-80"
+                            />
+                            <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center">
+                              <div className="text-white text-lg font-bold mb-1 drop-shadow-lg">
+                                {component.title}
+                              </div>
+                              <div className="text-white text-xs opacity-90 drop-shadow-lg">
+                                Community, Future Tech & Fun
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex-1 flex flex-col justify-between">
+                          <div>
+                            <h3 className="text-white text-xl font-bold mb-3">
+                              {component.subtitle}
+                            </h3>
+                            <p className="text-white text-sm leading-relaxed">
+                              {component.description}
+                            </p>
+                          </div>
+                          
+                          <div className="mt-4">
+                            <button className="text-green-400 hover:text-green-300 transition-colors flex items-center gap-2 text-sm font-medium">
+                              Read The K Love Pet 
+                              <span className="text-green-400">→</span>
+                            </button>
+                          </div>
+                        </div>
+                      </motion.div>
                     </motion.div>
                   </Link>
                 </SwiperSlide>
@@ -461,7 +486,6 @@ export default function Ecosystem() {
             </Swiper>
           </motion.div>
 
-          {/* Enhanced CTA Banner */}
           <motion.div
             variants={itemVariants}
             // whileHover={{ scale: 1.02 }}

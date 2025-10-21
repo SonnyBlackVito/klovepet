@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import { Luckiest_Guy } from "next/font/google";
+import { Luckiest_Guy, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Footer from "@/component/layout/Footer";
 
@@ -17,6 +17,12 @@ const luckiestGuy = Luckiest_Guy({
   variable: "--font-luckiest-guy",
   subsets: ["latin"],
   weight: "400",
+});
+
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair-display",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata = {
@@ -40,7 +46,7 @@ export default function RootLayout({ children }) {
           background: "white",
           backgroundColor: "white",
         }}
-        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} scroll-smooth antialiased overflow-x-hidden `}>
+        className={`${geistSans.variable} ${geistMono.variable} ${luckiestGuy.variable} ${playfairDisplay.variable} scroll-smooth antialiased overflow-x-hidden `}>
         <main>{children}</main>
         <Footer />
       </body>
