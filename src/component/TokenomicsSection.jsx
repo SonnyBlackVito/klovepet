@@ -212,7 +212,7 @@ const TokenomicsSection = () => {
         </div>
 
         {/* Right Side - Pizza Token Chart */}
-        <div className="relative animate-tokenomics-reveal hover:animate-tokenomics-glow w-full lg:w-auto flex justify-center">
+        <div className="relative  w-full lg:w-auto flex justify-center">
           <div className="relative max-w-[280px] sm:max-w-[320px] md:max-w-[350px] lg:max-w-[380px] xl:max-w-[800px] w-full h-auto transition-all duration-300 hover:scale-105 lg:hover:scale-110 hover:brightness-105 hover:drop-shadow-[0_0_20px_rgba(186,142,54,0.8)] lg:hover:drop-shadow-[0_0_30px_rgba(186,142,54,1)]">
             <Image
               src="/images/pizza_token.png"
