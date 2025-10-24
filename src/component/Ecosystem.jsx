@@ -369,8 +369,8 @@ export default function Ecosystem() {
                       }}>
                       
                       {/* Original background */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" />
-                      <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" />
+                      {/* <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" /> */}
+                      {/* <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" /> */}
                       
                       {/* Hover background */}
                       <motion.div
@@ -378,7 +378,7 @@ export default function Ecosystem() {
                           opacity: hoveredCard === index ? 1 : 0,
                         }}
                         transition={{ duration: 0.3 }}
-                        className="absolute inset-0 bg-gray-900"
+                        className="absolute inset-0 "
                       />
 
                       <motion.div
@@ -392,7 +392,7 @@ export default function Ecosystem() {
                           padding: "1px"
                         }}
                       >
-                        <div className="w-full h-full bg-gray-900 rounded-2xl" />
+                        <div className="w-full h-full rounded-2xl" />
                       </motion.div>
 
                       <motion.div
@@ -467,7 +467,11 @@ export default function Ecosystem() {
                             <h3 className="text-white text-xl font-bold mb-3">
                               {component.subtitle}
                             </h3>
-                            <p className="text-white text-sm leading-relaxed">
+                            <p 
+                              style={{
+                                fontFamily: "SVN-Gilroy"
+                              }}
+                            className="text-white text-sm leading-relaxed">
                               {component.description}
                             </p>
                           </div>

@@ -88,10 +88,9 @@ export default function MarketProblem() {
         radial-gradient(circle 600px at 80% 200px, #fef3c7, transparent),
         radial-gradient(circle 600px at 100% 200px, #fef3c7, transparent)
       `,
-      backgroundAttachment: 'fixed',
-      backgroundSize: 'cover',
-      }}
-      >
+        backgroundAttachment: "fixed",
+        backgroundSize: "cover",
+      }}>
       <div className="container mx-auto px-4">
         <motion.div
           variants={containerVariants}
@@ -116,7 +115,7 @@ export default function MarketProblem() {
                   animate={{
                     y: [0, -15, 0],
                     rotate: [0, 2, 0, -2, 0],
-                    scaleY: [1, 0.90, 1],
+                    scaleY: [1, 0.9, 1],
                   }}
                   transition={{
                     duration: 3,
@@ -170,7 +169,7 @@ export default function MarketProblem() {
             style={{
               backgroundImage:
                 'url("/images/Market Analysis_banner_center.png")',
-              backgroundSize: "cover", 
+              backgroundSize: "cover",
               backgroundPosition: "center",
             }}
             variants={itemVariants}
@@ -242,7 +241,11 @@ export default function MarketProblem() {
                   <h4 className="text-xl font-bold text-[#F26457]  mb-2 group-hover:text-[#F26457] transition-colors">
                     {problem.title}
                   </h4>
-                  <p className=" text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  <p
+                    style={{
+                      fontFamily: '"SVN-Gilroy", sans-serif',
+                    }}
+                    className=" text-gray-600 font-semibold dark:text-gray-400 text-sm leading-relaxed">
                     {problem.description}
                   </p>
                 </motion.div>
@@ -326,7 +329,11 @@ export default function MarketProblem() {
                     <p className="text-cyan-600  font-semibold mb-3 text-center">
                       {solution.subtitle}
                     </p>
-                    <p className="text-gray-600  leading-relaxed text-center">
+                    <p 
+                    style={{
+                      fontFamily: '"SVN-Gilroy", sans-serif',
+                    }}
+                    className="text-gray-600  font-semibold leading-relaxed text-center">
                       {solution.description}
                     </p>
                   </div>

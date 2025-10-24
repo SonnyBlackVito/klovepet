@@ -71,21 +71,21 @@ const TokenomicsSection = () => {
       <div className="sparkle-overlay" />
 
       {/* Header Section */}
-        
-        <div className="flex overflow-x-hidden overflow-y-hidden mb-8 sm:mb-12 md:mb-16 pt-5" >
-          <div className="flex flex-col relative z-10 w-full">
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-normal  max-w-6xl"
-              style={{
-                color: "#F26457",
-                WebkitTextStroke: "1px #876046",
-                fontFamily: "'Luckiest Guy', cursive",
-                textShadow: "0px 4px 6px rgba(0, 0, 0, 0.25)",
-              }}>
-              <span className="block sm:inline">Blockchain</span>{" "}
-              <span className="relative inline-block">
-                &{/* Paw prints animation - hidden on mobile */}
-                <div
+
+      <div className="flex overflow-x-hidden overflow-y-hidden mb-8 sm:mb-12 md:mb-16 pt-5">
+        <div className="flex flex-col relative z-10 w-full">
+          <h2
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl font-normal  max-w-6xl"
+            style={{
+              color: "#F26457",
+              WebkitTextStroke: "1px #876046",
+              fontFamily: "'Luckiest Guy', cursive",
+              textShadow: "0px 4px 6px rgba(0, 0, 0, 0.25)",
+            }}>
+            <span className="block sm:inline">Blockchain</span>{" "}
+            <span className="relative inline-block">
+              &{/* Paw prints animation - hidden on mobile */}
+              {/* <div
                   className="hidden lg:block absolute top-0 left-full h-[320px] pointer-events-none "
                   style={{
                     marginLeft: "10px",
@@ -94,8 +94,8 @@ const TokenomicsSection = () => {
                   }}>
                   {[
                     { delay: 0, top: 5, isLeft: true, color: "#F26457" },
-                    { delay: 0.3, top: 50, isLeft: false, color: "#FF7F6E" },
-                    { delay: 0.6, top: 5, isLeft: true, color: "#F26457" },
+                    // { delay: 0.3, top: 50, isLeft: false, color: "#FF7F6E" },
+                    // { delay: 0.6, top: 5, isLeft: true, color: "#F26457" },
                     { delay: 0.9, top: 50, isLeft: false, color: "#FF7F6E" },
                   ].map((paw, index) => (
                     <div
@@ -113,30 +113,29 @@ const TokenomicsSection = () => {
                       🐾
                     </div>
                   ))}
-                </div>
-              </span>{" "}
-              <span className="block sm:inline">Tokenomics</span>
-            </h2>
+                </div> */}
+            </span>{" "}
+            <span className="block sm:inline">Tokenomics</span>
+          </h2>
 
-            <p
-              className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mt-3 sm:mt-4 font-bold max-w-4xl"
-              style={{
-                color: "#333",
-                fontFamily: "'SVN-Gilroy', sans-serif",
-                textShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)",
-              }}>
-              Built on Solana Chain for low fees and fast transactions.
-              <br className="hidden sm:block" />
-              <span className="sm:hidden"> </span>A dedicated Sub-chain will
-              follow.
-            </p>
-          </div>
+          <p
+            className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl mt-3 sm:mt-4 font-bold max-w-4xl"
+            style={{
+              color: "#333",
+              fontFamily: "'SVN-Gilroy', sans-serif",
+              textShadow: "0px 4px 6px rgba(0, 0, 0, 0.15)",
+            }}>
+            Built on Solana Chain for low fees and fast transactions.
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>A dedicated Sub-chain will
+            follow.
+          </p>
         </div>
-      
-
+      </div>
 
       {/* Main Content */}
-      <div className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-10 lg:gap-12 xl:gap-16 min-h-[400px] sm:min-h-[500px] relative z-10">
+      <div
+        className="flex flex-col lg:flex-row items-center justify-center gap-8 md:gap-10 lg:gap-12 xl:gap-16 min-h-[400px] sm:min-h-[500px] relative z-10">
         {/* Left Side - Data List */}
         <div className="w-full lg:flex-1 max-w-[900px]">
           {/* Mobile & Small Tablet: Single Column */}
