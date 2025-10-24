@@ -308,7 +308,12 @@ export default function MarketProblem() {
                     className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity`}></motion.div>
 
                   {/* Card */}
-                  <div className="relative bg-white  rounded-3xl p-8 shadow-xl border-1 border-[#5EB658]   group-hover:border-[#5EB658] group-hover:border-2  transition-all overflow-hidden">
+                  <div 
+                  className="relative bg-white rounded-3xl p-8 shadow-xl border border-[#5EB658]
+                   group-hover:border-[#5EB658] group-hover:border-2 transition-all
+                   overflow-hidden flex flex-col h-[400px] text-center"
+                  // className=" relative bg-white  rounded-3xl p-8 shadow-xl border-1 border-[#5EB658]   group-hover:border-[#5EB658] group-hover:border-2  transition-all overflow-hidden"
+                  >
                     {/* Top accent */}
                     {/* <div
                       className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${solution.gradient}`}></div> */}
