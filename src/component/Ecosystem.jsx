@@ -37,8 +37,8 @@ export default function Ecosystem() {
     };
 
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const containerVariants = {
@@ -136,7 +136,8 @@ export default function Ecosystem() {
           radial-gradient(circle 600px at 100% 200px, rgba(254, 243, 199, 0.6), transparent)
         `,
         backgroundColor: "#ffffff",
-      }}>
+      }}
+    >
       {/* Dark Mode Overlay */}
       <div className="absolute inset-0 bg-gray-950 dark:opacity-95 opacity-0 transition-opacity duration-300 pointer-events-none" />
 
@@ -185,13 +186,15 @@ export default function Ecosystem() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="mx-auto">
+          className="mx-auto"
+        >
           {/* Enhanced Header & Stats Section */}
           <motion.div className="flex flex-col lg:flex-row w-full gap-6 sm:gap-8 lg:gap-12 mb-12 sm:mb-16">
             {/* Header with better animations */}
             <motion.div
               variants={itemVariants}
-              className="relative flex flex-col flex-1">
+              className="relative flex flex-col flex-1"
+            >
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -203,7 +206,8 @@ export default function Ecosystem() {
                   fontFamily: '"Luckiest Guy", cursive',
                   lineHeight: "normal",
                 }}
-                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl px-2 sm:px-4 sm:py-2 text-[#F26457] rounded-full font-semibold mb-3 sm:mb-3">
+                className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-8xl px-2 sm:px-4 sm:py-2 text-[#F26457] rounded-full font-semibold mb-3 sm:mb-3"
+              >
                 ECOSYSTEM
               </motion.h1>
               <motion.h2
@@ -217,7 +221,8 @@ export default function Ecosystem() {
                   fontFamily: '"Luckiest Guy", cursive',
                   lineHeight: "normal",
                 }}
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#FEE685] mb-4 sm:mb-6 leading-tight tracking-wide">
+                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-[#FEE685] mb-4 sm:mb-6 leading-tight tracking-wide"
+              >
                 <span className="block drop-shadow-lg text-[#FEE685]">
                   5 PLATFORMS ONE ECOSYSTEM
                 </span>
@@ -226,7 +231,8 @@ export default function Ecosystem() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-sans">
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed font-sans"
+              >
                 Interconnected platforms creating value for pet lovers worldwide
               </motion.span>
             </motion.div>
@@ -234,7 +240,8 @@ export default function Ecosystem() {
             {/* Enhanced Stats Grid */}
             <motion.div
               variants={itemVariants}
-              className="relative shrink-0 bg-amber-50/50 dark:bg-transparent grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4">
+              className="relative shrink-0 bg-amber-50/50 dark:bg-transparent grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-2 gap-3 sm:gap-4"
+            >
               {stats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -251,15 +258,16 @@ export default function Ecosystem() {
                     y: -8,
                     transition: { type: "spring", stiffness: 400, damping: 20 },
                   }}
-                  className="relative group z-10">
+                  className="relative group z-10"
+                >
                   {/* Enhanced glow effect */}
                   <motion.div className="absolute -inset-1 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 rounded-2xl opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500" />
 
                   <div className="w-full sm:w-[180px] md:w-[220px] lg:w-[280px] h-[100px] sm:h-[120px] lg:h-[140px] shadow-lg hover:shadow-2xl sm:shadow-[8px_10px_10px_0_rgba(0,0,0,0.15)] relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 border-2 border-amber-200 dark:border-amber-700 transition-all duration-300">
                     <motion.div
-                      // whileHover={{ rotate: 360, scale: 1.2 }}
-                      // transition={{ duration: 0.6 }}
-                      >
+                    // whileHover={{ rotate: 360, scale: 1.2 }}
+                    // transition={{ duration: 0.6 }}
+                    >
                       <stat.icon
                         className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mb-1 sm:mb-2 text-amber-600 dark:text-amber-400"
                         strokeWidth={2.5}
@@ -303,8 +311,9 @@ export default function Ecosystem() {
           {/* Enhanced Swiper Section */}
           <motion.div
             variants={itemVariants}
-            className="relative mb-12 sm:mb-16 lg:mb-20">
-            <div className="flex items-center justify-center mb-6 sm:mb-8">
+            className="relative mb-12 sm:mb-16 lg:mb-20"
+          >
+            <div className="flex items-center justify-center mb-[50px] sm:mb-[70px]">
               <motion.h3
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -316,17 +325,16 @@ export default function Ecosystem() {
                   fontFamily: '"Luckiest Guy", cursive',
                   lineHeight: "normal",
                 }}
-                className="text-xl sm:text-2xl lg:text-3xl xl:text-5xl font-black text-[#FEE685]  tracking-wide uppercase">
+                className="text-xl sm:text-2xl lg:text-3xl xl:text-5xl font-black text-[#FEE685]  tracking-wide uppercase"
+              >
                 K-LovePet's Approach
               </motion.h3>
             </div>
 
             <Swiper
-              modules={[Navigation, Pagination, Autoplay]}
+              modules={[Pagination, Autoplay]}
               spaceBetween={20}
               slidesPerView={1.2}
-              centeredSlides={false}
-              navigation
               pagination={{ clickable: true }}
               autoplay={{
                 delay: 4000,
@@ -341,151 +349,81 @@ export default function Ecosystem() {
                 1280: { slidesPerView: 4.5, spaceBetween: 28 },
                 1536: { slidesPerView: 5, spaceBetween: 32 },
               }}
-              className="ecosystem-swiper !pb-14 !pt-4 !px-1"
-              style={{ overflow: "visible" }}>
+              className="ecosystem-swiper !pb-14 !pt-4 !px-2"
+              style={{ overflow: "visible" }}
+            >
               {components.map((component, index) => (
                 <SwiperSlide key={component.id} style={{ height: "auto" }}>
-                  <Link href={`/ecosystem/${component.id}`}>
-                    <motion.div
-                      onMouseEnter={() => !isMobile && setHoveredCard(index)}
-                      onMouseLeave={() => !isMobile && setHoveredCard(null)}
-                      onClick={() => isMobile && setHoveredCard(hoveredCard === index ? null : index)}
-                      animate={{
-                        scale: hoveredCard === index ? 1.05 : 1,
-                        y: hoveredCard === index ? -12 : 0,
-                        zIndex: hoveredCard === index ? 50 : 1,
-                      }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 25,
-                      }}
-                      className="relative overflow-hidden cursor-pointer rounded-2xl h-[350px] w-full"
-                      style={{
-                        boxShadow:
-                          hoveredCard === index
-                            ? "0 25px 50px -12px rgba(139, 92, 246, 0.25), 0 0 0 1px rgba(139, 92, 246, 0.3)"
-                            : "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-                      }}>
-                      
-                      {/* Original background */}
-                      {/* <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-orange-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900" /> */}
-                      {/* <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-orange-500/10 dark:from-amber-600/10 dark:to-orange-700/10" /> */}
-                      
-                      {/* Hover background */}
-                      <motion.div
-                        animate={{
-                          opacity: hoveredCard === index ? 1 : 0,
-                        }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute inset-0 "
-                      />
-
-                      <motion.div
-                        animate={{
-                          opacity: hoveredCard === index ? 1 : 0,
-                        }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute inset-0 rounded-2xl"
-                        style={{
-                          background: "linear-gradient(135deg, rgba(139, 92, 246, 0.5) 0%, rgba(236, 72, 153, 0.5) 100%)",
-                          padding: "1px"
-                        }}
-                      >
-                        <div className="w-full h-full rounded-2xl" />
-                      </motion.div>
-
-                      <motion.div
-                        animate={{
-                          opacity: hoveredCard === index ? 0 : 1,
-                          y: hoveredCard === index ? 20 : 0,
-                        }}
-                        transition={{ duration: 0.3 }}
-                        className="relative h-full w-full p-4 sm:p-5 lg:p-6 flex flex-col items-center justify-center">
+                  <div
+                    onMouseEnter={() => setHoveredCard(index)}
+                    onMouseLeave={() => setHoveredCard(null)}
+                    className="relative w-full h-[320px] cursor-pointer p-3"
+                  >
+                    <AnimatePresence mode="wait">
+                      {hoveredCard !== index && (
                         <motion.div
-                          animate={{
-                            scale: hoveredCard === index ? 0.85 : 1,
-                          }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 350,
-                            damping: 22,
-                          }}
-                          className="mb-4 sm:mb-6 relative z-10 w-[350px] h-[284px] rounded-lg overflow-hidden">
-                          <motion.img
-                            src={component.icon}
-                            alt={component.title}
-                            className="w-full h-full object-contain drop-shadow-2xl rounded-xl"
-                          />
-                        </motion.div>
-
-                        <motion.h3
-                          animate={{
-                            scale: hoveredCard === index ? 0.95 : 1,
-                          }}
-                          transition={{
-                            type: "spring",
-                            stiffness: 350,
-                            damping: 22,
-                          }}
-                          className="text-lg sm:text-xl lg:text-xl font-black text-gray-900 dark:text-white text-center tracking-wide uppercase leading-tight px-2 relative z-10"
-                          style={{
-                            textShadow: "0 2px 4px rgba(0,0,0,0.1)",
-                          }}>
-                          {component.title}
-                        </motion.h3>
-                      </motion.div>
-
-                      <motion.div
-                        animate={{
-                          opacity: hoveredCard === index ? 1 : 0,
-                          y: hoveredCard === index ? 0 : -20,
-                        }}
-                        transition={{ duration: 0.3 }}
-                        className="absolute inset-0 flex flex-col justify-between p-6">
-                        <div className="relative h-32 rounded-t-2xl overflow-hidden mb-4">
-                          <div className="absolute inset-0 bg-gradient-to-r from-orange-400 via-red-500 to-blue-500 opacity-80" />
-                          <div className="absolute inset-0 flex flex-col items-center justify-center">
-                            <img 
-                              src={component.icon} 
+                          key="normal"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          transition={{ duration: 0.3 }}
+                          className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 rounded-3xl shadow-lg overflow-hidden flex flex-col p-4"
+                        >
+                          <div className="flex-1 rounded-2xl overflow-hidden mb-3">
+                            <img
+                              src={component.icon}
                               alt={component.title}
-                              className="w-full h-full object-cover opacity-80"
+                              className="w-full h-full object-cover"
                             />
-                            <div className="absolute inset-0 bg-black/30 flex flex-col items-center justify-center">
-                              <div className="text-white text-lg font-bold mb-1 drop-shadow-lg">
-                                {component.title}
-                              </div>
-                              <div className="text-white text-xs opacity-90 drop-shadow-lg">
-                                Community, Future Tech & Fun
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="flex-1 flex flex-col justify-between">
-                          <div>
-                            <h3 className="text-white text-xl font-bold mb-3">
-                              {component.subtitle}
-                            </h3>
-                            <p 
-                              style={{
-                                fontFamily: "SVN-Gilroy"
-                              }}
-                            className="text-white text-sm leading-relaxed">
-                              {component.description}
-                            </p>
                           </div>
                           
-                          <div className="mt-4">
-                            <button className="text-green-400 hover:text-green-300 transition-colors flex items-center gap-2 text-sm font-medium">
-                              Read The K Love Pet 
-                              <span className="text-green-400">→</span>
+                          <div className="flex items-center justify-center">
+                            <h3 className="text-[16px] font-bold uppercase text-gray-800 text-center">
+                              {component.title}
+                            </h3>
+                          </div>
+                        </motion.div>
+                      )}
+
+                      {hoveredCard === index && (
+                        <motion.div
+                          key="hover"
+                          initial={{ opacity: 0, y: 0 }}
+                          animate={{ 
+                            opacity: 1, 
+                            y: -25,
+                            boxShadow: "0 20px 40px -12px rgba(0, 0, 0, 0.25)"
+                          }}
+                          exit={{ opacity: 0, y: 0 }}
+                          transition={{ duration: 0.6, ease: "easeInOut" }}
+                          className="absolute top-0 left-0 right-0 bg-white rounded-3xl overflow-hidden flex flex-col h-[340px] z-50 border-2"
+                          style={{ borderColor: "#B7896B" }}
+                        >
+                          <div className="relative w-full h-[200px] p-4">
+                            <img
+                              src={component.icon}
+                              alt={component.title}
+                              className="w-full h-full object-cover rounded-2xl"
+                            />
+                          </div>
+
+                          <div className="flex-1 bg-white px-6 py-1 flex flex-col">
+                            <div>
+                              <h3 className="text-[19px] font-bold uppercase text-gray-900 mb-1">
+                                {component.title}
+                              </h3>
+                              <p className="text-gray-600 text-[10px] leading-relaxed mb-1">
+                                {component.description}
+                              </p>
+                            </div>
+                            <button className="text-red-500 hover:text-red-600 text-[10px] uppercase underline self-start">
+                              Read more
                             </button>
                           </div>
-                        </div>
-                      </motion.div>
-                    </motion.div>
-                  </Link>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -495,7 +433,8 @@ export default function Ecosystem() {
             variants={itemVariants}
             // whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
-            className="relative pointer-events-none">
+            className="relative pointer-events-none"
+          >
             <div
               className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl group cursor-pointer"
               style={{
@@ -503,7 +442,8 @@ export default function Ecosystem() {
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 minHeight: "200px",
-              }}>
+              }}
+            >
               <div className="absolute inset-0 bg-gradient-to-br from-amber-500/80 to-orange-500/80 group-hover:from-amber-500/70 group-hover:to-orange-500/70 transition-all duration-500 -z-10" />
               <div className="relative z-10 min-h-[200px] sm:min-h-[300px] lg:min-h-[720px]" />
             </div>
