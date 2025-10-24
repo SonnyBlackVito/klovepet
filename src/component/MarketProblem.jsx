@@ -174,26 +174,28 @@ export default function MarketProblem() {
               backgroundPosition: "center",
             }}
             variants={itemVariants}
-            className="bg-gradient-to-br from-cyan-500 via-teal-500 to-emerald-500 rounded-2xl sm:rounded-3xl lg:rounded-[3rem] p-6 sm:p-8 md:p-12 lg:p-16 mb-8 md:mb-16 shadow-2xl relative overflow-hidden">
+            className="shrink-0  sm:h-[280px] md:h-[480px] lg:h-[480px] xl:h-[480px] bg-gradient-to-br rounded-2xl sm:rounded-3xl lg:rounded-[3rem] p-6 sm:p-8 md:p-12 lg:p-16 mb-8 md:mb-16 shadow-2xl relative overflow-hidden">
             {/* Decorative elements - ẩn trên mobile nhỏ */}
             <div className="absolute top-0 right-0 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-white/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-48 h-48 sm:w-64 sm:h-64 md:w-96 md:h-96 bg-white/10 rounded-full blur-3xl"></div>
 
-            <div className="relative z-10 text-center">
+            <div className="relative z-10 text-center my-auto flex flex-col items-center justify-center h-full">
               <motion.div
                 initial={{ scale: 0 }}
                 animate={isInView ? { scale: 1 } : {}}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                 className="inline-block">
-                <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-[#3F9F39] mb-2 sm:mb-3 md:mb-4 drop-shadow-2xl">
+                <div className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-[#3F9F39]  drop-shadow-2xl">
                   $300B
                 </div>
-                <div className="text-[#5B5B5B] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold md:font-bold font-[SVN-Gilroy] mb-2">
+                <div className="text-[#5B5B5B] text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold  font-[SVN-Gilroy] mb-2">
                   Global Pet Industry 2024
-                </div>
-                <div className="text-[#5B5B5B] text-sm sm:text-base md:text-lg lg:text-xl font-[SVN-Gilroy] font-semibold">
+                  <br />
                   Growing rapidly year over year
                 </div>
+                {/* <div className="text-[#5B5B5B] text-sm sm:text-base md:text-lg lg:text-xl font-[SVN-Gilroy] font-semibold">
+                  Growing rapidly year over year
+                </div> */}
               </motion.div>
               <motion.img
                 src="/images/cat-chart.png"
@@ -202,7 +204,7 @@ export default function MarketProblem() {
                 // height={328}
                 animate={isInView ? { scale: 1 } : {}}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
-                className="absolute w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-110 xl:h-82 -top-8 sm:-top-12 md:-top-16 lg:-top-20 xl:-top-30 right-0 sm:right-4 md:right-8 xl:right-16 opacity-100"
+                className="absolute w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 xl:w-92 xl:h-72 -top-8 sm:-top-12 md:-top-16 lg:-top-20 xl:-top-0 right-0 sm:right-4 md:right-8 xl:right-30 opacity-100"
               />
             </div>
           </motion.div>
@@ -235,7 +237,7 @@ export default function MarketProblem() {
                     src={problem.icon}
                     alt={problem.title}
                     whileHover={{ scale: 1.2, rotate: 10 }}
-                    className="w-40 h-40 mb-4 mx-auto"
+                    className="w-62 h-41 mb-4 mx-auto"
                   />
                   <h4 className="text-xl font-bold text-[#F26457]  mb-2 group-hover:text-[#F26457] transition-colors">
                     {problem.title}
@@ -264,9 +266,9 @@ export default function MarketProblem() {
               className="
       w-[120px] h-[160px]        
       sm:w-[150px] sm:h-[200px]   /* >= 640px */
-      md:w-[180px] md:h-[240px]   /* >= 768px */
-      lg:w-[220px] lg:h-[300px]   /* >= 1024px */
-      xl:w-[260px] xl:h-[350px]   /* >= 1280px */
+      md:w-[140px] md:h-[200px]   /* >= 768px */
+      lg:w-[180px] lg:h-[260px]   /* >= 1024px */
+      xl:w-[220px] xl:h-[300px]   /* >= 1280px */
     "
             />
           </div>
@@ -314,7 +316,7 @@ export default function MarketProblem() {
                       alt={solution.title}
                       // whileHover={{ scale: 1.3, rotate: 360 }}
                       transition={{ duration: 0.6 }}
-                      className="w-40 h-40 mb-4 mx-auto"
+                      className="w-62 h-41 mb-4 mx-auto"
                     />
 
                     {/* Content */}
