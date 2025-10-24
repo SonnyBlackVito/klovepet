@@ -267,11 +267,13 @@ export default function MarketProblem() {
             <motion.img
               src="/images/snake.png"
               className="
-      w-[120px] h-[160px]        
-      sm:w-[150px] sm:h-[200px]   /* >= 640px */
-      md:w-[140px] md:h-[200px]   /* >= 768px */
-      lg:w-[180px] lg:h-[260px]   /* >= 1024px */
-      xl:w-[220px] xl:h-[300px]   /* >= 1280px */
+      w-[70px] h-[95px]
+      sm:w-[90px] sm:h-[120px]
+      md:w-[100px] md:h-[140px]
+      lg:w-[120px] lg:h-[170px]
+      xl:w-[150px] xl:h-[200px]
+      object-contain mx-auto
+      drop-shadow-lg
     "
             />
           </div>
@@ -308,11 +310,11 @@ export default function MarketProblem() {
                     className={`absolute inset-0 bg-gradient-to-br ${solution.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-60 transition-opacity`}></motion.div>
 
                   {/* Card */}
-                  <div 
-                  className="relative bg-white rounded-3xl p-8 shadow-xl border border-[#5EB658]
+                  <div
+                    className="relative bg-white rounded-3xl p-8 shadow-xl border border-[#5EB658]
                    group-hover:border-[#5EB658] group-hover:border-2 transition-all
                    overflow-hidden flex flex-col h-[400px] text-center"
-                  // className=" relative bg-white  rounded-3xl p-8 shadow-xl border-1 border-[#5EB658]   group-hover:border-[#5EB658] group-hover:border-2  transition-all overflow-hidden"
+                    // className=" relative bg-white  rounded-3xl p-8 shadow-xl border-1 border-[#5EB658]   group-hover:border-[#5EB658] group-hover:border-2  transition-all overflow-hidden"
                   >
                     {/* Top accent */}
                     {/* <div
@@ -334,11 +336,11 @@ export default function MarketProblem() {
                     <p className="text-cyan-600  font-semibold mb-3 text-center">
                       {solution.subtitle}
                     </p>
-                    <p 
-                    style={{
-                      fontFamily: '"SVN-Gilroy", sans-serif',
-                    }}
-                    className="text-gray-600  font-semibold leading-relaxed text-center">
+                    <p
+                      style={{
+                        fontFamily: '"SVN-Gilroy", sans-serif',
+                      }}
+                      className="text-gray-600  font-semibold leading-relaxed text-center">
                       {solution.description}
                     </p>
                   </div>
