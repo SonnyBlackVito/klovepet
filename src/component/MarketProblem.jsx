@@ -263,20 +263,22 @@ export default function MarketProblem() {
               </div> */}
             </div>
           </motion.div>
-          <div className="flex justify-center mb-8">
-            <motion.img
-              src="/images/snake.png"
-              className="
+<div className="flex justify-center mb-8">
+  <motion.img
+    src="/images/snake.png"
+    whileHover={{ scale: 1.1 }}
+    transition={{ duration: 0.4 }}
+    className="
       w-[70px] h-[95px]
       sm:w-[90px] sm:h-[120px]
       md:w-[100px] md:h-[140px]
       lg:w-[120px] lg:h-[170px]
       xl:w-[150px] xl:h-[200px]
       object-contain mx-auto
-      drop-shadow-lg
+      drop-shadow-[0_0_15px_rgba(94,182,88,0.6)]
     "
-            />
-          </div>
+  />
+</div>
 
           {/* Solutions Section */}
           <motion.div variants={itemVariants}>
