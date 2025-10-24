@@ -257,8 +257,9 @@ export default function Ecosystem() {
 
                   <div className="w-full sm:w-[180px] md:w-[220px] lg:w-[280px] h-[100px] sm:h-[120px] lg:h-[140px] shadow-lg hover:shadow-2xl sm:shadow-[8px_10px_10px_0_rgba(0,0,0,0.15)] relative bg-white/95 dark:bg-gray-800/95 backdrop-blur-xl rounded-xl sm:rounded-2xl p-3 sm:p-4 lg:p-5 border-2 border-amber-200 dark:border-amber-700 transition-all duration-300">
                     <motion.div
-                      whileHover={{ rotate: 360, scale: 1.2 }}
-                      transition={{ duration: 0.6 }}>
+                      // whileHover={{ rotate: 360, scale: 1.2 }}
+                      // transition={{ duration: 0.6 }}
+                      >
                       <stat.icon
                         className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 mb-1 sm:mb-2 text-amber-600 dark:text-amber-400"
                         strokeWidth={2.5}
