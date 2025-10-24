@@ -171,7 +171,7 @@ export default function NFTCard() {
     font-normal 
     tracking-tight 
     leading-normal 
-    text-3xl sm:text-4xl md:text-5xl lg:text-6xl
+    text-2xl sm:text-3xl md:text-4xl lg:text-5xl
   "
           style={{
             WebkitTextStrokeWidth: "1px",
@@ -266,7 +266,7 @@ export default function NFTCard() {
             className={`transition-all duration-300 rounded-full ${
               index === activeIndex
                 ? "bg-orange-500 w-10 h-3"
-                : "bg-gray-600 hover:bg-gray-500 w-3 h-3"
+                : "bg-[#C8C8C8] hover:bg-[#C8C8C8] w-3 h-3"
             }`}
           />
         ))}
